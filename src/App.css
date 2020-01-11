@@ -36,3 +36,129 @@
     transform: rotate(360deg);
   }
 }
+
+.NavFlex{
+  display: flex;
+  justify-content: space-around;
+  background: #323232;
+}
+
+.NavFlex a{
+  padding: 2% 0;
+  color: ivory;
+}
+
+.Dashboard{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.DashboardUtils{
+  margin:0;
+  width: 25%;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.DashboardPage{
+  margin: 0;
+  width: 75%;
+  border: 1px solid black;
+}
+
+.Dashboard-CRUD{
+  
+  margin: 2%;
+}
+
+.Dash-item{
+  border: 1px solid black;
+  width: 50%;
+  
+}
+
+.Items{
+  background: #ff934f;
+}
+
+.item{
+ text-align: left;
+ border: 5px solid #be6a35;
+ border-radius: 20px;
+ padding: 1% 2%;
+ margin: 1% 0;
+}
+
+.Locations{
+  background: #a3911c;
+}
+
+.location{
+  text-align: left;
+  border: 5px solid #76680d;
+  border-radius: 20px;
+  padding: 1% 2%;
+  margin: 1% 0;
+}
+
+.Dashboard-flex{
+  display: flex;
+}
+
+/* The edit panel classes and stuff********************** */
+
+.UserToggle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.UserToggle h1{
+  margin: 0;
+  padding: 0;
+}
+
+.UserOption{
+  background: #ac7c83;
+  border: 2px solid #816367;
+  border-radius: 15px;
+}
+
+.ItemOption{
+  background: #ff934f;
+  border: 2px solid #be6a35;
+  border-radius: 15px ;
+}
+
+.LocationOption{
+  background:#a3911c;
+  border: 2px solid #76680d;
+  border-radius: 15px;
+}
+
+/* The invisible smoke and mirror classes and stuff********* */
+
+
+.userForm{
+  display: none;
+}
+
+.itemForm{
+  display: none;
+}
+
+.locationForm{
+  display: none;
+}
+
+.visible{
+  display: block;
+}
+
+
+
+
