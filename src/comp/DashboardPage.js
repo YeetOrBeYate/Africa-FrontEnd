@@ -1,9 +1,11 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {EditUser,EditUserItem} from "../Actions/UserActions";
+import {EditUser,EditUserItem,CloseEditUserItem} from "../Actions/UserActions";
 import {getCats} from "../Actions/CategoryActions";
 
-const AddItem =()=>{
+
+
+const Dashboard =()=>{
 
     const state = useSelector(state=>state.User);
     const Category = useSelector(state=>state.Category);
@@ -11,7 +13,25 @@ const AddItem =()=>{
 
     React.useEffect(()=>{
         dispatch(getCats())
+
     },[])
+
+    React.useEffect(()=>{
+
+        if(state.itemEdit){
+            const newList=state.user.items.map(i=>{
+                if(item.id == i.id){
+                    i = item
+                    return i;
+                }else{
+                    return i;
+                }
+            })
+
+            dispatch(CloseEditUserItem(newList))
+        }
+
+    },[state.itemEdit])
 
     const [user, setUser] = React.useState({
         username:'',
@@ -101,11 +121,12 @@ const AddItem =()=>{
             category_id:item.category_id
         }
         
-        console.log("Item i'm sending", newItem)
 
         dispatch(EditUserItem(item.id, newItem))
-        // All that's left so to make the put request
+        
     }
+
+
 
     
     if(Category.categories ===null){
@@ -211,4 +232,4 @@ const AddItem =()=>{
 
 }
 
-export default AddItem;
+export default Dashboard;

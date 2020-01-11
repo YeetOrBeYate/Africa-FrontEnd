@@ -22,7 +22,7 @@ const initialState = {
     user:checkUser(),
     token:checkToken(),
     itemEdit:false,
-    locatinEdit:false
+    locationEdit:false
 }
 
 export const UserReducer = (state=initialState, action)=>{
@@ -33,6 +33,10 @@ export const UserReducer = (state=initialState, action)=>{
             return{...state, loading:false, user:action.payload, token:action.token}
         case 'Useredit':
             return{...state, user: {...state.user, username:action.payload}}
+        case "UserEdititem":
+            return{...state, itemEdit:true, loading:false}
+        case "Closeedit":
+            return{...state, itemEdit:false, user:{...state.user, items: action.payload}}
         default:
             return state
     }
