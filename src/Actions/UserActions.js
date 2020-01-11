@@ -9,6 +9,10 @@ const UserLoading = ()=>{
     return {type: 'Userloading'}
 }
 
+const UserEditItem = (data)=>{
+    return{type:'UserEdititem', payload:data}
+}
+
 export const EditUser=(id,user)=>{
 
     return function(dispatch){
@@ -33,6 +37,24 @@ export const EditUser=(id,user)=>{
         })
 
         
+
+    }
+}
+
+export const EditUserItem = (id, item)=>{
+
+    return function(dispatch){
+
+        dispatch(UserLoading())
+
+        return AxiosWithAuth().put(`https://africa-marketplace.herokuapp.com/item/${id}`,item)
+        .then(res=>{
+            console.log(res)
+        })
+
+        .catch(err=>{
+            console.log(err)
+        })
 
     }
 }

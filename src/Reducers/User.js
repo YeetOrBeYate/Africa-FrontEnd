@@ -20,7 +20,9 @@ const checkUser = ()=>{
 const initialState = {
     loading:false,
     user:checkUser(),
-    token:checkToken()
+    token:checkToken(),
+    itemEdit:false,
+    locatinEdit:false
 }
 
 export const UserReducer = (state=initialState, action)=>{

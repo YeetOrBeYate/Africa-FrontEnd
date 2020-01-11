@@ -20,11 +20,11 @@ export const getCats = ()=>{
     return function(dispatch){
 
         dispatch(loading())
-        console.log("ran")
+       
 
         return AxiosWithAuth().get('https://africa-marketplace.herokuapp.com/category')
         .then(res=>{
-            console.log(res.data.categories)
+            
             const cats = res.data.categories
             dispatch(good(cats))
         })

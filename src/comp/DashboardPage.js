@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {EditUser} from "../Actions/UserActions";
+import {EditUser,EditUserItem} from "../Actions/UserActions";
 import {getCats} from "../Actions/CategoryActions";
 
 const AddItem =()=>{
@@ -92,8 +92,18 @@ const AddItem =()=>{
 
     const submitItem = (e)=>{
         e.preventDefault()
-        console.log("Item i'm sending", item)
+        
+        const newItem ={
+            name:item.name,
+            description: item.description,
+            price: item.price,
+            user_id:item.user_id,
+            category_id:item.category_id
+        }
+        
+        console.log("Item i'm sending", newItem)
 
+        dispatch(EditUserItem(item.id, newItem))
         // All that's left so to make the put request
     }
 
