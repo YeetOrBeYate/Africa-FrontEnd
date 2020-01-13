@@ -27,7 +27,7 @@ export const EditUser=(id,user)=>{
         return AxiosWithAuth().put(`https://africa-marketplace.herokuapp.com/users/${id}`,user)
 
         .then(res=>{
-            console.log(res)
+            console.log("editUser",res)
             dispatch(Useredit(user.username))
             let yeet = localStorage.getItem('user')
             yeet = JSON.parse(yeet)
@@ -54,7 +54,7 @@ export const EditUserItem = (id, item)=>{
 
         return AxiosWithAuth().put(`https://africa-marketplace.herokuapp.com/item/${id}`,item)
         .then(res=>{
-            console.log(res)
+            console.log("edituseritem",res)
             dispatch(UserEditItem())
         })
 
