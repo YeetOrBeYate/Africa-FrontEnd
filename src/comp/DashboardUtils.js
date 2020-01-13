@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {EditUser,EditUserItem,CloseEditUserItem} from "../Actions/UserActions";
+import {EditUser,EditUserItem,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
 import {getCats} from "../Actions/CategoryActions";
 
 const DashboardUtils = ()=>{
@@ -31,7 +31,23 @@ const DashboardUtils = ()=>{
             dispatch(CloseEditUserItem(newList))
         }
 
-    },[state.itemEdit])
+        if(state.locationEdit){
+            
+            const newLocations=state.user.locations.map(l=>{
+                if(location.id == l.id){
+                    l = location
+                    return l;
+                }else{
+                    return l;
+                }
+            })
+
+            console.log(newLocations)
+
+            dispatch(CloseEditUserLocation(newLocations))
+        }
+
+    },[state.itemEdit,state.locationEdit])
 
     // usestates to keep track of the inputs************************************************************************************
     const [user, setUser] = React.useState({
@@ -156,6 +172,12 @@ const DashboardUtils = ()=>{
 
     const submitLocation = (e)=>{
         e.preventDefault();
+
+        const newLocation ={
+            name: location.name
+        }
+
+        dispatch(EditUserLocation(location.id, newLocation))
         
     }
 

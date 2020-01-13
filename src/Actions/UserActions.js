@@ -18,6 +18,14 @@ const CloseUserEditItem=(data)=>{
     return{type:"Closeedit", payload:data}
 }
 
+const UserEditLocation = ()=>{
+    return{type:'UserEditlocation'}
+}
+
+const CloseUserEditLocation = (data)=>{
+    return{type:'LocCloseedit', payload:data}
+}
+
 export const EditUser=(id,user)=>{
 
     return function(dispatch){
@@ -74,6 +82,37 @@ export const CloseEditUserItem = (list)=>{
         let yeet = localStorage.getItem('user')
         yeet = JSON.parse(yeet)
         yeet = {...yeet, items:list}
+        yeet = JSON.stringify(yeet)
+        localStorage.setItem('user', yeet)
+    }
+}
+
+export const EditUserLocation = (id,location)=>{
+
+    return function(dispatch){
+        dispatch(UserLoading())
+
+        AxiosWithAuth().put(`https://africa-marketplace.herokuapp.com/location/${id}`, location)
+        .then(res=>{
+            console.log(res)
+            dispatch(UserEditLocation())
+        })
+
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
+
+export const CloseEditUserLocation = (list)=>{
+
+    return function(dispatch){
+
+        dispatch(CloseUserEditLocation(list))
+
+        let yeet = localStorage.getItem('user')
+        yeet = JSON.parse(yeet)
+        yeet = {...yeet, locations:list}
         yeet = JSON.stringify(yeet)
         localStorage.setItem('user', yeet)
     }
