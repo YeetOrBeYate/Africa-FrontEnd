@@ -138,7 +138,7 @@ export const AddItem = (item)=>{
 
         return AxiosWithAuth().post(`https://africa-marketplace.herokuapp.com/item`, item)
         .then(res=>{
-            console.log(res)
+            console.log(res.data.id)
             dispatch(UserAddItem(item))
 
             let yeet = localStorage.getItem('user');
@@ -185,14 +185,20 @@ export const RemoveItem = (itemid)=>{
 
         dispatch(UserLoading())
 
-        dispatch(UserDeleteItem(itemid))
-        // return AxiosWithAuth().delete(`https://africa-marketplace.herokuapp.com/item/${itemid}`)
-        // .then(res=>{
+        return AxiosWithAuth().delete(`https://africa-marketplace.herokuapp.com/item/${itemid}`)
+        .then(res=>{
+            console.log('delete', res)
+            dispatch(UserDeleteItem(itemid))
 
-        // })
+            let yeet = localStorage.getItem('user')
+            yeet = JSON.parse(yeet)
+            yeet = {...yeet, items:yeet.items.filter(item=>item.id !=itemid)}
+            yeet = JSON.stringify(yeet)
+            localStorage.setItem('user', yeet)
+        })
 
-        // .catch(err=>{
-        //     console.log(err)
-        // })
+        .catch(err=>{
+            console.log(err)
+        })
     }
 }
