@@ -108,6 +108,12 @@ const DashboardUtils = ()=>{
         const post = document.querySelector(".locationPostForm")
         post.classList.toggle('visible');
     }
+
+    const ToggleDeleteItem=(e)=>{
+        e.preventDefault();
+        const DeleteItem = document.querySelector('.itemDeleteForm');
+        DeleteItem.classList.toggle('visible');
+    }
     //The user form functions for changing the usestate attached to it and submitting********************************************
     const changeUser=(e)=>{
         
@@ -197,14 +203,6 @@ const DashboardUtils = ()=>{
     }
 
 
-
-    
-    // if(Category.categories ===null){
-    //     return(<div>
-    //         loading...
-    //     </div>);
-    // }
-
     return(
         <section className="DashboardUtils">
             <div className="Dashboard-CRUD UserOption">
@@ -236,6 +234,7 @@ const DashboardUtils = ()=>{
                     </select>
                     <button onClick={(e)=>ToggleItem(e)} id="Itembtn">Edit Item</button>
                     <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
+                    <button onClick={(e)=>ToggleDeleteItem(e)}>Remove Item</button>
                 </div>
                 <form className="itemForm">
                     <div>

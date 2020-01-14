@@ -163,6 +163,10 @@
   display: none;
 }
 
+.itemDeleteForm{
+  display: none;
+}
+
 .visible{
   display: block;
 }
