@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {EditUser,EditUserItem,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
 import ItemPost from './DashPostForms/itemPost';
+import LocationPost from "./DashPostForms/locationPost";
 
 
 const DashboardUtils = ()=>{
@@ -98,6 +99,12 @@ const DashboardUtils = ()=>{
     const TogglePostItem = (e)=>{
         e.preventDefault();
         const post = document.querySelector('.itemPostForm')
+        post.classList.toggle('visible');
+    }
+
+    const TogglePostLocation = (e)=>{
+        e.preventDefault();
+        const post = document.querySelector(".locationPostForm")
         post.classList.toggle('visible');
     }
     //The user form functions for changing the usestate attached to it and submitting********************************************
@@ -261,6 +268,7 @@ const DashboardUtils = ()=>{
                         ))}
                     </select>
                     <button onClick={(e)=>ToggleLocation(e)} id="Locationbtn">Edit Location</button>
+                    <button onClick={(e)=>TogglePostLocation(e)}>Add Location</button>
                 </div>
                 <form className="locationForm">
                     <div>
@@ -268,6 +276,7 @@ const DashboardUtils = ()=>{
                     </div>
                     <button onClick={(e)=>submitLocation(e)}>Tesstbtn</button>
                 </form>
+                <LocationPost/>
             </div>
         </section>
     );

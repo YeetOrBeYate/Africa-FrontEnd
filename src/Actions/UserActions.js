@@ -26,6 +26,14 @@ const CloseUserEditLocation = (data)=>{
     return{type:'LocationCloseedit', payload:data}
 }
 
+const UserAddItem=(data)=>{
+    return{type:'UserAddItem', payload:data}
+}
+
+const UserAddLocation =(data)=>{
+    return{type:'UserAddLocation', payload:data}
+}
+
 export const EditUser=(id,user)=>{
 
     return function(dispatch){
@@ -116,4 +124,53 @@ export const CloseEditUserLocation = (list)=>{
         yeet = JSON.stringify(yeet)
         localStorage.setItem('user', yeet)
     }
+}
+
+export const AddItem = (item)=>{
+
+    return function(dispatch){
+
+        dispatch(UserLoading())
+
+        return AxiosWithAuth().post(`https://africa-marketplace.herokuapp.com/item`, item)
+        .then(res=>{
+            console.log(res)
+            dispatch(UserAddItem(item))
+
+            let yeet = localStorage.getItem('user');
+            yeet = JSON.parse(yeet);
+            yeet = {...yeet, items:[...yeet.items, item]}
+            yeet = JSON.stringify(yeet)
+            localStorage.setItem('user', yeet);
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
+
+export const AddLocation = (location)=>{
+    
+    return function(dispatch){
+        dispatch(UserLoading())
+
+        AxiosWithAuth().post(`https://africa-marketplace.herokuapp.com/location`, location)
+        .then(res=>{
+            console.log(res)
+            dispatch(UserAddLocation(location))
+
+            let yeet = localStorage.getItem('user')
+            yeet = JSON.parse(yeet);
+            yeet = {...yeet, locations:[...yeet.locations, location]}
+            yeet = JSON.stringify(yeet);
+            localStorage.setItem('user', yeet);
+
+        })
+
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+
+
 }

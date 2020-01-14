@@ -159,6 +159,10 @@
   display: none;
 }
 
+.locationPostForm{
+  display: none;
+}
+
 .visible{
   display: block;
 }

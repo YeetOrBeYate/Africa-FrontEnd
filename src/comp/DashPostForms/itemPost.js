@@ -1,11 +1,15 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
+import {AddItem} from "../../Actions/UserActions";
+
+
 const ItemYeet = ()=>{
 
     const User = useSelector(state=>state.User);
     const Category = useSelector(state=>state.Category);
     const dispatch = useDispatch();
+
 
     const [postItem,setPostItem] = React.useState({
         name:'',
@@ -21,7 +25,21 @@ const ItemYeet = ()=>{
 
     const sendItem=(e)=>{
         e.preventDefault()
-        console.log("what i'll be sending",postItem)
+        
+        const newPost= {
+            name: postItem.name,
+            description: postItem.description,
+            price:Number(postItem.price),
+            user_id:postItem.user_id,
+            category_id:Number(postItem.category_id)
+        }
+
+        
+        
+        console.log("what i'll",newPost)
+
+
+        dispatch(AddItem(newPost))
     }
 
     return(
@@ -44,7 +62,6 @@ const ItemYeet = ()=>{
                 <button onClick={(e)=>sendItem(e)}>postItem</button>
             </form>
     );
-
 }
 
 export default ItemYeet;
