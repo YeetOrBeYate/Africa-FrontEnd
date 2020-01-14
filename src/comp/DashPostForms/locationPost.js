@@ -27,8 +27,6 @@ const LocationYeet =()=>{
         dispatch(AddLocation(newLocation))
     }
 
-    
-
     return(
         <form className="locationPostForm">
             <div>

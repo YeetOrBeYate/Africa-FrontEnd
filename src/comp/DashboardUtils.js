@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {EditUser,EditUserItem,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
 import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
+import ItemDelete from "./DashDeleteForms/itemDelete";
 
 
 const DashboardUtils = ()=>{
@@ -257,6 +258,7 @@ const DashboardUtils = ()=>{
                     <button onClick={(e)=>submitItem(e)}>Edit Item!</button>
                 </form>
                 <ItemPost/>
+                <ItemDelete/>
             </div>
             <div className="Dashboard-CRUD LocationOption">
                 <div className="UserToggle">
