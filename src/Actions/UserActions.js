@@ -34,6 +34,10 @@ const UserAddLocation =(data)=>{
     return{type:'UserAddLocation', payload:data}
 }
 
+const UserDeleteItem =data=>{
+    return{type: 'UserDeleteItem', payload:data}
+}
+
 export const EditUser=(id,user)=>{
 
     return function(dispatch){
@@ -173,4 +177,22 @@ export const AddLocation = (location)=>{
     }
 
 
+}
+
+export const RemoveItem = (itemid)=>{
+
+    return function(dispatch){
+
+        dispatch(UserLoading())
+
+        dispatch(UserDeleteItem(itemid))
+        // return AxiosWithAuth().delete(`https://africa-marketplace.herokuapp.com/item/${itemid}`)
+        // .then(res=>{
+
+        // })
+
+        // .catch(err=>{
+        //     console.log(err)
+        // })
+    }
 }

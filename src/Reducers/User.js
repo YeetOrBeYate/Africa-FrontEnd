@@ -52,6 +52,8 @@ export const UserReducer = (state=initialState, action)=>{
             return{...state, user:{...state.user, items:[...state.user.items,action.payload]}, loading:false}
         case 'UserAddLocation':
             return{...state, user:{...state.user, locations:[...state.user.locations, action.payload]}, loading:false}
+        case 'UserDeleteItem':
+            return{...state,user:{...state.user,items:state.user.items.filter(item=>item.id !=action.payload)}, loading:false}
         default:
             return state
     }

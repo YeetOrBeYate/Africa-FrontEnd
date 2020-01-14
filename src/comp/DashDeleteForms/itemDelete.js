@@ -1,5 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {RemoveItem} from "../../Actions/UserActions";
 
 const ItemDelete = ()=>{
 
@@ -25,8 +26,6 @@ const ItemDelete = ()=>{
                 return item.id == newid
                 
             })
-
-
             setItemDel({...itemDel, id:newItem.id, name:newItem.name})
             
         }
@@ -34,7 +33,10 @@ const ItemDelete = ()=>{
 
     const deleteItem = (e)=>{
         e.preventDefault()
-        console.log(itemDel)
+        console.log(itemDel.id)
+        dispatch(RemoveItem(itemDel.id))
+        console.log(User.user)
+
     }
 
     return(
