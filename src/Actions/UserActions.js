@@ -15,7 +15,7 @@ const UserEditItem = ()=>{
 }
 
 const CloseUserEditItem=(data)=>{
-    return{type:"Closeedit", payload:data}
+    return{type:"ItemCloseedit", payload:data}
 }
 
 const UserEditLocation = ()=>{
@@ -23,7 +23,7 @@ const UserEditLocation = ()=>{
 }
 
 const CloseUserEditLocation = (data)=>{
-    return{type:'LocCloseedit', payload:data}
+    return{type:'LocationCloseedit', payload:data}
 }
 
 export const EditUser=(id,user)=>{

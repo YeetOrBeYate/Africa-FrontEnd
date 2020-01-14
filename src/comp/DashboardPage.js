@@ -1,13 +1,27 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import DashboardUtils from "./DashboardUtils";
+import {getCats} from "../Actions/CategoryActions";
 
 
 
 const Dashboard =()=>{
 
     const state = useSelector(state=>state.User);
+    const Category = useSelector(state=>state.Category);
+    const dispatch = useDispatch();
+
+
+    React.useEffect(()=>{
+        dispatch(getCats())
+
+    },[])
     
+    if(Category.categories ===null){
+        return(<div>
+            loading...
+        </div>);
+    }
 
     return(
         <div className="Dashboard">

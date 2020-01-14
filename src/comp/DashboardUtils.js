@@ -1,7 +1,8 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {EditUser,EditUserItem,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
-import {getCats} from "../Actions/CategoryActions";
+import ItemPost from './DashPostForms/itemPost';
+
 
 const DashboardUtils = ()=>{
 
@@ -11,10 +12,10 @@ const DashboardUtils = ()=>{
     const dispatch = useDispatch();
 
     // Useeffects to watch for edit changes and to get needed data from the db*************************************************
-    React.useEffect(()=>{
-        dispatch(getCats())
+    // React.useEffect(()=>{
+    //     dispatch(getCats())
 
-    },[])
+    // },[])
 
     React.useEffect(()=>{
 
@@ -92,6 +93,12 @@ const DashboardUtils = ()=>{
         const userForm = document.querySelector('.locationForm')
         userForm.classList.toggle('visible');
 
+    }
+
+    const TogglePostItem = (e)=>{
+        e.preventDefault();
+        const post = document.querySelector('.itemPostForm')
+        post.classList.toggle('visible');
     }
     //The user form functions for changing the usestate attached to it and submitting********************************************
     const changeUser=(e)=>{
@@ -184,11 +191,11 @@ const DashboardUtils = ()=>{
 
 
     
-    if(Category.categories ===null){
-        return(<div>
-            loading...
-        </div>);
-    }
+    // if(Category.categories ===null){
+    //     return(<div>
+    //         loading...
+    //     </div>);
+    // }
 
     return(
         <section className="DashboardUtils">
@@ -220,6 +227,7 @@ const DashboardUtils = ()=>{
                         ))}
                     </select>
                     <button onClick={(e)=>ToggleItem(e)} id="Itembtn">Edit Item</button>
+                    <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
                 </div>
                 <form className="itemForm">
                     <div>
@@ -241,6 +249,7 @@ const DashboardUtils = ()=>{
                     </div>
                     <button onClick={(e)=>submitItem(e)}>Edit Item!</button>
                 </form>
+                <ItemPost/>
             </div>
             <div className="Dashboard-CRUD LocationOption">
                 <div className="UserToggle">
