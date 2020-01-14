@@ -138,7 +138,10 @@ export const AddItem = (item)=>{
 
         return AxiosWithAuth().post(`https://africa-marketplace.herokuapp.com/item`, item)
         .then(res=>{
-            console.log(res.data.id)
+            console.log("add item", res)
+
+            item = {...item, id:res.data.id}
+
             dispatch(UserAddItem(item))
 
             let yeet = localStorage.getItem('user');
