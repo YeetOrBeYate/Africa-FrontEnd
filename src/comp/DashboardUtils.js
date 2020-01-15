@@ -4,6 +4,7 @@ import {EditUser,EditUserItem,CloseEditUserItem,EditUserLocation,CloseEditUserLo
 import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
+import LocationDelete from './DashDeleteForms/locationDelete';
 
 
 const DashboardUtils = ()=>{
@@ -113,6 +114,12 @@ const DashboardUtils = ()=>{
         e.preventDefault();
         const DeleteItem = document.querySelector('.itemDeleteForm');
         DeleteItem.classList.toggle('visible');
+    }
+
+    const ToggleDeleteLocation =(e)=>{
+        e.preventDefault();
+        const DeleteLocation = document.querySelector('.locationDeleteForm');
+        DeleteLocation.classList.toggle('visible')
     }
     //The user form functions for changing the usestate attached to it and submitting********************************************
     const changeUser=(e)=>{
@@ -270,6 +277,7 @@ const DashboardUtils = ()=>{
                     </select>
                     <button onClick={(e)=>ToggleLocation(e)} id="Locationbtn">Edit Location</button>
                     <button onClick={(e)=>TogglePostLocation(e)}>Add Location</button>
+                    <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete Location</button>
                 </div>
                 <form className="locationForm">
                     <div>
@@ -278,6 +286,7 @@ const DashboardUtils = ()=>{
                     <button onClick={(e)=>submitLocation(e)}>Tesstbtn</button>
                 </form>
                 <LocationPost/>
+                <LocationDelete/>
             </div>
         </section>
     );

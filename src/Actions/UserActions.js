@@ -38,6 +38,10 @@ const UserDeleteItem =data=>{
     return{type: 'UserDeleteItem', payload:data}
 }
 
+const UserDeleteLocation = (data)=>{
+    return{type:'UserDeleteLocation', payload:data}
+}
+
 export const EditUser=(id,user)=>{
 
     return function(dispatch){
@@ -163,7 +167,9 @@ export const AddLocation = (location)=>{
 
         AxiosWithAuth().post(`https://africa-marketplace.herokuapp.com/location`, location)
         .then(res=>{
-            console.log(res)
+            console.log("adding location", res)
+        
+            location = {...location, id:res.data.id}
             dispatch(UserAddLocation(location))
 
             let yeet = localStorage.getItem('user')
@@ -190,12 +196,37 @@ export const RemoveItem = (itemid)=>{
 
         return AxiosWithAuth().delete(`https://africa-marketplace.herokuapp.com/item/${itemid}`)
         .then(res=>{
-            console.log('delete', res)
+            console.log('delete Item', res)
             dispatch(UserDeleteItem(itemid))
 
             let yeet = localStorage.getItem('user')
             yeet = JSON.parse(yeet)
             yeet = {...yeet, items:yeet.items.filter(item=>item.id !=itemid)}
+            yeet = JSON.stringify(yeet)
+            localStorage.setItem('user', yeet)
+        })
+
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
+
+export const RemoveLocation = (locationid)=>{
+
+    return function(dispatch){
+
+        dispatch(UserLoading())
+        
+        return AxiosWithAuth().delete(`https://africa-marketplace.herokuapp.com/location/${locationid}`)
+        
+        .then(res=>{
+            console.log('deleting location', res)
+            dispatch(UserDeleteLocation(locationid))
+
+            let yeet = localStorage.getItem('user')
+            yeet = JSON.parse(yeet)
+            yeet = {...yeet, locations: yeet.locations.filter(loc=>loc.id != locationid)}
             yeet = JSON.stringify(yeet)
             localStorage.setItem('user', yeet)
         })

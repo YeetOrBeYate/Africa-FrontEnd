@@ -25,6 +25,8 @@ const LocationYeet =()=>{
         const newLocation = locationPost;
 
         dispatch(AddLocation(newLocation))
+
+        console.log("state with the added lcoation with id", User.user)
     }
 
     return(

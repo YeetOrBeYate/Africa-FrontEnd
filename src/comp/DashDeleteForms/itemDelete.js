@@ -16,8 +16,7 @@ const ItemDelete = ()=>{
 
     const changeItemDel = (e)=>{
         const select = document.querySelector('#DeleteItemSelect').value;
-        console.log("state",User)
-        console.log("id", select)
+ 
 
         if(select !=0){
             
