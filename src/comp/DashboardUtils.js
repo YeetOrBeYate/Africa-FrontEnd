@@ -249,160 +249,163 @@ const DashboardUtils = ()=>{
 
     return(
         <section className="DashboardUtils">
-            <div className="Dashboard-CRUD UserOption">
-                <div className="Primary">
-                    <div>
-                        <img src={picture} alt="buttface"/>
+            <div className="MenuWrap">
+                <h1>Utilities menu</h1>
+                <div className="Dashboard-CRUD UserOption">
+                    <div className="Primary">
+                        <div>
+                            <img src={picture} alt="buttface"/>
+                        </div>
+                        
+                        <div>
+                            <h2 onClick={(e)=>openProfileSecondary(e)}>Profile</h2>
+                            <p>Edit your profile here</p>
+                        </div>
                     </div>
-                     
-                     <div>
-                         <h2 onClick={(e)=>openProfileSecondary(e)}>Profile</h2>
-                         <p>Edit your profile here</p>
-                     </div>
+                    <div className="ProfileSecondary">
+                    {/* Then if you click this button, the edit form comes up */}
+                        <div className="SecondaryFlex">
+                            <button onClick={(e)=>ToggleUser(e)}>Edit profile icon</button>
+                            <h3>Edit the profile</h3>
+                        </div>
+                    </div>
+                    <form className="userForm">
+                        <div>
+                            <input type="text" onChange={changeUser} name="username" value={user.username} placeholder="username"/>
+                        </div>
+                        <div>
+                            <input type="text" onChange={changeUser} name="password" value={user.password} placeholder="password"/>
+                        </div>
+                        <div>
+                            <input type="text" onChange={changeUser} name="Repassword" value={user.Repassword} placeholder="re-enter the password"/> 
+                        </div>
+                        <button onClick={(e)=>submitUser(e)}>Edit Profile!</button>
+                    </form>
                 </div>
-                <div className="ProfileSecondary">
-                {/* Then if you click this button, the edit form comes up */}
-                    <div className="SecondaryFlex">
-                        <button onClick={(e)=>ToggleUser(e)}>Edit profile icon</button>
-                        <h3>Edit the profile</h3>
-                    </div>
-                </div>
-                <form className="userForm">
-                    <div>
-                        <input type="text" onChange={changeUser} name="username" value={user.username} placeholder="username"/>
-                    </div>
-                    <div>
-                        <input type="text" onChange={changeUser} name="password" value={user.password} placeholder="password"/>
-                    </div>
-                    <div>
-                        <input type="text" onChange={changeUser} name="Repassword" value={user.Repassword} placeholder="re-enter the password"/> 
-                    </div>
-                    <button onClick={(e)=>submitUser(e)}>Edit Profile!</button>
-                </form>
-            </div>
-            <div className="Dashboard-CRUD ItemOption">
-                {/* <div className="UserToggle">
-                    <h1>Item form</h1>
-                    <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
-                        <option value="0">Select Item</option>
-                        {state.user.items.map((item,index)=>(
-                            <option value={item.id}>{item.name}</option>
-                        ))}
-                    </select>
-                    <button onClick={(e)=>ToggleItem(e)} id="Itembtn">Edit Item</button>
-                    <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
-                    <button onClick={(e)=>ToggleDeleteItem(e)}>Remove Item</button>
-                </div> */}
-                <div className="Primary">
-                    <div>
-                        <img src={ShopPicture} alt="buttface"/>
-                    </div>
-                    
-                    <div>
-                        <h2 onClick={(e)=>openItemSecondary(e)}>Profile</h2>
-                        <p>Edit your profile here</p>
-                    </div>
-                </div>
-                <div className="ItemSecondary">
-                    <div className="SecondaryFlex">
-                        <button onClick={(e)=>openThird(e)}>Edit an item</button>
-                        <h3>Edit Item</h3>
-                    </div>
-                    <div className="SecondaryFlex">
-                        <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
-                        <h3>Edit Item</h3>
-                    </div>
-                    <div className="SecondaryFlex">
-                        <button onClick={(e)=>ToggleDeleteItem(e)}>Delete an Item</button>
-                        <h3>Edit Item</h3>
-                    </div>
-                </div>
-                <div className ="Third">
-                    <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
-                        <option value="0">Select Item</option>
-                        {state.user.items.map((item,index)=>(
-                            <option value={item.id}>{item.name}</option>
-                        ))}
-                    </select>
-                    <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
-                </div>
-                <form className="itemForm">
-                    <div>
-                        <input type="text" name="name" onChange={changeItem} value={item.name} placeholder="name"/>
-                    </div>
-                    <div>
-                        <input type="text" name="price" onChange={changeItem} value={item.price} placeholder="price"/>
-                    </div>
-                    <div>
-                        <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="31"/>
-                    </div>
-                    <div>
-                        <select id ='CategorySelect' name="category_id" onChange={changeItem}>
-                            <option value = "0">Select Category</option>
-                            {Category.categories.map((cat)=>(
-                                    <option value={cat.id}>{cat.name}</option>
+                <div className="Dashboard-CRUD ItemOption">
+                    {/* <div className="UserToggle">
+                        <h1>Item form</h1>
+                        <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
+                            <option value="0">Select Item</option>
+                            {state.user.items.map((item,index)=>(
+                                <option value={item.id}>{item.name}</option>
                             ))}
                         </select>
+                        <button onClick={(e)=>ToggleItem(e)} id="Itembtn">Edit Item</button>
+                        <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
+                        <button onClick={(e)=>ToggleDeleteItem(e)}>Remove Item</button>
+                    </div> */}
+                    <div className="Primary">
+                        <div>
+                            <img src={ShopPicture} alt="buttface"/>
+                        </div>
+                        
+                        <div>
+                            <h2 onClick={(e)=>openItemSecondary(e)}>Items</h2>
+                            <p>Edit your items here</p>
+                        </div>
                     </div>
-                    <button onClick={(e)=>submitItem(e)}>Edit Item!</button>
-                </form>
-                <ItemPost/>
-                <ItemDelete/>
-            </div>
-            <div className="Dashboard-CRUD LocationOption">
-                {/* <div className="UserToggle">
-                    <h1>Location form</h1>
-                    <select id="LocationSelect" onChange={selectLocation}>
-                        <option value="0">Select Location</option>
-                        {state.user.locations.map((loc)=>(
-                            <option value={loc.id}>{loc.name}</option>
-                        ))}
-                    </select>
-                    <button onClick={(e)=>ToggleLocation(e)} id="Locationbtn">Edit Location</button>
-                    <button onClick={(e)=>TogglePostLocation(e)}>Add Location</button>
-                    <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete Location</button>
-                </div> */}
-                <div className="Primary">
-                    <div>
-                        <img src={LocationPicture} alt="buttface"/>
+                    <div className="ItemSecondary">
+                        <div className="SecondaryFlex">
+                            <button onClick={(e)=>openThird(e)}>Edit an item</button>
+                            <h3>Edit Item</h3>
+                        </div>
+                        <div className="SecondaryFlex">
+                            <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
+                            <h3>Edit Item</h3>
+                        </div>
+                        <div className="SecondaryFlex">
+                            <button onClick={(e)=>ToggleDeleteItem(e)}>Delete an Item</button>
+                            <h3>Edit Item</h3>
+                        </div>
                     </div>
-                    
-                    <div>
-                        <h2 onClick={(e)=>openLocationSecondary(e)}>Profile</h2>
-                        <p>Edit your profile here</p>
+                    <div className ="Third">
+                        <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
+                            <option value="0">Select Item</option>
+                            {state.user.items.map((item,index)=>(
+                                <option value={item.id}>{item.name}</option>
+                            ))}
+                        </select>
+                        <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
                     </div>
+                    <form className="itemForm">
+                        <div>
+                            <input type="text" name="name" onChange={changeItem} value={item.name} placeholder="name"/>
+                        </div>
+                        <div>
+                            <input type="text" name="price" onChange={changeItem} value={item.price} placeholder="price"/>
+                        </div>
+                        <div>
+                            <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="31"/>
+                        </div>
+                        <div>
+                            <select id ='CategorySelect' name="category_id" onChange={changeItem}>
+                                <option value = "0">Select Category</option>
+                                {Category.categories.map((cat)=>(
+                                        <option value={cat.id}>{cat.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <button onClick={(e)=>submitItem(e)}>Edit Item!</button>
+                    </form>
+                    <ItemPost/>
+                    <ItemDelete/>
                 </div>
-                <div className="LocationSecondary">
-                    <div className="SecondaryFlex">
-                        <button onClick={(e)=>openLocationThird(e)}>Edit a location</button>
-                        <h3>Edit Item</h3>
+                <div className="Dashboard-CRUD LocationOption">
+                    {/* <div className="UserToggle">
+                        <h1>Location form</h1>
+                        <select id="LocationSelect" onChange={selectLocation}>
+                            <option value="0">Select Location</option>
+                            {state.user.locations.map((loc)=>(
+                                <option value={loc.id}>{loc.name}</option>
+                            ))}
+                        </select>
+                        <button onClick={(e)=>ToggleLocation(e)} id="Locationbtn">Edit Location</button>
+                        <button onClick={(e)=>TogglePostLocation(e)}>Add Location</button>
+                        <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete Location</button>
+                    </div> */}
+                    <div className="Primary">
+                        <div>
+                            <img src={LocationPicture} alt="buttface"/>
+                        </div>
+                        
+                        <div>
+                            <h2 onClick={(e)=>openLocationSecondary(e)}>Locations</h2>
+                            <p>Edit your Locations here</p>
+                        </div>
                     </div>
-                    <div className="SecondaryFlex">
-                        <button onClick={(e)=>TogglePostLocation(e)}>Add Item</button>
-                        <h3>Edit Item</h3>
+                    <div className="LocationSecondary">
+                        <div className="SecondaryFlex">
+                            <button onClick={(e)=>openLocationThird(e)}>Edit a location</button>
+                            <h3>Edit Location</h3>
+                        </div>
+                        <div className="SecondaryFlex">
+                            <button onClick={(e)=>TogglePostLocation(e)}>Add Location</button>
+                            <h3>Edit location</h3>
+                        </div>
+                        <div className="SecondaryFlex">
+                            <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete a location</button>
+                            <h3>Edit location</h3>
+                        </div>
                     </div>
-                    <div className="SecondaryFlex">
-                        <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete an Item</button>
-                        <h3>Edit Item</h3>
+                    <div className ="LocationThird">
+                        <select id="LocationSelect" onChange={selectLocation}>
+                            <option value="0">Select Location</option>
+                            {state.user.locations.map((loc)=>(
+                                <option value={loc.id}>{loc.name}</option>
+                            ))}
+                        </select>
+                        <button onClick={(e)=>ToggleLocation(e)}>Open edit form</button>
                     </div>
+                    <form className="locationForm">
+                        <div>
+                            <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
+                        </div>
+                        <button onClick={(e)=>submitLocation(e)}>Tesstbtn</button>
+                    </form>
+                    <LocationPost/>
+                    <LocationDelete/>
                 </div>
-                <div className ="LocationThird">
-                    <select id="LocationSelect" onChange={selectLocation}>
-                        <option value="0">Select Location</option>
-                        {state.user.locations.map((loc)=>(
-                            <option value={loc.id}>{loc.name}</option>
-                        ))}
-                    </select>
-                    <button onClick={(e)=>ToggleLocation(e)}>Open edit form</button>
-                </div>
-                <form className="locationForm">
-                    <div>
-                        <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
-                    </div>
-                    <button onClick={(e)=>submitLocation(e)}>Tesstbtn</button>
-                </form>
-                <LocationPost/>
-                <LocationDelete/>
             </div>
         </section>
     );

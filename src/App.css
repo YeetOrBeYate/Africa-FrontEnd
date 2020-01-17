@@ -72,7 +72,7 @@
 
 .Dashboard-CRUD{
   
-  margin: 2%;
+  /* margin: 2%; */
 }
 
 .Dash-item{
@@ -124,20 +124,23 @@
 
 .UserOption{
   background: #ac7c83;
-  border: 2px solid #816367;
-  border-radius: 15px;
+  /* border: 2px solid #816367; */
+  /* border-radius: 15px; */
+  
 }
 
 .ItemOption{
   background: #ff934f;
-  border: 2px solid #be6a35;
-  border-radius: 15px ;
+  /* border: 2px solid #be6a35; */
+  /* border-radius: 15px ; */
 }
 
 .LocationOption{
   background:#a3911c;
-  border: 2px solid #76680d;
-  border-radius: 15px;
+  /* border: 2px solid #76680d;
+  border-radius: 15px; */
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 /* The invisible smoke and mirror classes and stuff********* */
@@ -223,6 +226,12 @@
 
 .DeleteForm{
   display: none;
+}
+
+.MenuWrap{
+  border:2px solid green;
+  margin: 2%;
+  border-radius: 15px;
 }
 
 
