@@ -5,6 +5,7 @@ import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
 import LocationDelete from './DashDeleteForms/locationDelete';
+import picture from "../pics/icons8-user-50.png";
 
 
 const DashboardUtils = ()=>{
@@ -209,13 +210,44 @@ const DashboardUtils = ()=>{
         
     }
 
+    const editProfile =(e)=>{
+        e.preventDefault();
+        const form = document.querySelector('.userForm')
+        form.classList.toggle('visible')
+    }
+
+    const openSecondary =(e)=>{
+        console.log('ran')
+        e.preventDefault();
+        const secondary = document.querySelector('.Secondary')
+        secondary.classList.toggle('visible')
+
+    }
+
 
     return(
         <section className="DashboardUtils">
             <div className="Dashboard-CRUD UserOption">
-                <div className="UserToggle">
+                {/* <div className="UserToggle">
                     <h1>Profile form</h1>
                     <button onClick={(e)=>ToggleUser(e)} id="Userbtn">Edit Profile</button>
+                </div> */}
+                <div className="Primary">
+                    <div>
+                        <img src={picture} alt="buttface"/>
+                    </div>
+                     
+                     <div>
+                         <h2 onClick={(e)=>openSecondary(e)}>Profile</h2>
+                         <p>Edit your profile here</p>
+                     </div>
+                </div>
+                <div className="Secondary">
+                {/* Then if you click this button, the edit form comes up */}
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>ToggleUser(e)}>Edit profile icon</button>
+                        <h3>Edit the profile</h3>
+                    </div>
                 </div>
                 <form className="userForm">
                     <div>

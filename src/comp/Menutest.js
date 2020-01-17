@@ -6,6 +6,8 @@ import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
 import LocationDelete from './DashDeleteForms/locationDelete';
 
+import picture from "../pics/icons8-user-50.png";
+
 const Test = ()=>{
 
     const state = useSelector(state=>state.User);
@@ -51,7 +53,9 @@ const Test = ()=>{
         <section className="DashboardUtils">
             <div className="Dashboard-CRUD UserOption">
                 <div className="Primary">
-                    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                    <div>
+                        <img src={picture} alt="buttface"/>
+                    </div>
                      
                      <div>
                          <h2 onClick={(e)=>openSecondary(e)}>Profile</h2>
