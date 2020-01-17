@@ -8,6 +8,7 @@ import LocationDelete from './DashDeleteForms/locationDelete';
 
 import picture from "../pics/icons8-user-50.png";
 import ShopPicture from "../pics/icons8-shop-50.png"
+import LocationPicture from "../pics/icons8-location-50.png"
 
 
 const DashboardUtils = ()=>{
@@ -227,9 +228,21 @@ const DashboardUtils = ()=>{
         yeet.classList.toggle('visible')
     }
 
+    const openLocationSecondary = (e)=>{
+        e.preventDefault()
+        const yeet = document.querySelector('.LocationSecondary')
+        yeet.classList.toggle('visible')
+    }
+
     const openThird=(e)=>{
         e.preventDefault()
         const yeet = document.querySelector('.Third')
+        yeet.classList.toggle('visible')
+    }
+
+    const openLocationThird=(e)=>{
+        e.preventDefault()
+        const yeet = document.querySelector('.LocationThird')
         yeet.classList.toggle('visible')
     }
 
@@ -337,7 +350,7 @@ const DashboardUtils = ()=>{
                 <ItemDelete/>
             </div>
             <div className="Dashboard-CRUD LocationOption">
-                <div className="UserToggle">
+                {/* <div className="UserToggle">
                     <h1>Location form</h1>
                     <select id="LocationSelect" onChange={selectLocation}>
                         <option value="0">Select Location</option>
@@ -348,6 +361,39 @@ const DashboardUtils = ()=>{
                     <button onClick={(e)=>ToggleLocation(e)} id="Locationbtn">Edit Location</button>
                     <button onClick={(e)=>TogglePostLocation(e)}>Add Location</button>
                     <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete Location</button>
+                </div> */}
+                <div className="Primary">
+                    <div>
+                        <img src={LocationPicture} alt="buttface"/>
+                    </div>
+                    
+                    <div>
+                        <h2 onClick={(e)=>openLocationSecondary(e)}>Profile</h2>
+                        <p>Edit your profile here</p>
+                    </div>
+                </div>
+                <div className="LocationSecondary">
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>openLocationThird(e)}>Edit a location</button>
+                        <h3>Edit Item</h3>
+                    </div>
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>TogglePostLocation(e)}>Add Item</button>
+                        <h3>Edit Item</h3>
+                    </div>
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete an Item</button>
+                        <h3>Edit Item</h3>
+                    </div>
+                </div>
+                <div className ="LocationThird">
+                    <select id="LocationSelect" onChange={selectLocation}>
+                        <option value="0">Select Location</option>
+                        {state.user.locations.map((loc)=>(
+                            <option value={loc.id}>{loc.name}</option>
+                        ))}
+                    </select>
+                    <button onClick={(e)=>ToggleLocation(e)}>Open edit form</button>
                 </div>
                 <form className="locationForm">
                     <div>
