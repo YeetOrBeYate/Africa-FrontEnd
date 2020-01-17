@@ -176,5 +176,26 @@
 }
 
 
+/* just test stuff for the perfect menu***********************/
+
+.Primary{
+  display: flex;
+  justify-content: space-around;
+}
+
+.Secondary{
+  display: none;
+}
+
+.SecondaryFlex{
+  display: flex;
+  padding: 0 3%;
+}
+
+.visible{
+  display: block;
+}
+
+
 
 

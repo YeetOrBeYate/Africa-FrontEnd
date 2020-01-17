@@ -5,6 +5,7 @@ import Register from "./RegisterPage";
 import Home from "./HomePage";
 import Dashboard from './DashboardPage';
 import addItem from "./AddItem";
+import Test from "./Menutest"
 
 
 const Navbar = ()=>{
@@ -23,12 +24,14 @@ const Navbar = ()=>{
                 <Link to="/register">Register!</Link>
                 <Link to="/additem">Additem</Link>
                 <Link onClick={(e)=>signOut(e)} to='/login'>SignOut</Link>
+                <Link to="/test">Testpage</Link>
             </div>
             <Switch>
                 <Route path="/login" render={(props)=> <Login {...props}/>}/>
                 <Route path="/register" render={(props)=> <Register {...props}/>}/>
                 <Route path='/dashboard' component={Dashboard}/>
                 <Route path = '/additem' component={addItem}/>
+                <Route path="/test" component={Test}/>
                 <Route path = "/" component ={Home}/>
             </Switch>
         </div>
