@@ -213,6 +213,7 @@ const DashboardUtils = ()=>{
         
     }
 
+    // This is for the new and improved menu display*******************************
 
     const openProfileSecondary =(e)=>{
         console.log('ran')
@@ -250,7 +251,6 @@ const DashboardUtils = ()=>{
     return(
         <section className="DashboardUtils">
             <div className="MenuWrap">
-                <h1>Utilities menu</h1>
                 <div className="Dashboard-CRUD UserOption">
                     <div className="Primary">
                         <div>
