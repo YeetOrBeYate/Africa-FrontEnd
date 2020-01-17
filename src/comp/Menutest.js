@@ -7,6 +7,7 @@ import ItemDelete from "./DashDeleteForms/itemDelete";
 import LocationDelete from './DashDeleteForms/locationDelete';
 
 import picture from "../pics/icons8-user-50.png";
+import ShopPicture from "../pics/icons8-shop-50.png"
 
 const Test = ()=>{
 
@@ -49,6 +50,36 @@ const Test = ()=>{
 
     }
 
+    const openItemSecondary = (e)=>{
+        e.preventDefault()
+        const yeet = document.querySelector(".ItemSecondary")
+        yeet.classList.toggle('visible')
+    }
+
+    const openThird=(e)=>{
+        e.preventDefault()
+        const yeet = document.querySelector('.Third')
+        yeet.classList.toggle('visible')
+    }
+
+    const addItem = (e)=>{
+        e.preventDefault()
+        const yeet = document.querySelector('.AddForm')
+        yeet.classList.toggle('visible')
+    }
+
+    const deleteItem = (e)=>{
+        e.preventDefault()
+        const yeet = document.querySelector('.DeleteForm')
+        yeet.classList.toggle('visible')
+    }
+
+    const editItem=(e)=>{
+        e.preventDefault()
+        const yeet = document.querySelector('EditForm')
+        yeet.classList.toggle('visible')
+    }
+
     return(
         <section className="DashboardUtils">
             <div className="Dashboard-CRUD UserOption">
@@ -71,6 +102,49 @@ const Test = ()=>{
                 </div>
                 <div className="userForm">
                     <h1>Form</h1>
+                </div>
+            </div>
+
+
+            <div className="Dashboard-CRUD ItemOption">
+                <div className="Primary">
+                    <div>
+                        <img src={ShopPicture} alt="buttface"/>
+                    </div>
+                    
+                    <div>
+                        <h2 onClick={(e)=>openItemSecondary(e)}>Profile</h2>
+                        <p>Edit your profile here</p>
+                    </div>
+                </div>
+                <div className="ItemSecondary">
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>openThird(e)}>Edit an item</button>
+                        <h3>Edit Item</h3>
+                    </div>
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>addItem(e)}>Add Item</button>
+                        <h3>Edit Item</h3>
+                    </div>
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>deleteItem(e)}>Delete an Item</button>
+                        <h3>Edit Item</h3>
+                    </div>
+                </div>
+                <div className ="Third">
+                    <select>
+                        <option value='0'>poop</option>
+                    </select>
+                    <button onClick={(e)=>editItem(e)}>Open edit form</button>
+                </div>
+                <div className="EditForm">
+                    <h1>Edit form</h1>
+                </div>
+                <div className="AddForm">
+                    <h1>Add Form</h1>
+                </div>
+                <div className="DeleteForm">
+                    <h1>Delete form</h1>
                 </div>
             </div>
         </section>

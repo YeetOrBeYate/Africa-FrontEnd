@@ -5,7 +5,9 @@ import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
 import LocationDelete from './DashDeleteForms/locationDelete';
+
 import picture from "../pics/icons8-user-50.png";
+import ShopPicture from "../pics/icons8-shop-50.png"
 
 
 const DashboardUtils = ()=>{
@@ -210,39 +212,42 @@ const DashboardUtils = ()=>{
         
     }
 
-    const editProfile =(e)=>{
-        e.preventDefault();
-        const form = document.querySelector('.userForm')
-        form.classList.toggle('visible')
-    }
 
-    const openSecondary =(e)=>{
+    const openProfileSecondary =(e)=>{
         console.log('ran')
         e.preventDefault();
-        const secondary = document.querySelector('.Secondary')
+        const secondary = document.querySelector('.ProfileSecondary')
         secondary.classList.toggle('visible')
 
+    }
+
+    const openItemSecondary = (e)=>{
+        e.preventDefault()
+        const yeet = document.querySelector(".ItemSecondary")
+        yeet.classList.toggle('visible')
+    }
+
+    const openThird=(e)=>{
+        e.preventDefault()
+        const yeet = document.querySelector('.Third')
+        yeet.classList.toggle('visible')
     }
 
 
     return(
         <section className="DashboardUtils">
             <div className="Dashboard-CRUD UserOption">
-                {/* <div className="UserToggle">
-                    <h1>Profile form</h1>
-                    <button onClick={(e)=>ToggleUser(e)} id="Userbtn">Edit Profile</button>
-                </div> */}
                 <div className="Primary">
                     <div>
                         <img src={picture} alt="buttface"/>
                     </div>
                      
                      <div>
-                         <h2 onClick={(e)=>openSecondary(e)}>Profile</h2>
+                         <h2 onClick={(e)=>openProfileSecondary(e)}>Profile</h2>
                          <p>Edit your profile here</p>
                      </div>
                 </div>
-                <div className="Secondary">
+                <div className="ProfileSecondary">
                 {/* Then if you click this button, the edit form comes up */}
                     <div className="SecondaryFlex">
                         <button onClick={(e)=>ToggleUser(e)}>Edit profile icon</button>
@@ -263,7 +268,7 @@ const DashboardUtils = ()=>{
                 </form>
             </div>
             <div className="Dashboard-CRUD ItemOption">
-                <div className="UserToggle">
+                {/* <div className="UserToggle">
                     <h1>Item form</h1>
                     <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
                         <option value="0">Select Item</option>
@@ -274,6 +279,39 @@ const DashboardUtils = ()=>{
                     <button onClick={(e)=>ToggleItem(e)} id="Itembtn">Edit Item</button>
                     <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
                     <button onClick={(e)=>ToggleDeleteItem(e)}>Remove Item</button>
+                </div> */}
+                <div className="Primary">
+                    <div>
+                        <img src={ShopPicture} alt="buttface"/>
+                    </div>
+                    
+                    <div>
+                        <h2 onClick={(e)=>openItemSecondary(e)}>Profile</h2>
+                        <p>Edit your profile here</p>
+                    </div>
+                </div>
+                <div className="ItemSecondary">
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>openThird(e)}>Edit an item</button>
+                        <h3>Edit Item</h3>
+                    </div>
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
+                        <h3>Edit Item</h3>
+                    </div>
+                    <div className="SecondaryFlex">
+                        <button onClick={(e)=>ToggleDeleteItem(e)}>Delete an Item</button>
+                        <h3>Edit Item</h3>
+                    </div>
+                </div>
+                <div className ="Third">
+                    <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
+                        <option value="0">Select Item</option>
+                        {state.user.items.map((item,index)=>(
+                            <option value={item.id}>{item.name}</option>
+                        ))}
+                    </select>
+                    <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
                 </div>
                 <form className="itemForm">
                     <div>

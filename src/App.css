@@ -193,6 +193,30 @@
   padding: 0 3%;
 }
 
+.ProfileSecondary{
+  display: none;
+}
+
+.ItemSecondary{
+  display: none;
+}
+
+.Third{
+  display: none;
+}
+
+.EditForm{
+  display: none;
+}
+
+.AddForm{
+  display: none;
+}
+
+.DeleteForm{
+  display: none;
+}
+
 .visible{
   display: block;
 }
