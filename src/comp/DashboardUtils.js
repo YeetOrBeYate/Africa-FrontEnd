@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {EditUser,EditUserItem,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
+import {openItems, closeItems} from "../Actions/MenuActions";
 import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
@@ -19,6 +20,7 @@ const DashboardUtils = ()=>{
     // States and dispatch needed in order to keep everything moving in localStorage and the db********************************
     const state = useSelector(state=>state.User);
     const Category = useSelector(state=>state.Category);
+    const Menu = useSelector(state=>state.Menu);
     const dispatch = useDispatch();
 
     // Useeffects to watch for edit changes and to get needed data from the db*************************************************
@@ -228,8 +230,26 @@ const DashboardUtils = ()=>{
 
     const openItemSecondary = (e)=>{
         e.preventDefault()
-        const yeet = document.querySelector(".ItemSecondary")
-        yeet.classList.toggle('visible')
+        if(Menu.itemOpen === false){
+            dispatch(openItems())
+
+            const yeet = document.querySelector(".ItemSecondary")
+            yeet.classList.toggle('visible')
+        }else{
+            dispatch(closeItems())
+            const yeet = document.querySelector(".ItemSecondary")
+            yeet.classList.toggle('visible')
+
+
+            const list = document.querySelectorAll('.visible')
+            console.log("visisble test", list)
+
+            list.forEach((node)=>{
+                node.classList.toggle('visible')
+            })
+
+        }
+
     }
 
     const openLocationSecondary = (e)=>{
