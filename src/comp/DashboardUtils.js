@@ -7,8 +7,11 @@ import ItemDelete from "./DashDeleteForms/itemDelete";
 import LocationDelete from './DashDeleteForms/locationDelete';
 
 import picture from "../pics/icons8-user-50.png";
-import ShopPicture from "../pics/icons8-shop-50.png"
-import LocationPicture from "../pics/icons8-location-50.png"
+import ShopPicture from "../pics/icons8-shop-50.png";
+import LocationPicture from "../pics/icons8-location-50.png";
+import EditPicture from "../pics/icons8-edit-48.png";
+import AddPicture from "../pics/icons8-add-50.png";
+import DeletePicture from "../pics/icons8-delete-bin-50.png";
 
 
 const DashboardUtils = ()=>{
@@ -219,7 +222,7 @@ const DashboardUtils = ()=>{
         console.log('ran')
         e.preventDefault();
         const secondary = document.querySelector('.ProfileSecondary')
-        secondary.classList.toggle('visible')
+        secondary.classList.toggle('formVisible')
 
     }
 
@@ -263,10 +266,12 @@ const DashboardUtils = ()=>{
                         </div>
                     </div>
                     <div className="ProfileSecondary">
-                    {/* Then if you click this button, the edit form comes up */}
+
                         <div className="SecondaryFlex">
-                            <button onClick={(e)=>ToggleUser(e)}>Edit profile icon</button>
-                            <h3>Edit the profile</h3>
+                            <img width="50px" height="50px" onClick={(e)=>ToggleUser(e)} src={EditPicture} alt="Edit"/>
+                        </div>
+                        <div>
+                            <h2>Edit the profile</h2>
                         </div>
                     </div>
                     <form className="userForm">
@@ -297,7 +302,7 @@ const DashboardUtils = ()=>{
                     </div> */}
                     <div className="Primary">
                         <div>
-                            <img src={ShopPicture} alt="buttface"/>
+                            <img width="50px" height="50px" src={ShopPicture} alt="buttface"/>
                         </div>
                         
                         <div>
@@ -307,16 +312,28 @@ const DashboardUtils = ()=>{
                     </div>
                     <div className="ItemSecondary">
                         <div className="SecondaryFlex">
-                            <button onClick={(e)=>openThird(e)}>Edit an item</button>
-                            <h3>Edit Item</h3>
+                            <div className="MenuButton">
+                                <img height="50px" width="50px" onClick={(e)=>openThird(e)} src={EditPicture} alt="edit items"/>    
+                            </div>
+                            <div>
+                                <h2>Edit an Item</h2>
+                            </div>
                         </div>
                         <div className="SecondaryFlex">
-                            <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
-                            <h3>Edit Item</h3>
+                            <div>
+                                <img onClick={(e)=>TogglePostItem(e)} src={AddPicture} alt="add item"/>
+                            </div>
+                            <div>
+                                <h2>Add an Item</h2>
+                            </div>
                         </div>
                         <div className="SecondaryFlex">
-                            <button onClick={(e)=>ToggleDeleteItem(e)}>Delete an Item</button>
-                            <h3>Edit Item</h3>
+                            <div>
+                                <img onClick={(e)=>ToggleDeleteItem(e)} src={DeletePicture} alt="delete item"/>
+                            </div>
+                            <div>
+                                <h2>Delete an Item</h2>
+                            </div>
                         </div>
                     </div>
                     <div className ="Third">
@@ -376,16 +393,28 @@ const DashboardUtils = ()=>{
                     </div>
                     <div className="LocationSecondary">
                         <div className="SecondaryFlex">
-                            <button onClick={(e)=>openLocationThird(e)}>Edit a location</button>
-                            <h3>Edit Location</h3>
+                            <div>
+                                <img height="50px" width="50px" onClick={(e)=>openLocationThird(e)} src={EditPicture} alt="edit location"/>
+                            </div>
+                            <div>
+                                <h2>Edit a location</h2>
+                            </div>
                         </div>
                         <div className="SecondaryFlex">
-                            <button onClick={(e)=>TogglePostLocation(e)}>Add Location</button>
-                            <h3>Edit location</h3>
+                            <div>
+                                <img onClick={(e)=>TogglePostLocation(e)} src={AddPicture} alt="Add location"/>
+                            </div>
+                            <div>
+                                <h2>Edit a location</h2>
+                            </div>
                         </div>
                         <div className="SecondaryFlex">
-                            <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete a location</button>
-                            <h3>Edit location</h3>
+                            <div>
+                                <img onClick={(e)=>ToggleDeleteLocation(e)} src={DeletePicture} alt="Delete location"/>
+                            </div>
+                            <div>
+                                <h2>Delete a location</h2>
+                            </div>
                         </div>
                     </div>
                     <div className ="LocationThird">

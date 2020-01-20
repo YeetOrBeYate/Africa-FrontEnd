@@ -198,6 +198,8 @@
 .SecondaryFlex{
   display: flex;
   padding: 0 3%;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .ProfileSecondary{
@@ -239,10 +241,17 @@
 }
 
 
+.formVisible{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .visible{
   display: block;
 }
+
+
 
 
 
