@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {EditUser,EditUserItem,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
-import {openItems, closeItems} from "../Actions/MenuActions";
+import {openItems, closeItems, openLocations,closeLocations} from "../Actions/MenuActions";
 import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
@@ -241,7 +241,7 @@ const DashboardUtils = ()=>{
             yeet.classList.toggle('visible')
 
 
-            const list = document.querySelectorAll('.visible')
+            const list = document.querySelectorAll(' .ItemOption .visible')
             console.log("visisble test", list)
 
             list.forEach((node)=>{
@@ -254,8 +254,25 @@ const DashboardUtils = ()=>{
 
     const openLocationSecondary = (e)=>{
         e.preventDefault()
-        const yeet = document.querySelector('.LocationSecondary')
-        yeet.classList.toggle('visible')
+        if(Menu.locationOpen === false){
+            dispatch(openLocations())
+
+            const yeet = document.querySelector(".LocationSecondary")
+            yeet.classList.toggle('visible')
+        }else{
+            dispatch(closeLocations())
+            const yeet = document.querySelector(".LocationSecondary")
+            yeet.classList.toggle('visible')
+
+
+            const list = document.querySelectorAll('.LocationOption .visible')
+            console.log("visisble location test", list)
+
+            list.forEach((node)=>{
+                node.classList.toggle('visible')
+            })
+
+        }
     }
 
     const openThird=(e)=>{

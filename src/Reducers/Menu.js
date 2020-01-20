@@ -11,6 +11,10 @@ export const MenuReducer = (state=initalState, action)=>{
             return {...state, itemOpen:true}
         case "itemClose":
             return {...state, itemOpen:false}
+        case 'locationOpen':
+            return {...state, locationOpen:true}
+        case 'locationClose':
+            return {...state, locationOpen:false}
         default:
             return state
     }
