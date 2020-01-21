@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {EditUser,EditUserItem,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
-import {openItems, closeItems, openLocations,closeLocations} from "../Actions/MenuActions";
+import {openItems, closeItems, openLocations,closeLocations, openProfile, closeProfile} from "../Actions/MenuActions";
 import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
@@ -221,10 +221,19 @@ const DashboardUtils = ()=>{
     // This is for the new and improved menu display*******************************
 
     const openProfileSecondary =(e)=>{
-        console.log('ran')
         e.preventDefault();
-        const secondary = document.querySelector('.ProfileSecondary')
-        secondary.classList.toggle('formVisible')
+        
+
+        if(Menu.profileOpen === false){
+            dispatch(openProfile())
+            const secondary = document.querySelector('.ProfileSecondary')
+            secondary.classList.toggle('visible')
+
+        }else{
+            dispatch(closeProfile())
+            const secondary = document.querySelector('.ProfileSecondary')
+            secondary.classList.toggle('visible')
+        }
 
     }
 
@@ -242,7 +251,7 @@ const DashboardUtils = ()=>{
 
 
             const list = document.querySelectorAll(' .ItemOption .visible')
-            console.log("visisble test", list)
+
 
             list.forEach((node)=>{
                 node.classList.toggle('visible')
@@ -266,7 +275,7 @@ const DashboardUtils = ()=>{
 
 
             const list = document.querySelectorAll('.LocationOption .visible')
-            console.log("visisble location test", list)
+            
 
             list.forEach((node)=>{
                 node.classList.toggle('visible')
@@ -287,28 +296,40 @@ const DashboardUtils = ()=>{
         yeet.classList.toggle('visible')
     }
 
-
     return(
         <section className="DashboardUtils">
             <div className="MenuWrap">
                 <div className="Dashboard-CRUD UserOption">
-                    <div className="Primary">
-                        <div>
-                            <img src={picture} alt="buttface"/>
-                        </div>
-                        
-                        <div>
-                            <h2 onClick={(e)=>openProfileSecondary(e)}>Profile</h2>
-                            <p>Edit your profile here</p>
-                        </div>
+                    <div onClick={(e)=>openProfileSecondary(e)} className="Primary">
+                        {
+                            Menu.profileOpen?
+
+                                <div>
+                                    <img src={picture} alt="buttface"/>
+                                </div>
+
+                            :
+                            
+                            <>
+                                <div>
+                                    <img src={picture} alt="buttface"/>
+                                </div>
+                                
+                                <div>
+                                    <h2 >Profile</h2>
+                                    <p>Edit your profile here</p>
+                                </div>
+                            </>
+                        }
                     </div>
                     <div className="ProfileSecondary">
-
                         <div className="SecondaryFlex">
-                            <img width="50px" height="50px" onClick={(e)=>ToggleUser(e)} src={EditPicture} alt="Edit"/>
-                        </div>
-                        <div>
-                            <h2>Edit the profile</h2>
+                            <div className="menuButton">
+                                <img width="50px" height="50px" onClick={(e)=>ToggleUser(e)} src={EditPicture} alt="Edit"/>
+                            </div>
+                            <div>
+                                <h2>Edit the profile</h2>
+                            </div>
                         </div>
                     </div>
                     <form className="userForm">
@@ -325,31 +346,29 @@ const DashboardUtils = ()=>{
                     </form>
                 </div>
                 <div className="Dashboard-CRUD ItemOption">
-                    {/* <div className="UserToggle">
-                        <h1>Item form</h1>
-                        <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
-                            <option value="0">Select Item</option>
-                            {state.user.items.map((item,index)=>(
-                                <option value={item.id}>{item.name}</option>
-                            ))}
-                        </select>
-                        <button onClick={(e)=>ToggleItem(e)} id="Itembtn">Edit Item</button>
-                        <button onClick={(e)=>TogglePostItem(e)}>Add Item</button>
-                        <button onClick={(e)=>ToggleDeleteItem(e)}>Remove Item</button>
-                    </div> */}
-                    <div className="Primary">
-                        <div>
-                            <img width="50px" height="50px" src={ShopPicture} alt="buttface"/>
-                        </div>
+                    <div onClick={(e)=>openItemSecondary(e)} className="Primary">
+
+                        {Menu.itemOpen? 
+                            <div>
+                                <img width="50px" height="50px" src={ShopPicture} alt="buttface"/>
+                            </div>
+
+                            :
+                            <>
+                                <div>
+                                    <img width="50px" height="50px" src={ShopPicture} alt="buttface"/>
+                                </div>
+                                <div>
+                                    <h2 >Items</h2>
+                                    <p>Edit your items here</p>
+                                </div>
+                            </>
+                        }
                         
-                        <div>
-                            <h2 onClick={(e)=>openItemSecondary(e)}>Items</h2>
-                            <p>Edit your items here</p>
-                        </div>
                     </div>
                     <div className="ItemSecondary">
                         <div className="SecondaryFlex">
-                            <div className="MenuButton">
+                            <div className="menuButton">
                                 <img height="50px" width="50px" onClick={(e)=>openThird(e)} src={EditPicture} alt="edit items"/>    
                             </div>
                             <div>
@@ -357,7 +376,7 @@ const DashboardUtils = ()=>{
                             </div>
                         </div>
                         <div className="SecondaryFlex">
-                            <div>
+                            <div className="menuButton">
                                 <img onClick={(e)=>TogglePostItem(e)} src={AddPicture} alt="add item"/>
                             </div>
                             <div>
@@ -365,7 +384,7 @@ const DashboardUtils = ()=>{
                             </div>
                         </div>
                         <div className="SecondaryFlex">
-                            <div>
+                            <div className="menuButton">
                                 <img onClick={(e)=>ToggleDeleteItem(e)} src={DeletePicture} alt="delete item"/>
                             </div>
                             <div>
@@ -406,31 +425,30 @@ const DashboardUtils = ()=>{
                     <ItemDelete/>
                 </div>
                 <div className="Dashboard-CRUD LocationOption">
-                    {/* <div className="UserToggle">
-                        <h1>Location form</h1>
-                        <select id="LocationSelect" onChange={selectLocation}>
-                            <option value="0">Select Location</option>
-                            {state.user.locations.map((loc)=>(
-                                <option value={loc.id}>{loc.name}</option>
-                            ))}
-                        </select>
-                        <button onClick={(e)=>ToggleLocation(e)} id="Locationbtn">Edit Location</button>
-                        <button onClick={(e)=>TogglePostLocation(e)}>Add Location</button>
-                        <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete Location</button>
-                    </div> */}
-                    <div className="Primary">
-                        <div>
-                            <img src={LocationPicture} alt="buttface"/>
-                        </div>
-                        
-                        <div>
-                            <h2 onClick={(e)=>openLocationSecondary(e)}>Locations</h2>
-                            <p>Edit your Locations here</p>
-                        </div>
+                    <div onClick={(e)=>openLocationSecondary(e)} className="Primary">
+
+                        {
+                            Menu.locationOpen?
+                            
+                            <div>
+                                <img src={LocationPicture} alt="buttface"/>
+                            </div>
+                            :
+                            <>
+                                <div>
+                                    <img src={LocationPicture} alt="buttface"/>
+                                </div>
+                                
+                                <div>
+                                    <h2>Locations</h2>
+                                    <p>Edit your Locations here</p>
+                                </div>
+                            </>
+                        }
                     </div>
                     <div className="LocationSecondary">
                         <div className="SecondaryFlex">
-                            <div>
+                            <div className="menuButton">
                                 <img height="50px" width="50px" onClick={(e)=>openLocationThird(e)} src={EditPicture} alt="edit location"/>
                             </div>
                             <div>
@@ -438,7 +456,7 @@ const DashboardUtils = ()=>{
                             </div>
                         </div>
                         <div className="SecondaryFlex">
-                            <div>
+                            <div className="menuButton">
                                 <img onClick={(e)=>TogglePostLocation(e)} src={AddPicture} alt="Add location"/>
                             </div>
                             <div>
@@ -446,7 +464,7 @@ const DashboardUtils = ()=>{
                             </div>
                         </div>
                         <div className="SecondaryFlex">
-                            <div>
+                            <div className="menuButton">
                                 <img onClick={(e)=>ToggleDeleteLocation(e)} src={DeletePicture} alt="Delete location"/>
                             </div>
                             <div>

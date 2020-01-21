@@ -16,6 +16,14 @@ const Locationclose = ()=>{
     return{type: 'locationClose'}
 }
 
+const Profileopen = ()=>{
+    return {type:'profileOpen'}
+}
+
+const Profileclose = ()=>{
+    return {type:'profileClose'}
+}
+
 
 export const openItems = ()=>{
 
@@ -43,5 +51,17 @@ export const openLocations = ()=>{
 export const closeLocations = ()=>{
     return function(dispatch){
         dispatch(Locationclose())
+    }
+}
+
+export const openProfile = ()=>{
+    return function(dispatch){
+        dispatch(Profileopen())
+    }
+}
+
+export const closeProfile = ()=>{
+    return function(dispatch){
+        dispatch(Profileclose())
     }
 }

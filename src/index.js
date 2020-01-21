@@ -24,6 +24,7 @@ const rootReducer = combineReducers({
     Menu:MenuReducer
 })
 
+
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 

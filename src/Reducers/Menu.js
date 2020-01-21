@@ -2,7 +2,8 @@
 
 const initalState = {
     itemOpen:false,
-    locationOpen:false
+    locationOpen:false,
+    profileOpen:false
 }
 
 export const MenuReducer = (state=initalState, action)=>{
@@ -15,6 +16,10 @@ export const MenuReducer = (state=initalState, action)=>{
             return {...state, locationOpen:true}
         case 'locationClose':
             return {...state, locationOpen:false}
+        case 'profileOpen':
+            return {...state, profileOpen:true}
+        case 'profileClose':
+            return {...state, profileOpen:false}
         default:
             return state
     }

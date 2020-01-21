@@ -178,17 +178,15 @@
   display: none;
 }
 
-.visible{
-  display: block;
-}
-
-
-/* just test stuff for the perfect menu***********************/
 
 .Primary{
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.Primary:hover{
+  cursor: pointer;
 }
 
 .Secondary{
@@ -249,6 +247,10 @@
 
 .visible{
   display: block;
+}
+
+.menuButton:hover{
+cursor: pointer;
 }
 
 

@@ -11,6 +11,19 @@ import ShopPicture from "../pics/icons8-shop-50.png"
 
 const Test = ()=>{
 
+                        {/* <div className="UserToggle">
+                        <h1>Location form</h1>
+                        <select id="LocationSelect" onChange={selectLocation}>
+                            <option value="0">Select Location</option>
+                            {state.user.locations.map((loc)=>(
+                                <option value={loc.id}>{loc.name}</option>
+                            ))}
+                        </select>
+                        <button onClick={(e)=>ToggleLocation(e)} id="Locationbtn">Edit Location</button>
+                        <button onClick={(e)=>TogglePostLocation(e)}>Add Location</button>
+                        <button onClick={(e)=>ToggleDeleteLocation(e)}>Delete Location</button>
+                    </div> */}
+
     const state = useSelector(state=>state.User);
     const Category = useSelector(state=>state.Category);
     const dispatch = useDispatch();
