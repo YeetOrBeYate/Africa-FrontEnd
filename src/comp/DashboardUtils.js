@@ -233,6 +233,11 @@ const DashboardUtils = ()=>{
             dispatch(closeProfile())
             const secondary = document.querySelector('.ProfileSecondary')
             secondary.classList.toggle('visible')
+
+            const list = document.querySelectorAll('.UserOption .visible')
+            list.forEach((node)=>{
+                node.classList.toggle('visible')
+            })
         }
 
     }
@@ -309,7 +314,7 @@ const DashboardUtils = ()=>{
                                 </div>
 
                             :
-                            
+
                             <>
                                 <div>
                                     <img src={picture} alt="buttface"/>
@@ -460,7 +465,7 @@ const DashboardUtils = ()=>{
                                 <img onClick={(e)=>TogglePostLocation(e)} src={AddPicture} alt="Add location"/>
                             </div>
                             <div>
-                                <h2>Edit a location</h2>
+                                <h2>Add a location</h2>
                             </div>
                         </div>
                         <div className="SecondaryFlex">

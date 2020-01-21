@@ -42,6 +42,18 @@ const UserDeleteLocation = (data)=>{
     return{type:'UserDeleteLocation', payload:data}
 }
 
+const Userclear = ()=>{
+    return {type:'clearUser'}
+}
+
+export const clearUser = ()=>{
+    return function(dispatch){
+
+        dispatch(Userclear())
+    }
+
+}
+
 export const EditUser=(id,user)=>{
 
     return function(dispatch){

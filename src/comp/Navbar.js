@@ -7,24 +7,46 @@ import Dashboard from './DashboardPage';
 import addItem from "./AddItem";
 import Test from "./Menutest"
 
+import {useDispatch, useSelector} from "react-redux";
+import {clearMenu} from "../Actions/MenuActions";
+import {clearUser} from "../Actions/UserActions";
+
 
 const Navbar = ()=>{
+
+    const dispatch = useDispatch();
+    const Menu = useSelector(state=>state.Menu)
+    const User = useSelector(state=>state.User)
 
     const signOut = (e)=>{
         
         localStorage.clear();
+        dispatch(clearMenu())
+        dispatch(clearUser())
        
     }
+
+    console.log("theuser",User)
 
     return(
         <div>
             <div className="NavFlex">
-                <Link to="/">Home</Link>
-                <Link to="/login">Login!</Link>
-                <Link to="/register">Register!</Link>
-                <Link to="/additem">Additem</Link>
-                <Link onClick={(e)=>signOut(e)} to='/login'>SignOut</Link>
-                <Link to="/test">Testpage</Link>
+                {
+                    User.user? 
+                    <>
+                        <Link to="/">Home</Link>
+                        <Link onClick={(e)=>signOut(e)} to='/login'>SignOut</Link>
+                        <Link to='/dashboard'>Dashbaord</Link>
+                    </>
+                    :
+                    <>
+                        <Link to="/">Home</Link>
+                        <Link to="/login">Login!</Link>
+                        <Link to="/register">Register!</Link>
+                        <Link to="/additem">Additem</Link>
+                        <Link to="/test">Testpage</Link>
+                    </>
+                }
             </div>
             <Switch>
                 <Route path="/login" render={(props)=> <Login {...props}/>}/>

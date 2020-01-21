@@ -24,6 +24,10 @@ const Profileclose = ()=>{
     return {type:'profileClose'}
 }
 
+const clear = ()=>{
+    return {type:'clear'}
+}
+
 
 export const openItems = ()=>{
 
@@ -63,5 +67,11 @@ export const openProfile = ()=>{
 export const closeProfile = ()=>{
     return function(dispatch){
         dispatch(Profileclose())
+    }
+}
+
+export const clearMenu = ()=>{
+    return function(dispatch){
+        dispatch(clear())
     }
 }

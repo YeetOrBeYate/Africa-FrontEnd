@@ -20,6 +20,8 @@ export const MenuReducer = (state=initalState, action)=>{
             return {...state, profileOpen:true}
         case 'profileClose':
             return {...state, profileOpen:false}
+        case 'clear':
+            return {...state, itemOpen:false, locationOpen:false, profileOpen:false}
         default:
             return state
     }

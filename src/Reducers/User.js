@@ -56,6 +56,8 @@ export const UserReducer = (state=initialState, action)=>{
             return{...state,user:{...state.user,items:state.user.items.filter(item=>item.id !=action.payload)}, loading:false}
         case 'UserDeleteLocation':
             return {...state,user:{...state.user, locations:state.user.locations.filter(loc=>loc.id !=action.payload)}, loading:false}
+        case 'clearUser':
+            return{...state, user:null}
         default:
             return state
     }
