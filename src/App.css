@@ -125,28 +125,22 @@
 }
 
 .UserOption{
-  background: #ac7c83;
-  /* border: 2px solid #816367; */
-  /* border-radius: 15px; */
-
+  background: #eccd64;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   
 }
 
 .ItemOption{
-  background: #ff934f;
-  /* border: 2px solid #be6a35; */
-  /* border-radius: 15px ; */
+  background: #e47657;
+  box-shadow: 0px 3px 5px -2px #323232 inset;
 }
 
 .LocationOption{
-  background:#a3911c;
-  /* border: 2px solid #76680d;
-  border-radius: 15px; */
+  background:#9c3a52;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  
+  box-shadow: 0px 3px 5px -2px #323232 inset;
 }
 
 /* The invisible smoke and mirror classes and stuff********* */

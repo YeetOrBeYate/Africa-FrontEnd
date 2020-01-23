@@ -380,6 +380,35 @@ const DashboardUtils = ()=>{
                                 <h2>Edit an Item</h2>
                             </div>
                         </div>
+                        <div className ="Third">
+                            <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
+                                <option value="0">Select Item</option>
+                                {state.user.items.map((item,index)=>(
+                                    <option value={item.id}>{item.name}</option>
+                                ))}
+                            </select>
+                            <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
+                        </div>
+                        <form className="itemForm">
+                            <div>
+                                <input type="text" name="name" onChange={changeItem} value={item.name} placeholder="name"/>
+                            </div>
+                            <div>
+                                <input type="text" name="price" onChange={changeItem} value={item.price} placeholder="price"/>
+                            </div>
+                            <div>
+                                <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="31"/>
+                            </div>
+                            <div>
+                                <select id ='CategorySelect' name="category_id" onChange={changeItem}>
+                                    <option value = "0">Select Category</option>
+                                    {Category.categories.map((cat)=>(
+                                            <option value={cat.id}>{cat.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <button onClick={(e)=>submitItem(e)}>Edit Item!</button>
+                        </form>
                         <div className="SecondaryFlex">
                             <div className="menuButton">
                                 <img onClick={(e)=>TogglePostItem(e)} src={AddPicture} alt="add item"/>
@@ -388,6 +417,7 @@ const DashboardUtils = ()=>{
                                 <h2>Add an Item</h2>
                             </div>
                         </div>
+                        <ItemPost/>
                         <div className="SecondaryFlex">
                             <div className="menuButton">
                                 <img onClick={(e)=>ToggleDeleteItem(e)} src={DeletePicture} alt="delete item"/>
@@ -396,38 +426,8 @@ const DashboardUtils = ()=>{
                                 <h2>Delete an Item</h2>
                             </div>
                         </div>
+                        <ItemDelete/>
                     </div>
-                    <div className ="Third">
-                        <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
-                            <option value="0">Select Item</option>
-                            {state.user.items.map((item,index)=>(
-                                <option value={item.id}>{item.name}</option>
-                            ))}
-                        </select>
-                        <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
-                    </div>
-                    <form className="itemForm">
-                        <div>
-                            <input type="text" name="name" onChange={changeItem} value={item.name} placeholder="name"/>
-                        </div>
-                        <div>
-                            <input type="text" name="price" onChange={changeItem} value={item.price} placeholder="price"/>
-                        </div>
-                        <div>
-                            <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="31"/>
-                        </div>
-                        <div>
-                            <select id ='CategorySelect' name="category_id" onChange={changeItem}>
-                                <option value = "0">Select Category</option>
-                                {Category.categories.map((cat)=>(
-                                        <option value={cat.id}>{cat.name}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <button onClick={(e)=>submitItem(e)}>Edit Item!</button>
-                    </form>
-                    <ItemPost/>
-                    <ItemDelete/>
                 </div>
                 <div className="Dashboard-CRUD LocationOption">
                     <div onClick={(e)=>openLocationSecondary(e)} className="Primary">
@@ -460,6 +460,21 @@ const DashboardUtils = ()=>{
                                 <h2>Edit a location</h2>
                             </div>
                         </div>
+                        <div className ="LocationThird">
+                            <select id="LocationSelect" onChange={selectLocation}>
+                                <option value="0">Select Location</option>
+                                {state.user.locations.map((loc)=>(
+                                    <option value={loc.id}>{loc.name}</option>
+                                ))}
+                            </select>
+                            <button onClick={(e)=>ToggleLocation(e)}>Open edit form</button>
+                        </div>
+                        <form className="locationForm">
+                            <div>
+                                <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
+                            </div>
+                            <button onClick={(e)=>submitLocation(e)}>Tesstbtn</button>
+                        </form>
                         <div className="SecondaryFlex">
                             <div className="menuButton">
                                 <img onClick={(e)=>TogglePostLocation(e)} src={AddPicture} alt="Add location"/>
@@ -468,6 +483,7 @@ const DashboardUtils = ()=>{
                                 <h2>Add a location</h2>
                             </div>
                         </div>
+                        <LocationPost/>
                         <div className="SecondaryFlex">
                             <div className="menuButton">
                                 <img onClick={(e)=>ToggleDeleteLocation(e)} src={DeletePicture} alt="Delete location"/>
@@ -476,29 +492,12 @@ const DashboardUtils = ()=>{
                                 <h2>Delete a location</h2>
                             </div>
                         </div>
+                        <LocationDelete/>
                     </div>
-                    <div className ="LocationThird">
-                        <select id="LocationSelect" onChange={selectLocation}>
-                            <option value="0">Select Location</option>
-                            {state.user.locations.map((loc)=>(
-                                <option value={loc.id}>{loc.name}</option>
-                            ))}
-                        </select>
-                        <button onClick={(e)=>ToggleLocation(e)}>Open edit form</button>
-                    </div>
-                    <form className="locationForm">
-                        <div>
-                            <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
-                        </div>
-                        <button onClick={(e)=>submitLocation(e)}>Tesstbtn</button>
-                    </form>
-                    <LocationPost/>
-                    <LocationDelete/>
                 </div>
             </div>
         </section>
     );
-
 }
 
 export default DashboardUtils
