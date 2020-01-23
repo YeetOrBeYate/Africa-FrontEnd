@@ -53,6 +53,7 @@
   margin: 0 auto;
   display: flex;
   height: 650px;
+  background: #eef2c3;
 }
 
 .Loginpage{
@@ -70,17 +71,32 @@
 .DashboardUtils{
   margin:0;
   width: 30%;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  /* background: #eef2c3; */
 }
 
 .DashboardPage{
   margin: 0;
   width: 75%;
-  border: 1px solid black;
   overflow-y: scroll;
+}
+
+.DashTitle{
+  margin:0;
+  padding: 1.5% 0;
+  position: sticky;
+  top:0;
+  background:#eef2c3;
+}
+
+.subDashTitle{
+  margin:0;
+  padding: 1.5% 0;
+  position: sticky;
+  top:72px;
+  background:#eef2c3;
 }
 
 .Dashboard-CRUD{
@@ -89,33 +105,31 @@
 }
 
 .Dash-item{
-  border: 1px solid black;
   width: 50%;
-  
 }
 
 .Items{
-  background: #ff934f;
+  background: #eef2c3;
 }
 
 .item{
  text-align: left;
- border: 5px solid #be6a35;
- border-radius: 20px;
+ border: none;
  padding: 1% 2%;
- margin: 1% 0;
+ margin: 4% 2%;
+ box-shadow: .50px .75px 2px 3px #323232;
 }
 
 .Locations{
-  background: #a3911c;
+  background: #eef2c3;
 }
 
 .location{
   text-align: left;
-  border: 5px solid #76680d;
-  border-radius: 20px;
+  border: none;
   padding: 1% 2%;
-  margin: 1% 0;
+  margin: 4% 2%;
+  box-shadow: .50px .75px 2px 3px #323232;
 }
 
 .Dashboard-flex{
