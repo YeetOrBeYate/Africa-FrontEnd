@@ -52,23 +52,34 @@
   width: 100%;
   margin: 0 auto;
   display: flex;
+  height: 650px;
+}
+
+.Loginpage{
+  height: 650px;
+}
+
+.Registerpage{
+  height: 650px;
+}
+
+.Homepage{
+  height: 650px;
 }
 
 .DashboardUtils{
   margin:0;
   width: 30%;
   border: 1px solid black;
-
   display: flex;
   flex-direction: column;
-  
+  overflow-y: scroll;
 }
 
 .DashboardPage{
   margin: 0;
   width: 75%;
   border: 1px solid black;
-  height: 650px;
   overflow-y: scroll;
 }
 
@@ -128,19 +139,22 @@
   background: #eccd64;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  padding: 3%;
   
 }
 
 .ItemOption{
   background: #e47657;
-  box-shadow: 0px 3px 5px -2px #323232 inset;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .LocationOption{
   background:#9c3a52;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  box-shadow: 0px 3px 5px -2px #323232 inset;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 /* The invisible smoke and mirror classes and stuff********* */
@@ -148,30 +162,44 @@
 
 .userForm{
   display: none;
+  box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .itemForm{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .locationForm{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .itemPostForm{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .locationPostForm{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .itemDeleteForm{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .locationDeleteForm{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 
@@ -210,22 +238,32 @@
 
 .Third{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .LocationThird{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .EditForm{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .AddForm{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .DeleteForm{
   display: none;
+    box-shadow: 0px 9px 11px -10px black inset;
+  padding: 3%;
 }
 
 .MenuWrap{
@@ -234,15 +272,25 @@
  
 }
 
-
 .formVisible{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .visible{
   display: block;
+  -webkit-animation: fadeIn .5s;
+  animation: fadeIn .5s;
 }
 
 .menuButton:hover{

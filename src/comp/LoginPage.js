@@ -43,7 +43,7 @@ const Login = (props)=>{
     }
 
     return(
-        <div>
+        <div className="Loginpage">
             <h1>Login</h1>
             <form>
                 <div>

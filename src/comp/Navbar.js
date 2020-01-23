@@ -5,7 +5,8 @@ import Register from "./RegisterPage";
 import Home from "./HomePage";
 import Dashboard from './DashboardPage';
 import addItem from "./AddItem";
-import Test from "./Menutest"
+import Test from "./Menutest";
+import Footer from "./Footerbar";
 
 import {useDispatch, useSelector} from "react-redux";
 import {clearMenu} from "../Actions/MenuActions";
@@ -56,6 +57,7 @@ const Navbar = ()=>{
                 <Route path="/test" component={Test}/>
                 <Route path = "/" component ={Home}/>
             </Switch>
+            <Footer/>
         </div>
     );
 }
