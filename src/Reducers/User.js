@@ -10,17 +10,17 @@ const checkToken=()=>{
 }
 
 const checkUser = ()=>{
-    let user = localStorage.getItem('user')
-    if(user !== null){
-        return user = JSON.parse(user)
+    let userid = localStorage.getItem('userId')
+    if(userid !== null){
+        return userid = JSON.parse(userid)
     }else{
-        return user = null
+        return userid = null
     }
 }
 const initialState = {
     loading:false,
-    user:checkUser(),
-    token:checkToken(),
+    userid:checkUser(),
+    user:null,
     itemEdit:false,
     locationEdit:false
 }
@@ -29,15 +29,16 @@ const initialState = {
 //     id:
 //     username:
 //     locations:
-//     items:
 // }
 
 export const UserReducer = (state=initialState, action)=>{
     switch(action.type){
         case 'Userloading':
             return{...state, loading:true}
+        case "userId":
+            return{...state, userid:action.payload}
         case 'userGood':
-            return{...state, loading:false, user:action.payload, token:action.token}
+            return{...state, loading:false, user:action.payload,}
         case 'Useredit':
             return{...state, user: {...state.user, username:action.payload}}
         case "UserEdititem":

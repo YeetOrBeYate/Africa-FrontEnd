@@ -15,8 +15,7 @@ const Login = (props)=>{
             props.history.push('/dashboard')
             dispatch(stopMove())
         }
-        
-
+    
     },[state.navForward])
 
 

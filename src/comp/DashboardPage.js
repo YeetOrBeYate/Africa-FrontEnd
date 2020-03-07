@@ -2,8 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import DashboardUtils from "./DashboardUtils";
 import {getCats} from "../Actions/CategoryActions";
-
-
+import {LoadUser} from "../Actions/UserActions";
 
 const Dashboard =()=>{
 
@@ -14,10 +13,10 @@ const Dashboard =()=>{
 
     React.useEffect(()=>{
         dispatch(getCats())
-
+        dispatch(LoadUser(state.userid))
     },[])
     
-    if(Category.categories ===null){
+    if(Category.categories ===null || state.user === null){
         return(<div>
             loading...
         </div>);
@@ -37,7 +36,7 @@ const Dashboard =()=>{
                             </div>
                         ))}
                     </section>
-                    <section className="Dash-item Items">
+                    {/* <section className="Dash-item Items">
                         <h1 className="subDashTitle">Your Items:</h1>
                         {state.user.items.map((item,index)=>(
                             <div className={`item item-${index}`} key={index} >
@@ -46,7 +45,7 @@ const Dashboard =()=>{
                                 <p>{item.description}</p>
                             </div>
                         ))}
-                    </section>
+                    </section> */}
                 </div>
             </section>
         </div>

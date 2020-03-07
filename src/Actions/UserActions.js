@@ -1,6 +1,9 @@
 
 import {AxiosWithAuth} from "../comp/AddItem";
 
+const UserGood = (data, token)=>{
+    return {type:'userGood', payload: data}
+}
 
 const Useredit = (data)=>{
     return{type:"Useredit", payload: data}
@@ -52,6 +55,24 @@ export const clearUser = ()=>{
         dispatch(Userclear())
     }
 
+}
+
+export const LoadUser=(id)=>{
+    
+    return function(dispatch){
+
+        dispatch(UserLoading())
+
+        return AxiosWithAuth().get(`https://africa-marketplace.herokuapp.com/users/${id}`)
+
+        .then(response=>{
+            
+            let user = response.data.user
+            console.log("from the load user",user)
+            dispatch(UserGood(user))
+        })
+
+    }
 }
 
 export const EditUser=(id,user)=>{

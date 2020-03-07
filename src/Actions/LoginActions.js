@@ -17,8 +17,9 @@ const forward = ()=>{
     return {type:'moved'}
 }
 
-const UserGood = (data, token)=>{
-    return {type:'userGood', payload: data, token:token}
+
+const UserId = (data)=>{
+    return {type:'userId', payload:data}
 }
 
 const UserLoading = ()=>{
@@ -42,17 +43,18 @@ export const signIn = (person)=>{
 
         return axios.post('https://africa-marketplace.herokuapp.com/auth/login', person)
         .then(res=>{
-            
+            console.log(res.data)
             const token = res.data.token;
-           
-            let user = res.data.format
+            let userid = res.data.id;
+
             
-            dispatch(good())
-            dispatch(UserGood(user,token))
-            user = JSON.stringify(user)
+            userid = JSON.stringify(userid)
 
             localStorage.setItem('token',token)
-            localStorage.setItem('user', user)
+            localStorage.setItem('userId', userid)
+
+            dispatch(good())
+            dispatch(UserId(userid))
         })
         .catch(err=>{
             console.log('bad',err)
