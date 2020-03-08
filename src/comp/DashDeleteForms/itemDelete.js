@@ -5,6 +5,7 @@ import {RemoveItem} from "../../Actions/UserActions";
 const ItemDelete = ()=>{
 
     const User = useSelector(state=>state.User);
+    const Item = useSelector(state=>state.Item);
     const dispatch = useDispatch();
 
 
@@ -46,7 +47,7 @@ const ItemDelete = ()=>{
                 <select id="DeleteItemSelect" onChange={changeItemDel}>
                     <option value='0'>Pick item</option>
                     {
-                        User.user.items.map((item)=>(
+                        Item.items.map((item)=>(
                             <option value={item.id}>{item.name}</option>
                         ))
                     }

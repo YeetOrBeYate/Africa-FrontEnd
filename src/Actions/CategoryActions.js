@@ -22,7 +22,7 @@ export const getCats = ()=>{
         dispatch(loading())
        
 
-        return AxiosWithAuth().get('https://africa-marketplace.herokuapp.com/category')
+        return AxiosWithAuth().get('/category')
         .then(res=>{
             
             const cats = res.data.categories

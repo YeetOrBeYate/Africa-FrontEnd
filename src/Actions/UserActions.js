@@ -63,7 +63,7 @@ export const LoadUser=(id)=>{
 
         dispatch(UserLoading())
 
-        return AxiosWithAuth().get(`https://africa-marketplace.herokuapp.com/users/${id}`)
+        return AxiosWithAuth().get(`/users/${id}`)
 
         .then(response=>{
             
@@ -81,7 +81,7 @@ export const EditUser=(id,user)=>{
 
         dispatch(UserLoading())
 
-        return AxiosWithAuth().put(`https://africa-marketplace.herokuapp.com/users/${id}`,user)
+        return AxiosWithAuth().put(`/users/${id}`,user)
 
         .then(res=>{
             console.log("editUser",res)
@@ -109,7 +109,7 @@ export const EditUserItem = (id, item)=>{
 
         dispatch(UserLoading())
 
-        return AxiosWithAuth().put(`https://africa-marketplace.herokuapp.com/item/${id}`,item)
+        return AxiosWithAuth().put(`/item/${id}`,item)
         .then(res=>{
             console.log("edituseritem",res)
             dispatch(UserEditItem())
@@ -141,7 +141,7 @@ export const EditUserLocation = (id,location)=>{
     return function(dispatch){
         dispatch(UserLoading())
 
-        AxiosWithAuth().put(`https://africa-marketplace.herokuapp.com/location/${id}`, location)
+        AxiosWithAuth().put(`/location/${id}`, location)
         .then(res=>{
             console.log(res)
             dispatch(UserEditLocation())
@@ -173,7 +173,7 @@ export const AddItem = (item)=>{
 
         dispatch(UserLoading())
 
-        return AxiosWithAuth().post(`https://africa-marketplace.herokuapp.com/item`, item)
+        return AxiosWithAuth().post(`/item`, item)
         .then(res=>{
             console.log("add item", res)
 
@@ -198,7 +198,7 @@ export const AddLocation = (location)=>{
     return function(dispatch){
         dispatch(UserLoading())
 
-        AxiosWithAuth().post(`https://africa-marketplace.herokuapp.com/location`, location)
+        AxiosWithAuth().post(`/location`, location)
         .then(res=>{
             console.log("adding location", res)
         
@@ -227,7 +227,7 @@ export const RemoveItem = (itemid)=>{
 
         dispatch(UserLoading())
 
-        return AxiosWithAuth().delete(`https://africa-marketplace.herokuapp.com/item/${itemid}`)
+        return AxiosWithAuth().delete(`/item/${itemid}`)
         .then(res=>{
             console.log('delete Item', res)
             dispatch(UserDeleteItem(itemid))
@@ -251,7 +251,7 @@ export const RemoveLocation = (locationid)=>{
 
         dispatch(UserLoading())
         
-        return AxiosWithAuth().delete(`https://africa-marketplace.herokuapp.com/location/${locationid}`)
+        return AxiosWithAuth().delete(`/location/${locationid}`)
         
         .then(res=>{
             console.log('deleting location', res)

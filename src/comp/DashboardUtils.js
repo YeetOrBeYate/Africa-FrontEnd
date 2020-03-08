@@ -7,6 +7,8 @@ import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
 import LocationDelete from './DashDeleteForms/locationDelete';
 
+import {LoadItems} from "../Actions/ItemActions";
+
 import picture from "../pics/icons8-user-50.png";
 import ShopPicture from "../pics/icons8-shop-50.png";
 import LocationPicture from "../pics/icons8-location-50.png";
@@ -22,6 +24,7 @@ const DashboardUtils = ()=>{
     const Category = useSelector(state=>state.Category);
     const Menu = useSelector(state=>state.Menu);
     const dispatch = useDispatch();
+    const Item = useSelector(state=>state.Item);
 
     // Useeffects to watch for edit changes and to get needed data from the db*************************************************
     // React.useEffect(()=>{
@@ -31,6 +34,11 @@ const DashboardUtils = ()=>{
 
     React.useEffect(()=>{
 
+        dispatch(LoadItems(state.userid))
+
+    },[])
+
+    React.useEffect(()=>{
         if(state.itemEdit){
             const newList=state.user.items.map(i=>{
                 if(item.id == i.id){
@@ -301,6 +309,10 @@ const DashboardUtils = ()=>{
         yeet.classList.toggle('visible')
     }
 
+    if(Item.items==null){
+        return(<div>loadings</div>)
+    }
+
     return(
         <section className="DashboardUtils">
             <div className="MenuWrap">
@@ -383,7 +395,7 @@ const DashboardUtils = ()=>{
                         <div className ="Third">
                             <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
                                 <option value="0">Select Item</option>
-                                {state.user.items.map((item,index)=>(
+                                {Item.items.map((item,index)=>(
                                     <option value={item.id}>{item.name}</option>
                                 ))}
                             </select>

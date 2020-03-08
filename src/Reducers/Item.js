@@ -9,7 +9,7 @@ export const ItemReducer = (state= initialState, action)=>{
         case 'Itemloading':
             return {...state, loading:true}
         case 'Itemgot':
-            return{...state, items:action.payload}
+            return{...state, loading:false, items:action.payload}
         default:
             return state
     }

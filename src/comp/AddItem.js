@@ -7,6 +7,7 @@ import {getCats} from "../Actions/CategoryActions";
 
 export const AxiosWithAuth =()=>{
     return axios.create({
+        baseURL:'https://africa-marketplace.herokuapp.com',
         headers:{
             authorization: localStorage.getItem('token')
         }
