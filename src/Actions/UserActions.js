@@ -86,11 +86,7 @@ export const EditUser=(id,user)=>{
         .then(res=>{
             console.log("editUser",res)
             dispatch(Useredit(user.username))
-            let yeet = localStorage.getItem('user')
-            yeet = JSON.parse(yeet)
-            yeet = {...yeet, username:user.username}
-            yeet = JSON.stringify(yeet)
-            localStorage.setItem('user', yeet)
+
             
         })
 
@@ -128,11 +124,7 @@ export const CloseEditUserItem = (list)=>{
 
         dispatch(CloseUserEditItem(list))
 
-        let yeet = localStorage.getItem('user')
-        yeet = JSON.parse(yeet)
-        yeet = {...yeet, items:list}
-        yeet = JSON.stringify(yeet)
-        localStorage.setItem('user', yeet)
+
     }
 }
 
@@ -159,11 +151,7 @@ export const CloseEditUserLocation = (list)=>{
 
         dispatch(CloseUserEditLocation(list))
 
-        let yeet = localStorage.getItem('user')
-        yeet = JSON.parse(yeet)
-        yeet = {...yeet, locations:list}
-        yeet = JSON.stringify(yeet)
-        localStorage.setItem('user', yeet)
+
     }
 }
 
@@ -181,11 +169,7 @@ export const AddItem = (item)=>{
 
             dispatch(UserAddItem(item))
 
-            let yeet = localStorage.getItem('user');
-            yeet = JSON.parse(yeet);
-            yeet = {...yeet, items:[...yeet.items, item]}
-            yeet = JSON.stringify(yeet)
-            localStorage.setItem('user', yeet);
+
         })
         .catch(err=>{
             console.log(err)
@@ -205,11 +189,7 @@ export const AddLocation = (location)=>{
             location = {...location, id:res.data.id}
             dispatch(UserAddLocation(location))
 
-            let yeet = localStorage.getItem('user')
-            yeet = JSON.parse(yeet);
-            yeet = {...yeet, locations:[...yeet.locations, location]}
-            yeet = JSON.stringify(yeet);
-            localStorage.setItem('user', yeet);
+
 
         })
 
@@ -232,11 +212,7 @@ export const RemoveItem = (itemid)=>{
             console.log('delete Item', res)
             dispatch(UserDeleteItem(itemid))
 
-            let yeet = localStorage.getItem('user')
-            yeet = JSON.parse(yeet)
-            yeet = {...yeet, items:yeet.items.filter(item=>item.id !=itemid)}
-            yeet = JSON.stringify(yeet)
-            localStorage.setItem('user', yeet)
+
         })
 
         .catch(err=>{
@@ -257,11 +233,7 @@ export const RemoveLocation = (locationid)=>{
             console.log('deleting location', res)
             dispatch(UserDeleteLocation(locationid))
 
-            let yeet = localStorage.getItem('user')
-            yeet = JSON.parse(yeet)
-            yeet = {...yeet, locations: yeet.locations.filter(loc=>loc.id != locationid)}
-            yeet = JSON.stringify(yeet)
-            localStorage.setItem('user', yeet)
+
         })
 
         .catch(err=>{

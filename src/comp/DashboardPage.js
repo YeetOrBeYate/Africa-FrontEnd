@@ -4,6 +4,8 @@ import DashboardUtils from "./DashboardUtils";
 import {getCats} from "../Actions/CategoryActions";
 import {LoadUser} from "../Actions/UserActions";
 
+import "../CSS/DashboardPage.css";
+
 const Dashboard =()=>{
 
     const state = useSelector(state=>state.User);
@@ -33,19 +35,16 @@ const Dashboard =()=>{
                         {state.user.locations.map((loc,index)=>(
                             <div className={`location location-${index}`} >
                                 <h3>{loc.name}</h3>
+                                {loc.items.map((item,index)=>(
+                                    <div className = 'locationItem' >
+                                        <h3>{item.name}</h3>
+                                        <h3>{item.description}</h3>
+                                        <h3>{item.price}</h3>
+                                    </div>
+                                ))}
                             </div>
                         ))}
                     </section>
-                    {/* <section className="Dash-item Items">
-                        <h1 className="subDashTitle">Your Items:</h1>
-                        {state.user.items.map((item,index)=>(
-                            <div className={`item item-${index}`} key={index} >
-                                <h3>{item.name}</h3>
-                                <h3>{item.price}</h3>
-                                <p>{item.description}</p>
-                            </div>
-                        ))}
-                    </section> */}
                 </div>
             </section>
         </div>
