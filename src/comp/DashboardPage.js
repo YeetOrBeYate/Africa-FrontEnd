@@ -4,24 +4,32 @@ import DashboardUtils from "./DashboardUtils";
 import {getCats} from "../Actions/CategoryActions";
 import {LoadUser} from "../Actions/UserActions";
 
+import {LoadItems} from "../Actions/ItemActions";
+
 import "../CSS/DashboardPage.css";
 
 const Dashboard =()=>{
 
     const state = useSelector(state=>state.User);
     const Category = useSelector(state=>state.Category);
+    const Item = useSelector(state=>state.Item);
     const dispatch = useDispatch();
 
 
     React.useEffect(()=>{
         dispatch(getCats())
         dispatch(LoadUser(state.userid))
+        dispatch(LoadItems(state.userid))
     },[])
     
     if(Category.categories ===null || state.user === null){
         return(<div>
             loading...
         </div>);
+    }
+
+    if(Item.items==null){
+        return(<div>loadings</div>)
     }
 
     return(
@@ -35,11 +43,12 @@ const Dashboard =()=>{
                         {state.user.locations.map((loc,index)=>(
                             <div className={`location location-${index}`} >
                                 <h3>{loc.name}</h3>
-                                {loc.items.map((item,index)=>(
+                                {Item.items.map((item,index)=>(
                                     <div className = 'locationItem' >
                                         <h3>{item.name}</h3>
                                         <h3>{item.description}</h3>
                                         <h3>{item.price}</h3>
+                                        <h3>{item.location}</h3>
                                     </div>
                                 ))}
                             </div>

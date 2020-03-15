@@ -7,7 +7,7 @@ import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
 import LocationDelete from './DashDeleteForms/locationDelete';
 
-import {LoadItems} from "../Actions/ItemActions";
+import {LoadItems,EditItems} from "../Actions/ItemActions";
 
 import picture from "../pics/icons8-user-50.png";
 import ShopPicture from "../pics/icons8-shop-50.png";
@@ -161,7 +161,7 @@ const DashboardUtils = ()=>{
 
         if(select !=0){
         
-           const newItem = state.user.items.find((item)=>{
+           const newItem = Item.items.find((item)=>{
                let select = document.querySelector('#ItemSelect').value
                return item.id == select;
            })
@@ -191,7 +191,9 @@ const DashboardUtils = ()=>{
         }
         
 
-        dispatch(EditUserItem(item.id, newItem))
+        // dispatch(EditUserItem(item.id, newItem))
+        //replace with item action to make the put request
+        dispatch(EditItems(item.id, newItem))
         
     }
 
