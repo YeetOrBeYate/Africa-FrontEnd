@@ -13,9 +13,6 @@ const UserLoading = ()=>{
     return {type: 'Userloading'}
 }
 
-const UserEditItem = ()=>{
-    return{type:'UserEdititem'}
-}
 
 const CloseUserEditItem=(data)=>{
     return{type:"ItemCloseedit", payload:data}
@@ -95,25 +92,6 @@ export const EditUser=(id,user)=>{
         })
 
         
-
-    }
-}
-
-export const EditUserItem = (id, item)=>{
-
-    return function(dispatch){
-
-        dispatch(UserLoading())
-
-        return AxiosWithAuth().put(`/item/${id}`,item)
-        .then(res=>{
-            console.log("edituseritem",res)
-            dispatch(UserEditItem())
-        })
-
-        .catch(err=>{
-            console.log(err)
-        })
 
     }
 }

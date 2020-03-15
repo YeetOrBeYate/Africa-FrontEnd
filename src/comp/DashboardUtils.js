@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {EditUser,EditUserItem,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
+import {EditUser,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
 import {openItems, closeItems, openLocations,closeLocations, openProfile, closeProfile} from "../Actions/MenuActions";
 import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
@@ -68,7 +68,7 @@ const DashboardUtils = ()=>{
             dispatch(CloseEditUserLocation(newLocations))
         }
 
-    },[state.itemEdit,state.locationEdit])
+    },[state.locationEdit])
 
     // usestates to keep track of the inputs************************************************************************************
     const [user, setUser] = React.useState({
@@ -191,7 +191,6 @@ const DashboardUtils = ()=>{
         }
         
 
-        // dispatch(EditUserItem(item.id, newItem))
         //replace with item action to make the put request
         dispatch(EditItems(item.id, newItem))
         

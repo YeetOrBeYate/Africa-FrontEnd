@@ -21,7 +21,6 @@ const initialState = {
     loading:false,
     userid:checkUser(),
     user:null,
-    itemEdit:false,
     locationEdit:false
 }
 
@@ -41,10 +40,6 @@ export const UserReducer = (state=initialState, action)=>{
             return{...state, loading:false, user:action.payload,}
         case 'Useredit':
             return{...state, user: {...state.user, username:action.payload}}
-        case "UserEdititem":
-            return{...state, itemEdit:true, loading:false}
-        case "ItemCloseedit":
-            return{...state, itemEdit:false, user:{...state.user, items: action.payload}}
         case 'UserEditlocation':
             return{...state, locationEdit:true, loading:false}
         case 'LocationCloseedit':
