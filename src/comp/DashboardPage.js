@@ -48,7 +48,6 @@ const Dashboard =()=>{
                                         <h3>{item.name}</h3>
                                         <h3>{item.description}</h3>
                                         <h3>{item.price}</h3>
-                                        <h3>{item.location}</h3>
                                     </div>
                                 ))}
                             </div>

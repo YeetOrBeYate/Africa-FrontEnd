@@ -1,7 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-// import {AddItem} from "../../Actions/UserActions";
 import {AddItem} from "../../Actions/ItemActions";
 
 

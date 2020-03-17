@@ -44,8 +44,6 @@ export const UserReducer = (state=initialState, action)=>{
             return{...state, locationEdit:true, loading:false}
         case 'LocationCloseedit':
             return{...state, locationEdit:false, user:{...state.user, locations:action.payload}}
-        case 'UserAddItem':
-            return{...state, user:{...state.user, items:[...state.user.items,action.payload]}, loading:false}
         case 'UserAddLocation':
             return{...state, user:{...state.user, locations:[...state.user.locations, action.payload]}, loading:false}
         case 'UserDeleteItem':
