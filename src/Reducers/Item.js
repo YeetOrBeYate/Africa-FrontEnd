@@ -24,6 +24,8 @@ export const ItemReducer = (state= initialState, action)=>{
                   return item
                 }}
                 )}
+        case 'Itemadd':
+            return {...state, items: [...state.items, action.payload]}
         default:
             return state
     }

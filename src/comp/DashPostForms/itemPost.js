@@ -1,7 +1,8 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {AddItem} from "../../Actions/UserActions";
+// import {AddItem} from "../../Actions/UserActions";
+import {AddItem} from "../../Actions/ItemActions";
 
 
 const ItemYeet = ()=>{
@@ -16,7 +17,8 @@ const ItemYeet = ()=>{
         description:'',
         price:'',
         user_id: User.user.id,
-        category_id:null
+        category_id:null,
+        location_id:1
     })
 
     const changePostItem = (e)=>{
@@ -31,15 +33,17 @@ const ItemYeet = ()=>{
             description: postItem.description,
             price:Number(postItem.price),
             user_id:postItem.user_id,
-            category_id:Number(postItem.category_id)
+            category_id:Number(postItem.category_id),
+            location_id:postItem.location_id
         }
 
         
         
-        console.log("what i'll",newPost)
+        console.log("what i'll send",newPost)
 
 
         dispatch(AddItem(newPost))
+        // replace with a item action so I can get this out of here
     }
 
     return(
