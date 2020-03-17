@@ -25,7 +25,9 @@ export const ItemReducer = (state= initialState, action)=>{
                 }}
                 )}
         case 'Itemadd':
-            return {...state, items: [...state.items, action.payload]}
+            return {...state, loading:false, items: [...state.items, action.payload]}
+        case 'Itemdelete':
+            return {...state, loading:false, items: state.items.filter(item=> item.id !=action.payload)}
         default:
             return state
     }

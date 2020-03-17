@@ -1,5 +1,6 @@
 import {AxiosWithAuth} from "../comp/AddItem";
 import React from 'react';
+import ItemDelete from "../comp/DashDeleteForms/itemDelete";
 
 const Loading = ()=>{
     return {type:'Itemloading'}
@@ -17,6 +18,10 @@ const addItem = (data)=>{
     return {type:'Itemadd', payload:data}
 }
 
+const deleteItem = (data)=>{
+    return {type:'Itemdelete', payload:data}
+}
+
 export const LoadItems =(userId)=>{
 
     return function(dispatch){
@@ -29,6 +34,9 @@ export const LoadItems =(userId)=>{
             
             dispatch(setItems(items))
 
+        })
+        .catch(err=>{
+            console.log(err)
         })
     }
 }
@@ -44,6 +52,9 @@ export const EditItems = (id, item)=>{
             console.log('NEW ITEM', item)
             dispatch(editItem(id,item))
         })
+        .catch(err=>{
+            console.log(err)
+        })
     }
 }
 
@@ -58,6 +69,26 @@ export const AddItem = (item)=>{
             console.log('NEW add item', res)
 
             dispatch(addItem(item))
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+}
+
+export const DeleteItem = (id)=>{
+
+    return function(dispatch){
+
+        dispatch(Loading())
+
+        return AxiosWithAuth().delete(`/item/${id}`)
+        .then(res=>{
+            console.log(res)
+            dispatch(deleteItem(id))
+        })
+        .catch(err=>{
+            console.log(err)
         })
     }
 }
