@@ -17,7 +17,7 @@ const ItemYeet = ()=>{
         price:'',
         user_id: User.user.id,
         category_id:null,
-        location_id:1
+        location_id:null
     })
 
     const changePostItem = (e)=>{
@@ -33,7 +33,7 @@ const ItemYeet = ()=>{
             price:Number(postItem.price),
             user_id:postItem.user_id,
             category_id:Number(postItem.category_id),
-            location_id:postItem.location_id
+            location_id:Number(postItem.location_id)
         }
 
         
@@ -62,6 +62,12 @@ const ItemYeet = ()=>{
                         <option value={cat.id}>{cat.name}</option>
                     ))}
                 </select> 
+                <select onChange={changePostItem} name='location_id'>
+                    <option>Pick a location</option>
+                    {User.user.locations.map((loc)=>(
+                        <option value={loc.id}>{loc.name}</option>
+                        ))}
+                </select>
                 <button onClick={(e)=>sendItem(e)}>postItem</button>
             </form>
     );
