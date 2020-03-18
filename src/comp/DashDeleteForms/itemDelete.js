@@ -40,7 +40,6 @@ const ItemDelete = ()=>{
     const deleteItem = (e)=>{
         e.preventDefault()
         console.log('WHAT IM SENDING', itemDel)
-        // dispatch(RemoveItem(itemDel.id))
         dispatch(DeleteItem(itemDel.id))
 
 

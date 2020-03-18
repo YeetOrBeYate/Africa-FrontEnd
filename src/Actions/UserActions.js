@@ -30,9 +30,6 @@ const UserAddLocation =(data)=>{
     return{type:'UserAddLocation', payload:data}
 }
 
-const UserDeleteItem =data=>{
-    return{type: 'UserDeleteItem', payload:data}
-}
 
 const UserDeleteLocation = (data)=>{
     return{type:'UserDeleteLocation', payload:data}
@@ -149,26 +146,6 @@ export const AddLocation = (location)=>{
     }
 
 
-}
-
-export const RemoveItem = (itemid)=>{
-
-    return function(dispatch){
-
-        dispatch(UserLoading())
-
-        return AxiosWithAuth().delete(`/item/${itemid}`)
-        .then(res=>{
-            console.log('delete Item', res)
-            dispatch(UserDeleteItem(itemid))
-
-
-        })
-
-        .catch(err=>{
-            console.log(err)
-        })
-    }
 }
 
 export const RemoveLocation = (locationid)=>{
