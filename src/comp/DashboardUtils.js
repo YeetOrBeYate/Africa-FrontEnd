@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {EditUser,CloseEditUserItem,EditUserLocation,CloseEditUserLocation} from "../Actions/UserActions";
+import {EditUser,EditUserLocation} from "../Actions/UserActions";
 import {openItems, closeItems, openLocations,closeLocations, openProfile, closeProfile} from "../Actions/MenuActions";
 import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
@@ -38,37 +38,6 @@ const DashboardUtils = ()=>{
 
     },[])
 
-    React.useEffect(()=>{
-        if(state.itemEdit){
-            const newList=state.user.items.map(i=>{
-                if(item.id == i.id){
-                    i = item
-                    return i;
-                }else{
-                    return i;
-                }
-            })
-
-            dispatch(CloseEditUserItem(newList))
-        }
-
-        if(state.locationEdit){
-            
-            const newLocations=state.user.locations.map(l=>{
-                if(location.id == l.id){
-                    l = location
-                    return l;
-                }else{
-                    return l;
-                }
-            })
-
-            console.log(newLocations)
-
-            dispatch(CloseEditUserLocation(newLocations))
-        }
-
-    },[state.locationEdit])
 
     // usestates to keep track of the inputs************************************************************************************
     const [user, setUser] = React.useState({
@@ -170,8 +139,6 @@ const DashboardUtils = ()=>{
            document.querySelector('#CategorySelect').value = 0;
 
 
-        }else{
-            console.log("pick something fool")
         }
     }
 
@@ -201,17 +168,17 @@ const DashboardUtils = ()=>{
         
     }
 
-    const selectLocation = ()=>{
+    const selectLocation = (e)=>{
         const select = document.querySelector('#LocationSelect').value;
 
         if(select !=0){
-            const newloc=state.user.locations.find((loc)=>{
-                let Svalue = document.querySelector('#LocationSelect').value
-                return loc.id == Svalue;
+            const newloc = state.user.locations.find((loc)=>{
+                let select = document.querySelector('#LocationSelect').value
+                return loc.id == select;
             })
             
             setLocation({...location, name:newloc.name, id: newloc.id})
-            document.querySelector('#LocationSelect').value = 0;
+            
         }
 
     }
@@ -308,10 +275,6 @@ const DashboardUtils = ()=>{
         e.preventDefault()
         const yeet = document.querySelector('.LocationThird')
         yeet.classList.toggle('visible')
-    }
-
-    if(Item.items==null){
-        return(<div>loadings</div>)
     }
 
     return(

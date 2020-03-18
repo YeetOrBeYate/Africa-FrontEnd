@@ -22,15 +22,12 @@ const Dashboard =()=>{
         dispatch(LoadItems(state.userid))
     },[])
     
-    if(Category.categories ===null || state.user === null){
+    if(Category.categories ===null || state.user === null || Item.items === null){
         return(<div>
             loading...
         </div>);
     }
 
-    if(Item.items==null){
-        return(<div>loadings</div>)
-    }
 
     return(
         <div className="Dashboard">

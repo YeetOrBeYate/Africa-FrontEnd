@@ -20,8 +20,7 @@ const checkUser = ()=>{
 const initialState = {
     loading:false,
     userid:checkUser(),
-    user:null,
-    locationEdit:false
+    user:null
 }
 
 // user{
@@ -41,7 +40,14 @@ export const UserReducer = (state=initialState, action)=>{
         case 'Useredit':
             return{...state, user: {...state.user, username:action.payload}}
         case 'UserEditlocation':
-            return{...state, locationEdit:true, loading:false}
+            return{...state, loading:false, locations: state.user.locations.map((loc)=>{
+                if(loc.id == action.put){
+                    loc.name = action.payload.name
+                    return loc
+                }else{
+                    return loc
+                }
+            })}
         case 'LocationCloseedit':
             return{...state, locationEdit:false, user:{...state.user, locations:action.payload}}
         case 'UserAddLocation':

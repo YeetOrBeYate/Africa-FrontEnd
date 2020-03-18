@@ -13,18 +13,10 @@ const UserLoading = ()=>{
     return {type: 'Userloading'}
 }
 
-
-const CloseUserEditItem=(data)=>{
-    return{type:"ItemCloseedit", payload:data}
+const UserEditLocation = (id, data)=>{
+    return{type:'UserEditlocation', put:id, payload:data}
 }
 
-const UserEditLocation = ()=>{
-    return{type:'UserEditlocation'}
-}
-
-const CloseUserEditLocation = (data)=>{
-    return{type:'LocationCloseedit', payload:data}
-}
 
 const UserAddLocation =(data)=>{
     return{type:'UserAddLocation', payload:data}
@@ -89,15 +81,6 @@ export const EditUser=(id,user)=>{
     }
 }
 
-export const CloseEditUserItem = (list)=>{
-
-    return function(dispatch){
-
-        dispatch(CloseUserEditItem(list))
-
-
-    }
-}
 
 export const EditUserLocation = (id,location)=>{
 
@@ -107,7 +90,7 @@ export const EditUserLocation = (id,location)=>{
         AxiosWithAuth().put(`/location/${id}`, location)
         .then(res=>{
             console.log(res)
-            dispatch(UserEditLocation())
+            dispatch(UserEditLocation(id,location))
         })
 
         .catch(err=>{
@@ -116,15 +99,6 @@ export const EditUserLocation = (id,location)=>{
     }
 }
 
-export const CloseEditUserLocation = (list)=>{
-
-    return function(dispatch){
-
-        dispatch(CloseUserEditLocation(list))
-
-
-    }
-}
 
 export const AddLocation = (location)=>{
     

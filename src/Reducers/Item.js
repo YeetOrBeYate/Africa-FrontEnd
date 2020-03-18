@@ -12,8 +12,8 @@ export const ItemReducer = (state= initialState, action)=>{
             return{...state, loading:false, items:action.payload}
         case 'Itemedit':
             console.log('THE ID', action.put)
-            return{...state, loading:false, items: state.items.map((item)=>
-                {if(item.id == action.put){
+            return{...state, loading:false, items: state.items.map((item)=>{
+                if(item.id == action.put){
                   item.name = action.payload.name
                   item.description = action.payload.description
                   item.price = action.payload.price
@@ -22,8 +22,8 @@ export const ItemReducer = (state= initialState, action)=>{
                   return item
                 }else{
                   return item
-                }}
-                )}
+                }
+            })}
         case 'Itemadd':
             return {...state, loading:false, items: [...state.items, action.payload]}
         case 'Itemdelete':

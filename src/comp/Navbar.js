@@ -27,7 +27,6 @@ const Navbar = ()=>{
        
     }
 
-    console.log("theuser",User)
 
     return(
         <div>
