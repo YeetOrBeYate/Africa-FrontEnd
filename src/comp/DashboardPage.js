@@ -40,13 +40,18 @@ const Dashboard =()=>{
                         {state.user.locations.map((loc,index)=>(
                             <div className={`location location-${index}`} >
                                 <h3>{loc.name}</h3>
-                                {Item.items.map((item,index)=>(
+                                {Item.items.map((item,index)=>{
+
+                                    if(item.location_id == loc.id){
+                                    return(
                                     <div className = 'locationItem' >
                                         <h3>{item.name}</h3>
                                         <h3>{item.description}</h3>
                                         <h3>{item.price}</h3>
-                                    </div>
-                                ))}
+                                    </div>)
+                                    }
+                                    
+                                })}
                             </div>
                         ))}
                     </section>
