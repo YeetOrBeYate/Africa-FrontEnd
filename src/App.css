@@ -105,7 +105,8 @@
 }
 
 .Dash-item{
-  width: 50%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .Items{
@@ -132,9 +133,9 @@
   box-shadow: .50px .75px 2px 3px #323232;
 }
 
-.Dashboard-flex{
+/* .Dashboard-flex{
   display: flex;
-}
+} */
 
 /* The edit panel classes and stuff********************** */
 

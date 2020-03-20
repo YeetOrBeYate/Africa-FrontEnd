@@ -28,34 +28,47 @@ const Dashboard =()=>{
         </div>);
     }
 
+    const toggleItems = (e,number)=>{
+        e.preventDefault()
+
+        const childclass = document.querySelectorAll(`.locationItem-${number}`)
+
+        console.log(childclass)
+
+        childclass.forEach((child)=>{
+            child.classList.toggle('locationVisible')
+        })
+
+    }
+
 
     return(
         <div className="Dashboard">
             <DashboardUtils/>
             <section className="DashboardPage">
                 <h1 className="DashTitle">Welcome:{state.user.username}</h1>
-                <div className="Dashboard-flex">
                     <section className="Dash-item Locations">
                         <h1 className="subDashTitle">Your Locations:</h1>
                         {state.user.locations.map((loc,index)=>(
-                            <div className={`location location-${index}`} >
-                                <h3>{loc.name}</h3>
+                            <div className={`location location-${loc.id}`} >
+                                <section className='location-labels'>
+                                    <h3>{loc.name}</h3>
+                                    <button type='button' onClick={(e)=>toggleItems(e,loc.id)}>toggle items</button>
+                                </section>
                                 {Item.items.map((item,index)=>{
 
                                     if(item.location_id == loc.id){
                                     return(
-                                    <div className = 'locationItem' >
+                                    <div className = {`locationItem locationItem-${loc.id}`} >
                                         <h3>{item.name}</h3>
                                         <h3>{item.description}</h3>
                                         <h3>{item.price}</h3>
                                     </div>)
                                     }
-                                    
                                 })}
                             </div>
                         ))}
                     </section>
-                </div>
             </section>
         </div>
     );
