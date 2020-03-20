@@ -3,6 +3,8 @@ import {signUp, stopMove} from '../Actions/RegisterActions';
 
 import {useDispatch, useSelector} from 'react-redux';
 
+import "../CSS/Navbar.css"
+
 const Register =(props)=>{
 
     

@@ -2,9 +2,21 @@
     display: flex;
     justify-content: space-around;
     background: #323232;
-  }
+}
   
-  .NavFlex a{
-    padding: 2% 0;
-    color: ivory;
-  }
+.NavFlex a{
+  padding: 2% 0;
+  color: ivory;
+}
+
+.Loginpage{
+  height: 650px;
+}
+
+.Registerpage{
+  height: 650px;
+}
+
+.Homepage{
+  height: 650px;
+}

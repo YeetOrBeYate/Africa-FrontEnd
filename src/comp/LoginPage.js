@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from 'axios';
+
+import "../CSS/Navbar.css"
 
 import {signIn, stopMove} from "../Actions/LoginActions";
 import {useDispatch, useSelector} from 'react-redux';
