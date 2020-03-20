@@ -16,6 +16,10 @@ import EditPicture from "../pics/icons8-edit-48.png";
 import AddPicture from "../pics/icons8-add-50.png";
 import DeletePicture from "../pics/icons8-delete-bin-50.png";
 
+import "../CSS/DashboardUtils.css"
+
+
+
 
 const DashboardUtils = ()=>{
 

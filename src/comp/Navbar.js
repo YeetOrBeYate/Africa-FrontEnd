@@ -12,6 +12,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {clearMenu} from "../Actions/MenuActions";
 import {clearUser} from "../Actions/UserActions";
 
+import "../CSS/Navbar.css"
+
 
 const Navbar = ()=>{
 

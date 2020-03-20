@@ -1,3 +1,50 @@
+.Dashboard{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    height: 650px;
+    background: #eef2c3;
+  }
+
+.DashboardPage{
+margin: 0;
+width: 75%;
+overflow-y: scroll;
+}
+
+.DashTitle{
+    margin:0;
+    padding: 1.5% 0;
+    position: sticky;
+    top:0;
+    background:#eef2c3;
+}
+
+.Dash-item{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.Locations{
+    background: #eef2c3;
+}
+
+.subDashTitle{
+    margin:0;
+    padding: 1.5% 0;
+    position: sticky;
+    top:72px;
+    background:#eef2c3;
+}
+
+.location{
+    text-align: left;
+    border: none;
+    padding: 1% 2%;
+    margin: 4% 2%;
+    box-shadow: .50px .75px 2px 3px #323232;
+}
+
 .location-labels{
     display: flex;
     justify-content: space-between;
