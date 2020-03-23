@@ -26,9 +26,9 @@ const DashboardUtils = ()=>{
     // States and dispatch needed in order to keep everything moving in localStorage and the db********************************
     const state = useSelector(state=>state.User);
     const Category = useSelector(state=>state.Category);
+    const Item = useSelector(state=>state.Item);
     const Menu = useSelector(state=>state.Menu);
     const dispatch = useDispatch();
-    const Item = useSelector(state=>state.Item);
 
     // Useeffects to watch for edit changes and to get needed data from the db*************************************************
     // React.useEffect(()=>{
@@ -47,7 +47,8 @@ const DashboardUtils = ()=>{
     const [user, setUser] = React.useState({
         username:'',
         password:'',
-        Repassword:''
+        Repassword:'',
+        match: true
     })
 
     const [item, setItem] = React.useState({
@@ -120,13 +121,19 @@ const DashboardUtils = ()=>{
     const submitUser=(e)=>{
         e.preventDefault();
 
-        let Theuser = {
-            username:user.username,
-            password:user.password
-        }
-        dispatch(EditUser(state.user.id, Theuser))
+        if(user.password === user.Repassword){
 
-        setUser({...user, username:'',password:'',Repassword:''})
+            let Theuser = {
+                username:user.username,
+                password:user.password
+            }
+            dispatch(EditUser(state.user.id, Theuser))
+    
+            setUser({...user, match:true, username:'',password:'',Repassword:''})
+        }else{
+            setUser({...user, match:false, username:'',password:'',Repassword:''})
+        }
+
     }
      //The Item form functions for changing the usestate attached to it,submitting, and selecting category***********************
     const selectItem = (e)=>{
@@ -327,6 +334,7 @@ const DashboardUtils = ()=>{
                         <div>
                             <input type="text" onChange={changeUser} name="Repassword" value={user.Repassword} placeholder="re-enter the password"/> 
                         </div>
+                            {!user.match?  <b>The passwords do not match please re-enter password</b> : <></> }
                         <button onClick={(e)=>submitUser(e)}>Edit Profile!</button>
                     </form>
                 </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import Modal from 'react-modal';
 import DashboardUtils from "./DashboardUtils";
 import {getCats} from "../Actions/CategoryActions";
 import {LoadUser} from "../Actions/UserActions";
@@ -16,6 +17,22 @@ const Dashboard =()=>{
     const Item = useSelector(state=>state.Item);
     const dispatch = useDispatch();
 
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const customStyles = {
+        content:{
+            top                   : '50%',
+            left                  : '50%',
+            right                 : 'auto',
+            bottom                : 'auto',
+            marginRight           : '-50%',
+            transform             : 'translate(-50%, -50%)',
+            width: '30%',
+            height: '30%',
+            background: '#eef2c3'
+        },
+
+    }
+
 
     React.useEffect(()=>{
         dispatch(getCats())
@@ -23,33 +40,40 @@ const Dashboard =()=>{
         dispatch(LoadItems(state.userid))
     },[])
     
+    
+    const toggleItems = (e,number)=>{
+        e.preventDefault()
+        
+        const childclass = document.querySelectorAll(`.locationItem-${number}`)
+        
+        console.log(childclass)
+        
+        childclass.forEach((child)=>{
+            child.classList.toggle('locationVisible')
+        })
+        
+    }
+    
     if(Category.categories ===null || state.user === null || Item.items === null){
         return(<div>
             loading...
         </div>);
     }
-
-    const toggleItems = (e,number)=>{
-        e.preventDefault()
-
-        const childclass = document.querySelectorAll(`.locationItem-${number}`)
-
-        console.log(childclass)
-
-        childclass.forEach((child)=>{
-            child.classList.toggle('locationVisible')
-        })
-
-    }
-
-
+    
     return(
         <div className="Dashboard">
             <DashboardUtils/>
             <section className="DashboardPage">
+                <Modal
+                isOpen = {modalOpen}
+                onRequestClose={()=>setModalOpen(false)}
+                style={customStyles}
+                >
+                    <h2>Modal title</h2>
+                    <p>Modal Body</p>
+                </Modal>
                 <h1 className="DashTitle">Welcome:{state.user.username}</h1>
                     <section className="Dash-item Locations">
-                        <h1 className="subDashTitle">Your Locations:</h1>
                         {state.user.locations.map((loc,index)=>(
                             <div className={`location location-${loc.id}`} >
                                 <section className='location-labels'>
