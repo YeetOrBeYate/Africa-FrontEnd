@@ -127,7 +127,9 @@ const DashboardUtils = ()=>{
                 username:user.username,
                 password:user.password
             }
-            dispatch(EditUser(state.user.id, Theuser))
+
+            const fake = {}
+            dispatch(EditUser(state.user.id, fake))
     
             setUser({...user, match:true, username:'',password:'',Repassword:''})
         }else{

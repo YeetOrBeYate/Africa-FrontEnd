@@ -31,6 +31,10 @@ const Userclear = ()=>{
     return {type:'clearUser'}
 }
 
+const UserFailure = ()=>{
+    return {type:'Userfailure'}
+}
+
 export const clearUser = ()=>{
     return function(dispatch){
 
@@ -54,6 +58,12 @@ export const LoadUser=(id)=>{
             dispatch(UserGood(user))
         })
 
+        .catch(err=>{
+            console.log('loaduser', err)
+
+            
+        })
+
     }
 }
 
@@ -73,7 +83,8 @@ export const EditUser=(id,user)=>{
         })
 
         .catch(err=>{
-            console.log(err)
+            console.log("editUser",err)
+            dispatch(UserFailure())
         })
 
         
@@ -94,7 +105,8 @@ export const EditUserLocation = (id,location)=>{
         })
 
         .catch(err=>{
-            console.log(err)
+            console.log("EditUserLocation",err)
+            dispatch(UserFailure())
         })
     }
 }
@@ -105,7 +117,7 @@ export const AddLocation = (location)=>{
     return function(dispatch){
         dispatch(UserLoading())
 
-        AxiosWithAuth().post(`/location`, location)
+        AxiosWithAuth().post(`/location`,location)
         .then(res=>{
             console.log("adding location", res)
         
@@ -115,7 +127,9 @@ export const AddLocation = (location)=>{
         })
 
         .catch(err=>{
-            console.log(err)
+            console.log("Addlocation", err)
+
+            dispatch(UserFailure())
         })
     }
 
@@ -138,7 +152,8 @@ export const RemoveLocation = (locationid)=>{
         })
 
         .catch(err=>{
-            console.log(err)
+            console.log("delete location", err)
+            dispatch(UserFailure())
         })
     }
 }

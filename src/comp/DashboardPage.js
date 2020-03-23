@@ -39,6 +39,16 @@ const Dashboard =()=>{
         dispatch(LoadUser(state.userid))
         dispatch(LoadItems(state.userid))
     },[])
+
+    React.useEffect(()=>{
+
+        if(state.failure){
+            setModalOpen(true)
+        }else{
+            setModalOpen(false)
+        }
+
+    }, [state.failure])
     
     
     const toggleItems = (e,number)=>{
@@ -69,8 +79,8 @@ const Dashboard =()=>{
                 onRequestClose={()=>setModalOpen(false)}
                 style={customStyles}
                 >
-                    <h2>Modal title</h2>
-                    <p>Modal Body</p>
+                    <h2>An error occured</h2>
+                    <p>we were unable to make the request, please try again</p>
                 </Modal>
                 <h1 className="DashTitle">Welcome:{state.user.username}</h1>
                     <section className="Dash-item Locations">

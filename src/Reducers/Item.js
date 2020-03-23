@@ -1,7 +1,8 @@
 
 const initialState = {
     items:null,
-    loading:false
+    loading:false,
+    failure:false
 }
 
 export const ItemReducer = (state= initialState, action)=>{

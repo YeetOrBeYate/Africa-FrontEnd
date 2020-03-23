@@ -20,7 +20,8 @@ const checkUser = ()=>{
 const initialState = {
     loading:false,
     userid:checkUser(),
-    user:null
+    user:null,
+    failure:false
 }
 
 // user{
@@ -56,6 +57,8 @@ export const UserReducer = (state=initialState, action)=>{
             return {...state,user:{...state.user, locations:state.user.locations.filter(loc=>loc.id !=action.payload)}, loading:false}
         case 'clearUser':
             return{...state, user:null}
+        case 'Userfailure':
+            return {...state, failure:true }
         default:
             return state
     }
