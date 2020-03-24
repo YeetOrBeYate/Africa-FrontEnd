@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-modal';
 import {Switch, Route, Link} from 'react-router-dom';
 import Login from "./LoginPage";
 import Register from "./RegisterPage";
@@ -20,6 +21,30 @@ const Navbar = ()=>{
     const dispatch = useDispatch();
     const Menu = useSelector(state=>state.Menu)
     const User = useSelector(state=>state.User)
+    const Item = useSelector(state=>state.Item)
+
+    const [loading,setLoading] = React.useState(true)
+
+    const customStyles = {
+        content:{
+            top                   : '50%',
+            left                  : '50%',
+            right                 : 'auto',
+            bottom                : 'auto',
+            marginRight           : '-50%',
+            transform             : 'translate(-50%, -50%)',
+            backgroundColor: 'transparent',
+            border:'none',
+            width: "170px",
+            height: "170px"
+        },
+
+        overlay:{
+            opacity: '1.0',
+            backgroundColor: 'transparent'
+        }
+
+    }
 
     const signOut = (e)=>{
         
@@ -32,6 +57,14 @@ const Navbar = ()=>{
 
     return(
         <div>
+            <Modal 
+            // className='loader'
+            isOpen={loading}
+            onRequestClose={()=>setLoading(false)}
+            style={customStyles}
+             >
+                 <div className= 'loader'></div>
+             </Modal>
             <div className="NavFlex">
                 {
                     User.user? 
