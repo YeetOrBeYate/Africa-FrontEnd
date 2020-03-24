@@ -22,6 +22,14 @@ const deleteItem = (data)=>{
     return {type:'Itemdelete', payload:data}
 }
 
+const failureItem = ()=>{
+    return {type:'failureItem'}
+}
+
+const ItemFix = ()=>{
+    return{type:'ItemFix'}
+}
+
 export const LoadItems =(userId)=>{
 
     return function(dispatch){
@@ -54,6 +62,7 @@ export const EditItems = (id, item)=>{
         })
         .catch(err=>{
             console.log(err)
+            dispatch(failureItem())
         })
     }
 }
@@ -72,6 +81,7 @@ export const AddItem = (item)=>{
         })
         .catch(err=>{
             console.log(err)
+            dispatch(failureItem())
         })
     }
 }
@@ -89,6 +99,14 @@ export const DeleteItem = (id)=>{
         })
         .catch(err=>{
             console.log(err)
+            dispatch(failureItem())
         })
+    }
+}
+
+export const FixItemFailure = ()=>{
+
+    return function(dispatch){
+        dispatch(ItemFix())
     }
 }

@@ -3,9 +3,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import Modal from 'react-modal';
 import DashboardUtils from "./DashboardUtils";
 import {getCats} from "../Actions/CategoryActions";
-import {LoadUser} from "../Actions/UserActions";
+import {LoadUser, FixUserFailure} from "../Actions/UserActions";
 
-import {LoadItems} from "../Actions/ItemActions";
+import {LoadItems,FixItemFailure} from "../Actions/ItemActions";
 
 import "../CSS/DashboardPage.css";
 
@@ -44,11 +44,14 @@ const Dashboard =()=>{
 
         if(state.failure){
             setModalOpen(true)
-        }else{
-            setModalOpen(false)
         }
 
-    }, [state.failure])
+        if(Item.failure){
+            setModalOpen(true)
+        }
+
+
+    }, [state.failure, Item.failure])
     
     
     const toggleItems = (e,number)=>{
@@ -63,6 +66,14 @@ const Dashboard =()=>{
         })
         
     }
+
+    const closeModel = ()=>{
+
+        setModalOpen(false)
+        dispatch(FixUserFailure())
+        dispatch(FixItemFailure())
+
+    }
     
     if(Category.categories ===null || state.user === null || Item.items === null){
         return(<div>
@@ -76,7 +87,7 @@ const Dashboard =()=>{
             <section className="DashboardPage">
                 <Modal
                 isOpen = {modalOpen}
-                onRequestClose={()=>setModalOpen(false)}
+                onRequestClose={closeModel}
                 style={customStyles}
                 >
                     <h2>An error occured</h2>

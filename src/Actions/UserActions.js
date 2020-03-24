@@ -35,6 +35,10 @@ const UserFailure = ()=>{
     return {type:'Userfailure'}
 }
 
+const UserFix = ()=>{
+    return {type:'UserFix'}
+}
+
 export const clearUser = ()=>{
     return function(dispatch){
 
@@ -155,5 +159,13 @@ export const RemoveLocation = (locationid)=>{
             console.log("delete location", err)
             dispatch(UserFailure())
         })
+    }
+}
+
+export const FixUserFailure = ()=>{
+
+    return function(dispatch){
+
+        dispatch(UserFix())
     }
 }
