@@ -100,6 +100,7 @@ export const EditUser=(id,user)=>{
 export const EditUserLocation = (id,location)=>{
 
     return function(dispatch){
+
         dispatch(UserLoading())
 
         AxiosWithAuth().put(`/location/${id}`, location)
@@ -119,6 +120,7 @@ export const EditUserLocation = (id,location)=>{
 export const AddLocation = (location)=>{
     
     return function(dispatch){
+        
         dispatch(UserLoading())
 
         AxiosWithAuth().post(`/location`,location)

@@ -23,7 +23,17 @@ const Navbar = ()=>{
     const User = useSelector(state=>state.User)
     const Item = useSelector(state=>state.Item)
 
-    const [loading,setLoading] = React.useState(true)
+    const [loading,setLoading] = React.useState(false)
+
+    React.useEffect(()=>{
+
+        if(User.loading){
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
+
+    },[User.loading] )
 
     const customStyles = {
         content:{

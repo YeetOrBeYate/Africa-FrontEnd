@@ -1,14 +1,5 @@
 
 
-const checkToken=()=>{
-    let token =localStorage.getItem('token')
-    if(token !==''){
-        return token
-    }else{
-        return token = ''
-    }
-}
-
 const checkUser = ()=>{
     let userid = localStorage.getItem('userId')
     if(userid !== null){
@@ -34,12 +25,10 @@ export const UserReducer = (state=initialState, action)=>{
     switch(action.type){
         case 'Userloading':
             return{...state, loading:true}
-        case "userId":
-            return{...state, userid:action.payload}
         case 'userGood':
             return{...state, loading:false, user:action.payload,}
         case 'Useredit':
-            return{...state, user: {...state.user, username:action.payload}}
+            return{...state, loading:false, user: {...state.user, username:action.payload}}
         case 'UserEditlocation':
             return{...state, loading:false, locations: state.user.locations.map((loc)=>{
                 if(loc.id == action.put){
@@ -49,12 +38,10 @@ export const UserReducer = (state=initialState, action)=>{
                     return loc
                 }
             })}
-        case 'LocationCloseedit':
-            return{...state, locationEdit:false, user:{...state.user, locations:action.payload}}
         case 'UserAddLocation':
-            return{...state, user:{...state.user, locations:[...state.user.locations, action.payload]}, loading:false}
+            return{...state, loading:false, user:{...state.user, locations:[...state.user.locations, action.payload]}}
         case 'UserDeleteLocation':
-            return {...state,user:{...state.user, locations:state.user.locations.filter(loc=>loc.id !=action.payload)}, loading:false}
+            return {...state,loading:false, user:{...state.user, locations:state.user.locations.filter(loc=>loc.id !=action.payload)}}
         case 'clearUser':
             return{...state, user:null}
         case 'Userfailure':
