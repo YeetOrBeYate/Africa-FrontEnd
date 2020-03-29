@@ -53,6 +53,8 @@ export const LoadUser=(id)=>{
 
         dispatch(UserLoading())
 
+
+
         return AxiosWithAuth().get(`/users/${id}`)
 
         .then(response=>{

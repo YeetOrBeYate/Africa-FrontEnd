@@ -24,6 +24,8 @@ const ItemDelete = ()=>{
  
 
         if(select !=0){
+
+            console.log('ITEMS TO CHOOSE FROM', Item.items)
                 //loops through my items array, each object will be refered to as item(param)
             const newItem = Item.items.find((item)=>{
 
@@ -33,6 +35,7 @@ const ItemDelete = ()=>{
                 return item.id == newid
                 
             })
+            console.log('NEW ITEM', newItem)
             //setting the id and name of the item I'm about to delete
             setItemDel({...itemDel, id:newItem.id, name:newItem.name})
             

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const loading = ()=>{
-    return {type: 'loading'}
+    return {type: 'Loginloading'}
 }
 
 const good = ()=>{
@@ -17,14 +17,11 @@ const forward = ()=>{
     return {type:'moved'}
 }
 
-
+//this fucntion sets the user id in the user reducer, dont remove the case for the user reducer that corrisponds
 const UserId = (data)=>{
     return {type:'userId', payload:data}
 }
 
-const UserLoading = ()=>{
-    return {type: 'Userloading'}
-}
 
 export const stopMove = ()=>{
 
@@ -39,8 +36,7 @@ export const signIn = (person)=>{
     return function(dispatch){
 
         dispatch(loading());
-        dispatch(UserLoading());
-
+        //removed the userloading action from this location
         return axios.post('https://africa-marketplace.herokuapp.com/auth/login', person)
         .then(res=>{
             console.log(res.data)

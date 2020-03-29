@@ -33,6 +33,7 @@ const ItemFix = ()=>{
 export const LoadItems =(userId)=>{
 
     return function(dispatch){
+
         dispatch(Loading())
 
         return AxiosWithAuth().get(`/item/${userId}`)
@@ -76,6 +77,10 @@ export const AddItem = (item)=>{
         return AxiosWithAuth().post(`/item`, item)
         .then(res=>{
             console.log('NEW add item', res)
+
+            let itemId = res.data.id
+
+            item = {...item, id:itemId}
 
             dispatch(addItem(item))
         })

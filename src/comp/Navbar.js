@@ -22,18 +22,22 @@ const Navbar = ()=>{
     const Menu = useSelector(state=>state.Menu)
     const User = useSelector(state=>state.User)
     const Item = useSelector(state=>state.Item)
+    const LoginR = useSelector(state=>state.Login)
 
     const [loading,setLoading] = React.useState(false)
 
+    const token = localStorage.getItem('token')
+
     React.useEffect(()=>{
 
-        if(User.loading){
+        if(User.loading || LoginR.loading || Item.loading){
             setLoading(true)
         }else{
             setLoading(false)
         }
 
-    },[User.loading] )
+
+    },[User.loading, LoginR.loading, Item.loading] )
 
     const customStyles = {
         content:{
@@ -77,7 +81,7 @@ const Navbar = ()=>{
              </Modal>
             <div className="NavFlex">
                 {
-                    User.user? 
+                    token? 
                     <>
                         <Link to="/">Home</Link>
                         <Link onClick={(e)=>signOut(e)} to='/login'>SignOut</Link>

@@ -10,10 +10,10 @@ const initialState = {
 
 export const LoginReducer = (state=initialState, action)=>{
     switch(action.type){
-        case 'loading':
+        case 'Loginloading':
             return {...state, loading:true}
         case 'good':
-            return{...state, attemped:true, loading:false, navForward:true}
+            return{...state, failure:false, attemped:true, loading:false, navForward:true}
         case 'bad':
             return{...state, failure:true, loading:false, failure:true}
         case 'moved':

@@ -25,6 +25,8 @@ export const UserReducer = (state=initialState, action)=>{
     switch(action.type){
         case 'Userloading':
             return{...state, loading:true}
+        case "userId":
+            return{...state, userid:action.payload}
         case 'userGood':
             return{...state, loading:false, user:action.payload,}
         case 'Useredit':

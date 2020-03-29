@@ -55,12 +55,6 @@ const Login = (props)=>{
                 <button onClick={(e)=>yeet(e,person)}>Login</button>
             </form>
             {
-                state.loading ? <div>Loading...</div> : <></>
-            }
-            {
-                state.attemped && state.username!==null ? <div>Success!</div>: <></>
-            }
-            {
                 state.failure ? <div>Invalid Credentials!</div> : <></>
             }
         </div>
