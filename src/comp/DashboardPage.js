@@ -33,6 +33,17 @@ const Dashboard =()=>{
 
     }
 
+    const FindCatName = (catId)=>{
+     
+        let name = Category.categories.find((cat)=>{
+            if(cat.id === catId){
+                return cat.name
+            }
+        })
+
+        return name.name
+    }
+
 
     React.useEffect(()=>{
         dispatch(getCats())
@@ -59,7 +70,8 @@ const Dashboard =()=>{
         
         const childclass = document.querySelectorAll(`.locationItem-${number}`)
         
-        console.log(childclass)
+        // console.log(childclass)
+        console.log(document.querySelector(`.location-${number}`).childNodes)
         
         childclass.forEach((child)=>{
             child.classList.toggle('locationVisible')
@@ -80,6 +92,7 @@ const Dashboard =()=>{
             loading...
         </div>);
     }
+
     
     return(
         <div className="Dashboard">
@@ -109,15 +122,17 @@ const Dashboard =()=>{
                                         <h3>{item.name}</h3>
                                         <h3>{item.description}</h3>
                                         <h3>{item.price}</h3>
+                                        <h3>{FindCatName(item.category_id)}</h3>
                                     </div>)
                                     }
                                 })}
                             </div>
                         ))}
-                    </section>
+                    </section>   
             </section>
         </div>
     );
+
 
 }
 

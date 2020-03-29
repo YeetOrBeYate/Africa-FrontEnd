@@ -20,6 +20,7 @@ export const ItemReducer = (state= initialState, action)=>{
                   item.price = action.payload.price
                   item.user_id = action.payload.user_id
                   item.category_id = action.payload.category_id
+                  item.location_id = action.payload.location_id
                   return item
                 }else{
                   return item

@@ -57,7 +57,8 @@ const DashboardUtils = ()=>{
         description:'',
         price:'',
         user_id:state.user.id,
-        category_id:''
+        category_id:'',
+        location_id:''
     })
 
     const [location, setLocation] = React.useState({
@@ -167,7 +168,8 @@ const DashboardUtils = ()=>{
             description: item.description,
             price: item.price,
             user_id:item.user_id,
-            category_id:item.category_id
+            category_id:item.category_id,
+            location_id:item.location_id
         }
         
 
@@ -395,6 +397,12 @@ const DashboardUtils = ()=>{
                                     {Category.categories.map((cat)=>(
                                             <option value={cat.id}>{cat.name}</option>
                                     ))}
+                                </select>
+                                <select name='location_id' onChange={changeItem}>
+                                    <option>Pick a location</option>
+                                    {state.user.locations.map((loc)=>(
+                                        <option value={loc.id}>{loc.name}</option>
+                                        ))}
                                 </select>
                             </div>
                             {/* Add the location selector under this or next to it */}
