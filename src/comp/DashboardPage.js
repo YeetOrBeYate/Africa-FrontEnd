@@ -57,11 +57,12 @@ const Dashboard =()=>{
         const childclass = document.querySelectorAll(`.locationItem-${number}`)
 
         // let classMates = document.querySelectorAll(`.locationItem-${number}`)
-        // console.log(classMates)
+        
 
         // console.log(document.querySelector(`.location-${number}`).childNodes)
 
         childclass.forEach((child)=>{
+            
             child.classList.toggle('locationVisible')
         })
         
