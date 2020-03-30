@@ -1,12 +1,12 @@
 import React from 'react';
 import Modal from 'react-modal';
 import {Switch, Route, Link} from 'react-router-dom';
-import Login from "./LoginPage";
-import Register from "./RegisterPage";
-import Home from "./HomePage";
-import Dashboard from './DashboardPage';
-import addItem from "./AddItem";
-import Test from "./Menutest";
+// import Login from "./LoginPage";
+// import Register from "./RegisterPage";
+// import Home from "./HomePage";
+// import Dashboard from './DashboardPage';
+// import addItem from "./AddItem";
+// import Test from "./Menutest";
 import Footer from "./Footerbar";
 
 import {useDispatch, useSelector} from "react-redux";
@@ -61,16 +61,14 @@ const Navbar = ()=>{
     }
 
     const signOut = (e)=>{
-        
         localStorage.clear();
         dispatch(clearMenu())
         dispatch(clearUser())
-       
     }
 
 
     return(
-        <div>
+        <div className = 'test'>
             <Modal 
             // className='loader'
             isOpen={loading}
@@ -97,15 +95,15 @@ const Navbar = ()=>{
                     </>
                 }
             </div>
-            <Switch>
+            {/* <Switch>
                 <Route path="/login" render={(props)=> <Login {...props}/>}/>
                 <Route path="/register" render={(props)=> <Register {...props}/>}/>
                 <Route path='/dashboard' component={Dashboard}/>
                 <Route path = '/additem' component={addItem}/>
                 <Route path="/test" component={Test}/>
                 <Route path = "/" component ={Home}/>
-            </Switch>
-            <Footer/>
+            </Switch> */}
+            {/* <Footer/> */}
         </div>
     );
 }

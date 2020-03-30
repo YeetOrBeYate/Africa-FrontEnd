@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import Modal from 'react-modal';
 import DashboardUtils from "./DashboardUtils";
 import ItemCard from './Itemcard';
+import Locationcard from './Locationcard'
 import {getCats} from "../Actions/CategoryActions";
 import {LoadUser, FixUserFailure} from "../Actions/UserActions";
 
@@ -33,8 +34,6 @@ const Dashboard =()=>{
         },
 
     }
-
-
     React.useEffect(()=>{
         dispatch(getCats())
         dispatch(LoadUser(state.userid))
@@ -69,36 +68,19 @@ const Dashboard =()=>{
     }
 
     const closeModel = ()=>{
-
         setModalOpen(false)
         dispatch(FixUserFailure())
         dispatch(FixItemFailure())
 
     }
     
+
     if(Category.categories ===null || state.user === null || Item.items === null){
         return(<div>
             loading...
         </div>);
     }
 
-    const GetItemNumber = (locationId)=>{
-
-        try{
-
-            const items = document.querySelector(`.location-${locationId}`).childNodes.length
-
-            if(!items){
-    
-            }else{
-                
-                return (items-1)
-            }
-        }
-        catch(err){
-            
-        }
-    }
 
 
     
@@ -117,25 +99,11 @@ const Dashboard =()=>{
                 <h1 className="DashTitle">Welcome:{state.user.username}</h1>
                     <section className="Dash-item Locations">
                         {state.user.locations.map((loc,index)=>(
-                            <div className={`location location-${loc.id}`} >
-                                <section className='location-labels'>
-                                    <h3>{loc.name}</h3>
-                                    <h3>Items: {GetItemNumber(loc.id)}</h3>
-                                    <button type='button' onClick={(e)=>toggleItems(e,loc.id)}>toggle items</button>
-                                </section>
-                                {Item.items.map((item,index)=>{
-                                    if(item.location_id == loc.id){
-                                    return(
-                                    <ItemCard 
-                                        id = {item.location_id} 
-                                        name = {item.name} 
-                                        description = {item.description} 
-                                        price = {item.price} 
-                                        category_id = {item.category_id}
-                                    />)
-                                    }
-                                })}
-                            </div>
+                            <Locationcard
+                                id = {loc.id}
+                                name = {loc.name}
+                                toggleItems = {toggleItems}
+                            />
                         ))}
                     </section>   
             </section>
