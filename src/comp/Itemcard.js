@@ -19,8 +19,30 @@ const ItemCard = (props)=>{
         return name.name
     }
 
+    const selfToggle = (locationId)=>{
+
+        try{
+
+            let classMates = document.querySelectorAll(`.locationItem-${locationId}`)
+
+            if(!classMates){
+
+            }else{
+                console.log(classMates)
+            }
+
+            return locationId
+
+
+
+        }
+        catch(err){
+            
+        }
+    }
+
     return(
-        <div onClick={()=>{console.log('this is the id:', props.id)}}className = {`locationItem locationItem-${props.id}`}>
+        <div onClick={()=>{console.log('this is the id:', props.id)}}className = {`locationItem locationItem-${selfToggle()}`}>
             <h3>{props.name}</h3>
             <h3>{props.description}</h3>
             <h3>{props.price}</h3>

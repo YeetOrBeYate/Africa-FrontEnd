@@ -55,9 +55,12 @@ const Dashboard =()=>{
         e.preventDefault()
         
         const childclass = document.querySelectorAll(`.locationItem-${number}`)
-        console.log(Item.items)
-        
-        
+
+        // let classMates = document.querySelectorAll(`.locationItem-${number}`)
+        // console.log(classMates)
+
+        // console.log(document.querySelector(`.location-${number}`).childNodes)
+
         childclass.forEach((child)=>{
             child.classList.toggle('locationVisible')
         })
@@ -76,6 +79,24 @@ const Dashboard =()=>{
         return(<div>
             loading...
         </div>);
+    }
+
+    const GetItemNumber = (locationId)=>{
+
+        try{
+
+            const items = document.querySelector(`.location-${locationId}`).childNodes.length
+
+            if(!items){
+    
+            }else{
+                
+                return (items-1)
+            }
+        }
+        catch(err){
+            
+        }
     }
 
 
@@ -98,13 +119,14 @@ const Dashboard =()=>{
                             <div className={`location location-${loc.id}`} >
                                 <section className='location-labels'>
                                     <h3>{loc.name}</h3>
+                                    <h3>Items: {GetItemNumber(loc.id)}</h3>
                                     <button type='button' onClick={(e)=>toggleItems(e,loc.id)}>toggle items</button>
                                 </section>
                                 {Item.items.map((item,index)=>{
                                     if(item.location_id == loc.id){
                                     return(
                                     <ItemCard 
-                                        id = {loc.id} 
+                                        id = {item.location_id} 
                                         name = {item.name} 
                                         description = {item.description} 
                                         price = {item.price} 
