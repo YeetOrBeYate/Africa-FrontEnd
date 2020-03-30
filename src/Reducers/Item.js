@@ -12,7 +12,6 @@ export const ItemReducer = (state= initialState, action)=>{
         case 'Itemgot':
             return{...state, loading:false, items:action.payload}
         case 'Itemedit':
-            console.log('THE ID', action.put)
             return{...state, loading:false, items: state.items.map((item)=>{
                 if(item.id == action.put){
                   item.name = action.payload.name

@@ -76,7 +76,7 @@ export const AddItem = (item)=>{
         
         return AxiosWithAuth().post(`/item`, item)
         .then(res=>{
-            console.log('NEW add item', res)
+            
 
             let itemId = res.data.id
 

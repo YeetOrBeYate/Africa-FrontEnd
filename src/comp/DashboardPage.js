@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Modal from 'react-modal';
 import DashboardUtils from "./DashboardUtils";
+import ItemCard from './Itemcard';
 import {getCats} from "../Actions/CategoryActions";
 import {LoadUser, FixUserFailure} from "../Actions/UserActions";
 
@@ -33,17 +34,6 @@ const Dashboard =()=>{
 
     }
 
-    const FindCatName = (catId)=>{
-     
-        let name = Category.categories.find((cat)=>{
-            if(cat.id === catId){
-                return cat.name
-            }
-        })
-
-        return name.name
-    }
-
 
     React.useEffect(()=>{
         dispatch(getCats())
@@ -53,11 +43,7 @@ const Dashboard =()=>{
 
     React.useEffect(()=>{
 
-        if(state.failure){
-            setModalOpen(true)
-        }
-
-        if(Item.failure){
+        if(state.failure || Item.failure){
             setModalOpen(true)
         }
 
@@ -69,9 +55,8 @@ const Dashboard =()=>{
         e.preventDefault()
         
         const childclass = document.querySelectorAll(`.locationItem-${number}`)
+        console.log(Item.items)
         
-        // console.log(childclass)
-        console.log(document.querySelector(`.location-${number}`).childNodes)
         
         childclass.forEach((child)=>{
             child.classList.toggle('locationVisible')
@@ -92,6 +77,7 @@ const Dashboard =()=>{
             loading...
         </div>);
     }
+
 
     
     return(
@@ -115,15 +101,15 @@ const Dashboard =()=>{
                                     <button type='button' onClick={(e)=>toggleItems(e,loc.id)}>toggle items</button>
                                 </section>
                                 {Item.items.map((item,index)=>{
-
                                     if(item.location_id == loc.id){
                                     return(
-                                    <div className = {`locationItem locationItem-${loc.id}`} >
-                                        <h3>{item.name}</h3>
-                                        <h3>{item.description}</h3>
-                                        <h3>{item.price}</h3>
-                                        <h3>{FindCatName(item.category_id)}</h3>
-                                    </div>)
+                                    <ItemCard 
+                                        id = {loc.id} 
+                                        name = {item.name} 
+                                        description = {item.description} 
+                                        price = {item.price} 
+                                        category_id = {item.category_id}
+                                    />)
                                     }
                                 })}
                             </div>
