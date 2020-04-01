@@ -20,23 +20,23 @@ const Locationcard = (props)=>{
             }
         })
 
-        let el = document.querySelector(`.location-${Lid}`)
+        let locationCard = document.querySelector(`.location-${Lid}`)
 
         if(size.length>itemCount){
              //conduct the addition animation, and change the item count to the new current list size
-            el.style.animation = "addition 1s 1";
+            locationCard.style.animation = "addition .75s 1";
             //this is to clear/reset the animation
-            el.addEventListener('animationend', ()=>{
-                el.style.animation = "none"
+            locationCard.addEventListener('animationend', ()=>{
+                locationCard.style.animation = "none"
             })
             setItemCount(size.length)
         }else if(size.length<itemCount){
             //conduct the subtract animation, and change the item count to the new current list size
-            el.style.animation = "subtract 1s 1";
+            locationCard.style.animation = "subtract .75s 1";
             setItemCount(size.length)
             //this is to clear/reset the animation
-            el.addEventListener('animationend', ()=>{
-                el.style.animation = "none"
+            locationCard.addEventListener('animationend', ()=>{
+                locationCard.style.animation = "none"
             })
         }
         return size.length
@@ -55,27 +55,23 @@ const Locationcard = (props)=>{
         })
         //if our card is closed
         if(!open){
-            button.style.animation = "1s ease-in-out 0s 1 normal both running toggleButtonOpen"
+            button.style.animation = ".4s linear 0s 1 normal forwards running toggleButtonOpen"
             arrow.classList.toggle('rotateRight')
             setOpen(true)
         }else{
         //if out card is open
-        button.style.animation = "1s ease-in-out 0s 1 reverse both running toggleButtonClose"
+        button.style.animation = ".4s linear 0s 1 normal forwards running toggleButtonClose"
         arrow.classList.toggle('rotateRight')
         setOpen(false)
         }
 
-        // button.addEventListener('animationend',()=>{
-        //     button.style.animation = "none"
-        // })
-        
     }
 
 
     return(
     <div className={`location location-${props.id}`} >
         <section className='location-labels'>
-            <h3>{props.name}</h3>
+            <h3 id='locationName'>{props.name}</h3>
             <div className="location-button" onClick={(e)=>toggleItems(e,props.id)}>
                 <p>View items</p>
                 <p>({Gimme(props.id)})</p>

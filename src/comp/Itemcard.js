@@ -34,10 +34,9 @@ const ItemCard = (props)=>{
 
     return(
         <div className = {`locationItem locationItem-${selfToggle(props.id)}`}>
-            <h3>{props.name}</h3>
+            <h2>{props.name} ({FindCatName(props.category_id)})</h2>
             <h3>{props.description}</h3>
             <h3>{props.price}</h3>
-            <h3>{FindCatName(props.category_id)}</h3>
         </div>
     )
 

@@ -1,22 +1,51 @@
 /* only used to reset animations */
 @keyframes none{
-
+    
 }
 
 @keyframes fadein {
     from { opacity: 0}
     to   { opacity: 1}
-  }
+}
 
 @keyframes addition{
-    from {box-shadow:.50px .25px 2px 2px #323232}
-    to {box-shadow: .50px .75px 2px 5px green}
+    /* from {box-shadow:.50px .25px 2px 2px #323232}
+    to {box-shadow: .50px .75px 2px 5px green} */
+    20%{transform: scale(1.1);}
+    40%{transform: scale(1.1);}
+    60%{transform: scale(1.0);}
+    80%{transform: scale(1.05);}
+    100%{transform: scale(1.0);}
 }
 
 
 @keyframes subtract{
-    from {box-shadow:.50px .25px 2px 2px #323232}
-    to {box-shadow: .50px .75px 2px 5px red}
+    /* from {box-shadow:.50px .25px 2px 2px #323232}
+    to {box-shadow: .50px .75px 2px 5px red} */
+
+    20%{transform: scale(0.9);}
+    40%{transform: scale(0.9);}
+    60%{transform: scale(1.0);}
+    80%{transform: scale(0.95);}
+    100%{transform: scale(1.0);}
+}
+
+@keyframes toggleButtonOpen{
+    0%{background-color: white;}
+    25%{transform: rotateX(360deg);}
+    50%{transform: scale(1.1);}
+    75%{transform: scale(.9);}
+    100%{background-color: #5b85aa;
+            transform: scale(1); }
+}
+
+@keyframes toggleButtonClose{
+    0%{background-color: white;}
+    25%{transform: rotateX(360deg);}
+    50%{transform: scale(1.1);}
+    75%{transform: scale(.9);}
+    100%{background-color: #5b85aa;
+            transform: scale(1); }
 }
 
 
@@ -24,7 +53,7 @@
     width: 100%;
     margin: 0 auto;
     display: flex;
-    height: 70%;
+    height: 80%;
     background: #eef2c3;
   }
 
@@ -47,18 +76,11 @@
     margin: 0 auto;
 }
 
+/* //////Location classes and ids///// */
+
 .Locations{
     background: #eef2c3;
 }
-
-.subDashTitle{
-    margin:0;
-    padding: 1.5% 0;
-    position: sticky;
-    top:72px;
-    background:#eef2c3;
-}
-
 
 .location{
     text-align: left;
@@ -74,32 +96,6 @@
     justify-content: space-between;
 }
 
-@keyframes toggleButtonOpen{
-    0%{background-color: white;}
-    100%{
-        background-color: #5b85aa;
-        transform: rotateY(360deg);
-        display: flex;
-        flex-direction: column;
-        justify-content:center;
-        
-    }
-
-}
-
-@keyframes toggleButtonClose{
-    0%{background-color: #5b85aa;}
-    25%{background-color: white;}
-    100%{
-        background-color: #5b85aa;
-        transform: rotateY(360deg);
-        display: flex;
-        align-items: center;
-    }
-}
-
-
-
 .location-button{
     background-color: #5b85aa;
     text-align: center;
@@ -107,6 +103,7 @@
     padding: 0 2%;
     display: flex;
     align-items:center ;
+    border-radius: 10px;
 }
 
 .location-button:hover{
@@ -132,9 +129,12 @@
 	border-top: 15px solid transparent;
 	border-left: 30px solid #555;
     border-bottom: 15px solid transparent;
-    margin-left: 30%;
 }
 
+#locationName{
+    padding-bottom: .5%;
+    border-bottom: 3px solid #8cb369 ;
+}
 
 .locationItem {
     width: 90%;
