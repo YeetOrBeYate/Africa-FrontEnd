@@ -8,7 +8,6 @@ const Locationcard = (props)=>{
     const Category = useSelector(state=>state.Category);
     const Item = useSelector(state=>state.Item);
 
-    const toggleItems = props.toggleItems
 
     const [itemCount, setItemCount] = React.useState(props.Count)
 
@@ -22,15 +21,18 @@ const Locationcard = (props)=>{
         let el = document.querySelector(`.location-${Lid}`)
 
         if(size.length>itemCount){
+             //conduct the addition animation, and change the item count to the new current list size
             el.style.animation = "addition 1s 1";
+            //this is to clear/reset the animation
             el.addEventListener('animationend', ()=>{
                 el.style.animation = "none"
             })
             setItemCount(size.length)
         }else if(size.length<itemCount){
-            console.log('trigger the minus animation for ', Lid)
+            //conduct the subtract animation, and change the item count to the new current list size
             el.style.animation = "subtract 1s 1";
             setItemCount(size.length)
+            //this is to clear/reset the animation
             el.addEventListener('animationend', ()=>{
                 el.style.animation = "none"
             })
@@ -38,18 +40,36 @@ const Locationcard = (props)=>{
         return size.length
     }
 
-    const dummy = (id)=>{
+    const toggleItems = (e,number)=>{
+        e.preventDefault()
 
+        const button = document.querySelector(`.location-${number} .location-button`)
         
+        const childclass = document.querySelectorAll(`.locationItem-${number}`)
+        
+        childclass.forEach((child)=>{
+            
+            child.classList.toggle('locationVisible')
+        })
 
+        button.style.animation = "1s ease-in-out 0s 1 normal both running toggleButtonOpen"
+
+        button.addEventListener('animationend',()=>{
+            button.style.animation = "none"
+        })
+        
     }
+
 
     return(
     <div className={`location location-${props.id}`} >
         <section className='location-labels'>
             <h3>{props.name}</h3>
-            <h3>Items:{Gimme(props.id)}</h3>
-            <button type='button' onClick={(e)=>toggleItems(e,props.id)}>toggle items</button>
+            <div className="location-button" onClick={(e)=>toggleItems(e,props.id)}>
+                <p>View items</p>
+                <p>({Gimme(props.id)})</p>
+                <div className="down"></div>
+            </div>
         </section>
         {Item.items.map((item,index)=>{
             if(item.location_id == props.id){

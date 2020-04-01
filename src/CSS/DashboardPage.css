@@ -1,3 +1,25 @@
+/* only used to reset animations */
+@keyframes none{
+
+}
+
+@keyframes fadein {
+    from { opacity: 0}
+    to   { opacity: 1}
+  }
+
+@keyframes addition{
+    from {box-shadow:.50px .25px 2px 2px #323232}
+    to {box-shadow: .50px .75px 2px 5px green}
+}
+
+
+@keyframes subtract{
+    from {box-shadow:.50px .25px 2px 2px #323232}
+    to {box-shadow: .50px .75px 2px 5px red}
+}
+
+
 .Dashboard{
     width: 100%;
     margin: 0 auto;
@@ -37,24 +59,6 @@
     background:#eef2c3;
 }
 
-@keyframes fadein {
-    from { opacity: 0}
-    to   { opacity: 1}
-  }
-
-@keyframes addition{
-    from {box-shadow:.50px .25px 2px 2px #323232}
-    to {box-shadow: .50px .75px 2px 5px #ff715b}
-}
-
-@keyframes none{
-
-}
-
-@keyframes subtract{
-    from {box-shadow:.50px .25px 2px 2px #323232}
-    to {box-shadow: .50px .75px 2px 5px #c191a1}
-}
 
 .location{
     text-align: left;
@@ -69,6 +73,44 @@
     display: flex;
     justify-content: space-between;
 }
+
+@keyframes toggleButtonOpen{
+    0%{background-color: white;}
+    100%{
+        background-color: #5b85aa;
+        transform: rotateY(360deg);
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+.location-button{
+    background-color: #5b85aa;
+    text-align: center;
+    color:ivory;
+    padding: 0 2%;
+    display: flex;
+    align-items:center ;
+}
+
+.location-button:hover{
+    cursor: pointer;
+}
+
+.location-button p{
+    padding:0;
+    margin:0;
+}
+
+.down {
+	width: 0;
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-top: 30px solid #555;
+}
+
 
 .locationItem {
     width: 90%;

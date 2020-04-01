@@ -49,18 +49,6 @@ const Dashboard =()=>{
 
     }, [state.failure, Item.failure])
     
-    
-    const toggleItems = (e,number)=>{
-        e.preventDefault()
-        
-        const childclass = document.querySelectorAll(`.locationItem-${number}`)
-        
-        childclass.forEach((child)=>{
-            
-            child.classList.toggle('locationVisible')
-        })
-        
-    }
 
     const closeModel = ()=>{
         setModalOpen(false)
@@ -97,7 +85,6 @@ const Dashboard =()=>{
                             <Locationcard
                                 id = {loc.id}
                                 name = {loc.name}
-                                toggleItems = {toggleItems}
                                 Count = {loc.itemCount || 0}
                             />
                         ))}

@@ -150,17 +150,13 @@ const DashboardUtils = ()=>{
         }
     }
 
-    const openThird=(e)=>{
+
+    const openThird = (e, string)=>{
         e.preventDefault()
-        const yeet = document.querySelector('.Third')
+        const yeet = document.querySelector(string)
         yeet.classList.toggle('visible')
     }
 
-    const openLocationThird=(e)=>{
-        e.preventDefault()
-        const yeet = document.querySelector('.LocationThird')
-        yeet.classList.toggle('visible')
-    }
 
     return(
         <section className="DashboardUtils">
@@ -224,7 +220,7 @@ const DashboardUtils = ()=>{
                     <div className="ItemSecondary">
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img height="50px" width="50px" onClick={(e)=>openThird(e)} src={EditPicture} alt="edit items"/>    
+                                <img height="50px" width="50px" onClick={(e)=>openThird(e,'.Third')} src={EditPicture} alt="edit items"/>    
                             </div>
                             <div>
                                 <h2>Edit an Item</h2>
@@ -281,7 +277,7 @@ const DashboardUtils = ()=>{
                     <div className="LocationSecondary">
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img height="50px" width="50px" onClick={(e)=>openLocationThird(e)} src={EditPicture} alt="edit location"/>
+                                <img height="50px" width="50px" onClick={(e)=>openThird(e,'.LocationThird')} src={EditPicture} alt="edit location"/>
                             </div>
                             <div>
                                 <h2>Edit a location</h2>
