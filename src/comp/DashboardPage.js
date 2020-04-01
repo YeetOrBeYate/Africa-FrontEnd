@@ -54,12 +54,7 @@ const Dashboard =()=>{
         e.preventDefault()
         
         const childclass = document.querySelectorAll(`.locationItem-${number}`)
-
-        // let classMates = document.querySelectorAll(`.locationItem-${number}`)
         
-
-        // console.log(document.querySelector(`.location-${number}`).childNodes)
-
         childclass.forEach((child)=>{
             
             child.classList.toggle('locationVisible')
@@ -103,14 +98,13 @@ const Dashboard =()=>{
                                 id = {loc.id}
                                 name = {loc.name}
                                 toggleItems = {toggleItems}
+                                Count = {loc.itemCount || 0}
                             />
                         ))}
                     </section>   
             </section>
         </div>
     );
-
-
 }
 
 export default Dashboard;

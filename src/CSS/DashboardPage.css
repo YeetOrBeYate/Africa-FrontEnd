@@ -42,12 +42,26 @@
     to   { opacity: 1}
   }
 
+@keyframes addition{
+    from {box-shadow:.50px .25px 2px 2px #323232}
+    to {box-shadow: .50px .75px 2px 5px #ff715b}
+}
+
+@keyframes none{
+
+}
+
+@keyframes subtract{
+    from {box-shadow:.50px .25px 2px 2px #323232}
+    to {box-shadow: .50px .75px 2px 5px #c191a1}
+}
+
 .location{
     text-align: left;
     border: none;
     padding: 1% 2%;
     margin: 4% 2%;
-    box-shadow: .50px .75px 2px 3px #323232;
+    box-shadow: .50px .25px 2px 2px #323232;
     animation: fadein 1s;
 }
 

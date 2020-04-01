@@ -6,6 +6,7 @@ import ItemPost from './DashPostForms/itemPost';
 import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
 import LocationDelete from './DashDeleteForms/locationDelete';
+import UserEdit from "./DashEditForms/userEdit"
 
 import {LoadItems,EditItems} from "../Actions/ItemActions";
 
@@ -44,12 +45,6 @@ const DashboardUtils = ()=>{
 
 
     // usestates to keep track of the inputs************************************************************************************
-    const [user, setUser] = React.useState({
-        username:'',
-        password:'',
-        Repassword:'',
-        match: true
-    })
 
     const [item, setItem] = React.useState({
         id:'',
@@ -114,30 +109,7 @@ const DashboardUtils = ()=>{
         DeleteLocation.classList.toggle('visible')
     }
     //The user form functions for changing the usestate attached to it and submitting********************************************
-    const changeUser=(e)=>{
-        
-        setUser({...user, [e.target.name]:e.target.value})
-    }
 
-    const submitUser=(e)=>{
-        e.preventDefault();
-
-        if(user.password === user.Repassword){
-
-            let Theuser = {
-                username:user.username,
-                password:user.password
-            }
-
-            
-            dispatch(EditUser(state.user.id, Theuser))
-    
-            setUser({...user, match:true, username:'',password:'',Repassword:''})
-        }else{
-            setUser({...user, match:false, username:'',password:'',Repassword:''})
-        }
-
-    }
      //The Item form functions for changing the usestate attached to it,submitting, and selecting category***********************
     const selectItem = (e)=>{
         const select = document.querySelector('#ItemSelect').value
@@ -328,19 +300,7 @@ const DashboardUtils = ()=>{
                             </div>
                         </div>
                     </div>
-                    <form className="userForm">
-                        <div>
-                            <input type="text" onChange={changeUser} name="username" value={user.username} placeholder="username"/>
-                        </div>
-                        <div>
-                            <input type="text" onChange={changeUser} name="password" value={user.password} placeholder="password"/>
-                        </div>
-                        <div>
-                            <input type="text" onChange={changeUser} name="Repassword" value={user.Repassword} placeholder="re-enter the password"/> 
-                        </div>
-                            {!user.match?  <b>The passwords do not match please re-enter password</b> : <></> }
-                        <button onClick={(e)=>submitUser(e)}>Edit Profile!</button>
-                    </form>
+                    <UserEdit id = {state.user.id}/>
                 </div>
                 <div className="Dashboard-CRUD ItemOption">
                     <div onClick={(e)=>openItemSecondary(e)} className="Primary">
