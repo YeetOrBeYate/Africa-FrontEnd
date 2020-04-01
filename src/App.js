@@ -10,6 +10,8 @@ import addItem from "./comp/AddItem";
 import Test from "./comp/Menutest";
 
 import Navbar from "./comp/Navbar";
+import PrivateRoute from "./comp/PrivateRoutes/PrivateRoute"
+import PrivateReg from "./comp/PrivateRoutes/PrivateReg"
 
 function App() {
   return (
@@ -17,9 +19,8 @@ function App() {
       <Navbar/>
       <Switch>
         <Route path="/login" render={(props)=> <Login {...props}/>}/>
-        <Route path="/register" render={(props)=> <Register {...props}/>}/>
-        <Route path='/dashboard' component={Dashboard}/>
-        <Route path = '/additem' component={addItem}/>
+        <PrivateReg path="/register" render={(props)=> <Register {...props}/>}/>
+        <PrivateRoute path='/dashboard' component={Dashboard}/>
         <Route path="/test" component={Test}/>
         <Route path = "/" component ={Home}/>
       </Switch>
