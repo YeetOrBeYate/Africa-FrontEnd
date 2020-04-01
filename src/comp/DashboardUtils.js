@@ -7,6 +7,8 @@ import LocationPost from "./DashPostForms/locationPost";
 import ItemDelete from "./DashDeleteForms/itemDelete";
 import LocationDelete from './DashDeleteForms/locationDelete';
 import UserEdit from "./DashEditForms/userEdit"
+import ItemEdit from "./DashEditForms/itemEdit"
+import LocationEdit from './DashEditForms/locationEdit'
 
 import {LoadItems,EditItems} from "../Actions/ItemActions";
 
@@ -43,44 +45,10 @@ const DashboardUtils = ()=>{
 
     },[])
 
-
-    // usestates to keep track of the inputs************************************************************************************
-
-    const [item, setItem] = React.useState({
-        id:'',
-        name:'',
-        description:'',
-        price:'',
-        user_id:state.user.id,
-        category_id:'',
-        location_id:''
-    })
-
-    const [location, setLocation] = React.useState({
-        name:'',
-        id:null
-    })
-
-
     // functions to toggle the utility options**********************************************************************************
     const ToggleUser = (e)=>{
         e.preventDefault();
         const userForm = document.querySelector('.userForm')
-        userForm.classList.toggle('visible');
-
-    }
-
- 
-    const ToggleItem = (e)=>{
-        e.preventDefault();
-        const userForm = document.querySelector('.itemForm')
-        userForm.classList.toggle('visible');
-
-    }
-
-    const ToggleLocation = (e)=>{
-        e.preventDefault();
-        const userForm = document.querySelector('.locationForm')
         userForm.classList.toggle('visible');
 
     }
@@ -108,78 +76,8 @@ const DashboardUtils = ()=>{
         const DeleteLocation = document.querySelector('.locationDeleteForm');
         DeleteLocation.classList.toggle('visible')
     }
-    //The user form functions for changing the usestate attached to it and submitting********************************************
-
-     //The Item form functions for changing the usestate attached to it,submitting, and selecting category***********************
-    const selectItem = (e)=>{
-        const select = document.querySelector('#ItemSelect').value
-
-        if(select !=0){
-        
-           const newItem = Item.items.find((item)=>{
-               let select = document.querySelector('#ItemSelect').value
-               return item.id == select;
-           })
-
-           setItem({...item, id:newItem.id, description: newItem.description, name:newItem.name, price:newItem.price})
-           document.querySelector('#CategorySelect').value = 0;
 
 
-        }
-    }
-
-    const changeItem = (e)=>{
-        setItem({...item, [e.target.name]: e.target.value})
-    }
-
-    const submitItem = (e)=>{
-        e.preventDefault()
-        
-        const newItem ={
-            name:item.name,
-            description: item.description,
-            price: item.price,
-            user_id:item.user_id,
-            category_id:item.category_id,
-            location_id:item.location_id
-        }
-        
-
-        //replace with item action to make the put request
-        dispatch(EditItems(item.id, newItem))
-        
-    }
-
-    const changeLocation = (e)=>{
-        setLocation({...location, name:e.target.value})
-        
-    }
-
-    const selectLocation = (e)=>{
-        const select = document.querySelector('#LocationSelect').value;
-
-        if(select !=0){
-            const newloc = state.user.locations.find((loc)=>{
-                let select = document.querySelector('#LocationSelect').value
-                return loc.id == select;
-            })
-            
-            setLocation({...location, name:newloc.name, id: newloc.id})
-            
-        }
-
-    }
-
-    const submitLocation = (e)=>{
-        e.preventDefault();
-
-        const newLocation ={
-            name: location.name
-        }
-
-        dispatch(EditUserLocation(location.id, newLocation))
-        
-    }
 
     // This is for the new and improved menu display*******************************
 
@@ -332,42 +230,12 @@ const DashboardUtils = ()=>{
                                 <h2>Edit an Item</h2>
                             </div>
                         </div>
-                        <div className ="Third">
-                            <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
-                                <option value="0">Select Item</option>
-                                {Item.items.map((item,index)=>(
-                                    <option value={item.id}>{item.name}</option>
-                                ))}
-                            </select>
-                            <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
-                        </div>
-                        <form className="itemForm">
-                            <div>
-                                <input type="text" name="name" onChange={changeItem} value={item.name} placeholder="name"/>
-                            </div>
-                            <div>
-                                <input type="text" name="price" onChange={changeItem} value={item.price} placeholder="price"/>
-                            </div>
-                            <div>
-                                <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="31"/>
-                            </div>
-                            <div>
-                                <select id ='CategorySelect' name="category_id" onChange={changeItem}>
-                                    <option value = "0">Select Category</option>
-                                    {Category.categories.map((cat)=>(
-                                            <option value={cat.id}>{cat.name}</option>
-                                    ))}
-                                </select>
-                                <select name='location_id' onChange={changeItem}>
-                                    <option>Pick a location</option>
-                                    {state.user.locations.map((loc)=>(
-                                        <option value={loc.id}>{loc.name}</option>
-                                        ))}
-                                </select>
-                            </div>
-                            {/* Add the location selector under this or next to it */}
-                            <button onClick={(e)=>submitItem(e)}>Edit Item!</button>
-                        </form>
+                        <ItemEdit 
+                            items={Item.items}
+                            userid = {state.userid}
+                            categories = {Category.categories}
+                            locations = {state.user.locations}
+                            />
                         <div className="SecondaryFlex">
                             <div className="menuButton">
                                 <img onClick={(e)=>TogglePostItem(e)} src={AddPicture} alt="add item"/>
@@ -419,21 +287,7 @@ const DashboardUtils = ()=>{
                                 <h2>Edit a location</h2>
                             </div>
                         </div>
-                        <div className ="LocationThird">
-                            <select id="LocationSelect" onChange={selectLocation}>
-                                <option value="0">Select Location</option>
-                                {state.user.locations.map((loc)=>(
-                                    <option value={loc.id}>{loc.name}</option>
-                                ))}
-                            </select>
-                            <button onClick={(e)=>ToggleLocation(e)}>Open edit form</button>
-                        </div>
-                        <form className="locationForm">
-                            <div>
-                                <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
-                            </div>
-                            <button onClick={(e)=>submitLocation(e)}>Tesstbtn</button>
-                        </form>
+                        <LocationEdit locations={state.user.locations}/>
                         <div className="SecondaryFlex">
                             <div className="menuButton">
                                 <img onClick={(e)=>TogglePostLocation(e)} src={AddPicture} alt="Add location"/>
