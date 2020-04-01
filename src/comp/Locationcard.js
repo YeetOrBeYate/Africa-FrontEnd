@@ -10,6 +10,8 @@ const Locationcard = (props)=>{
 
 
     const [itemCount, setItemCount] = React.useState(props.Count)
+    const [open, setOpen] = React.useState(false)
+
 
     const Gimme = (Lid)=>{
         const size = Item.items.filter((item)=>{
@@ -43,20 +45,29 @@ const Locationcard = (props)=>{
     const toggleItems = (e,number)=>{
         e.preventDefault()
 
+        //grabbing the objects I need to perform DOM operations on
         const button = document.querySelector(`.location-${number} .location-button`)
-        
+        const arrow = document.querySelector(`.location-${number} .down`)
         const childclass = document.querySelectorAll(`.locationItem-${number}`)
-        
+        //this one needs to happen the same evertime no matter what
         childclass.forEach((child)=>{
-            
             child.classList.toggle('locationVisible')
         })
+        //if our card is closed
+        if(!open){
+            button.style.animation = "1s ease-in-out 0s 1 normal both running toggleButtonOpen"
+            arrow.classList.toggle('rotateRight')
+            setOpen(true)
+        }else{
+        //if out card is open
+        button.style.animation = "1s ease-in-out 0s 1 reverse both running toggleButtonClose"
+        arrow.classList.toggle('rotateRight')
+        setOpen(false)
+        }
 
-        button.style.animation = "1s ease-in-out 0s 1 normal both running toggleButtonOpen"
-
-        button.addEventListener('animationend',()=>{
-            button.style.animation = "none"
-        })
+        // button.addEventListener('animationend',()=>{
+        //     button.style.animation = "none"
+        // })
         
     }
 

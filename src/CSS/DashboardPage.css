@@ -81,9 +81,24 @@
         transform: rotateY(360deg);
         display: flex;
         flex-direction: column;
+        justify-content:center;
+        
     }
 
 }
+
+@keyframes toggleButtonClose{
+    0%{background-color: #5b85aa;}
+    25%{background-color: white;}
+    100%{
+        background-color: #5b85aa;
+        transform: rotateY(360deg);
+        display: flex;
+        align-items: center;
+    }
+}
+
+
 
 .location-button{
     background-color: #5b85aa;
@@ -109,6 +124,15 @@
 	border-left: 15px solid transparent;
 	border-right: 15px solid transparent;
 	border-top: 30px solid #555;
+}
+
+.rotateRight{
+	width: 0;
+	height: 0;
+	border-top: 15px solid transparent;
+	border-left: 30px solid #555;
+    border-bottom: 15px solid transparent;
+    margin-left: 30%;
 }
 
 
