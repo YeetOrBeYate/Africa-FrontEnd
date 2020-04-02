@@ -84,6 +84,7 @@ const Navbar = ()=>{
                         <Link to="/">Home</Link>
                         <Link onClick={(e)=>signOut(e)} to='/login'>SignOut</Link>
                         <Link to='/dashboard'>Dashbaord</Link>
+                        <Link to='/marketfeed'>MarketFeed</Link>
                     </>
                     :
                     <>

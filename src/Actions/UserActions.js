@@ -39,6 +39,10 @@ const UserFix = ()=>{
     return {type:'UserFix'}
 }
 
+const UserListGood = (data)=>{
+    return {type:'userListGood', payload:data}
+}
+
 export const clearUser = ()=>{
     return function(dispatch){
 
@@ -155,12 +159,30 @@ export const RemoveLocation = (locationid)=>{
         .then(res=>{
             console.log('deleting location', res)
             dispatch(UserDeleteLocation(locationid))
-
-
         })
 
         .catch(err=>{
             console.log("delete location", err)
+            dispatch(UserFailure())
+        })
+    }
+}
+
+export const LoadUsers = ()=>{
+
+    return function(dispatch){
+
+        dispatch(UserLoading())
+
+        return AxiosWithAuth().get(`https://africa-marketplace.herokuapp.com/users`)
+        .then(res=>{
+            let users = res.data.users
+            console.log('GET ALL USERS', users)
+            dispatch(UserListGood(users))
+        })
+        
+        .catch(err=>{
+            console.log('GET ALL USERS ERR',err)
             dispatch(UserFailure())
         })
     }
@@ -171,5 +193,6 @@ export const FixUserFailure = ()=>{
     return function(dispatch){
 
         dispatch(UserFix())
+
     }
 }

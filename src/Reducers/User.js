@@ -12,6 +12,7 @@ const initialState = {
     loading:false,
     userid:checkUser(),
     user:null,
+    userlist:null,
     failure:false
 }
 
@@ -29,6 +30,8 @@ export const UserReducer = (state=initialState, action)=>{
             return{...state, userid:action.payload}
         case 'userGood':
             return{...state, loading:false, user:action.payload,}
+        case 'userListGood':
+            return{...state, loading:false, userlist:action.payload}
         case 'Useredit':
             return{...state, loading:false, user: {...state.user, username:action.payload}}
         case 'UserEditlocation':
