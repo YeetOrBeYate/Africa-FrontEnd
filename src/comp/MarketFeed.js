@@ -2,8 +2,10 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {LoadUsers} from "../Actions/UserActions"
 import {LoadMarketItems} from "../Actions/ItemActions"
+import {getCats} from "../Actions/CategoryActions";
 import MarketUserCard from './MarketUserCard'
-import MarketLocationCard from "./MarketLocationCard"
+
+import "../CSS/MarketPage.css"
 
 const MarketFeed = ()=>{
 
@@ -15,35 +17,19 @@ const MarketFeed = ()=>{
 
         dispatch(LoadUsers())
         dispatch(LoadMarketItems())
+        dispatch(getCats())
 
     },[])
 
-    const GetItems =(Lid)=>{
-        const items = Item.items.filter((item)=>{
-            if(item.location_id === Lid){
-                return item
-            }
-        })
-
-        return items
-    }
-
-    if(User.userlist == null){
+    if(!User.userlist || !Item.items){
         return(<div>loading..</div>)
     }
 
     return(
-        <div>
+        <div className = "marketFeed">
             {User.userlist.map((user)=>(
                 <>
-                    <MarketUserCard username={user.username}/>
-                    {user.locations.map((location)=>(
-                        <MarketLocationCard 
-                        name = {location.name}
-                        itemCount = {location.itemCount}
-                        items = {GetItems(location.id)}
-                        />
-                    ))}
+                    <MarketUserCard user={user} items = {Item.items}/>
                 </>
             ))}
         </div>

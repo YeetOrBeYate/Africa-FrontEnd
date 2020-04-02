@@ -1,0 +1,16 @@
+
+.marketFeed{
+    background: inherit;
+    width: 100%;
+    height: 85%;
+}
+
+.userCard{
+    border: 2px solid black;
+    margin: 2% auto;
+    width:80%
+}
+
+.locationCard{
+    border: 1px solid black;
+}

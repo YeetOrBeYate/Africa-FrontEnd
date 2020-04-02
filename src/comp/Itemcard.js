@@ -32,6 +32,12 @@ const ItemCard = (props)=>{
         }
     }
 
+    if(!Category.categories){
+        return(<div>
+            getting some additional information
+        </div>)
+    }
+
     return(
         <div className = {`locationItem locationItem-${selfToggle(props.id)}`}>
             <h2>{props.name} ({FindCatName(props.category_id)})</h2>

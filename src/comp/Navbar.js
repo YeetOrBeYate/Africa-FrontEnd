@@ -96,15 +96,6 @@ const Navbar = ()=>{
                     </>
                 }
             </div>
-            {/* <Switch>
-                <Route path="/login" render={(props)=> <Login {...props}/>}/>
-                <Route path="/register" render={(props)=> <Register {...props}/>}/>
-                <Route path='/dashboard' component={Dashboard}/>
-                <Route path = '/additem' component={addItem}/>
-                <Route path="/test" component={Test}/>
-                <Route path = "/" component ={Home}/>
-            </Switch> */}
-            {/* <Footer/> */}
         </div>
     );
 }
