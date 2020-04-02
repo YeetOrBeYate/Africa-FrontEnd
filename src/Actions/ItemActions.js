@@ -10,6 +10,10 @@ const setItems = (data)=>{
     return {type:'Itemgot', payload:data}
 }
 
+const setMarketItems = (data)=>{
+    return {type:'MarketItemgot', payload:data}
+}
+
 const editItem = (id,data)=>{
     return {type: 'Itemedit', payload:data, put:id}
 }
@@ -105,6 +109,25 @@ export const DeleteItem = (id)=>{
         .catch(err=>{
             console.log(err)
             dispatch(failureItem())
+        })
+    }
+}
+
+export const LoadMarketItems = ()=>{
+
+    return function(dispatch){
+
+        dispatch(Loading())
+
+        return AxiosWithAuth().get(`https://africa-marketplace.herokuapp.com/item`)
+
+        .then(res=>{
+            let items = res.data.items
+            dispatch(setMarketItems(items))
+        })
+
+        .catch(err=>{
+            console.log('marketitems error', err)
         })
     }
 }
