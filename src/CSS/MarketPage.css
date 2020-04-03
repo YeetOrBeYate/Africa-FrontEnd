@@ -1,6 +1,6 @@
 
 .marketFeed{
-    margin:0;
+    margin:0 ;
     padding:0;
     background:#eef2c3;
     width: 100%;
@@ -8,12 +8,27 @@
     border-top:1px solid #323232;
     border-bottom:1px solid #323232;
     overflow-y: scroll;
+    border: 5px solid lightskyblue;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
+
 .userCard{
+    padding:0;
     border: 2px solid black;
-    margin: 2% auto;
-    width:80%
+    margin: 2%;
+    width: 40%;
+}
+
+.userCard:last-of-type{
+    padding:0;
+    border: 2px solid green;
+    margin: 2%;
+    width: 40%;
+    margin-right: auto;
+    /* margin-left: auto; */
 }
 
 .locationCard{
