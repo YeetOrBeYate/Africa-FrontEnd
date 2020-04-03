@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = ()=>{
     return(
-        <div className="NavFlex">
+        <div className="footerBar">
             <p>Logo will go here</p>
         </div>
     )

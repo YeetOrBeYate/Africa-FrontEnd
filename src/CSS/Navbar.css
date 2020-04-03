@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-around;
     background: #323232;
+    margin:0;
+    padding:0;
     height: 100%;
     width: 100%;
 }
@@ -12,15 +14,24 @@
 }
 
 .Loginpage{
-  height: 650px;
+  border: 1px solid red;
+  height: 60%;
+  width: 40%;
+  margin: 5% auto;
 }
 
 .Registerpage{
-  height: 650px;
+  border: 1px solid red;
+  height: 60%;
+  width: 40%;
+  margin: 5% auto;
 }
 
 .Homepage{
-  height: 650px;
+  border: 1px solid red;
+  height: 60%;
+  width: 40%;
+  margin: 5% auto;
 }
 
 .loader{
@@ -40,6 +51,16 @@
 }
 
 .test{
-  /* border: 1px solid lightgreen; */
+  margin:0;
+  padding:0;
   height: 10%;
+  width: 100%;
+}
+
+.footerBar{
+  display: flex;
+  justify-content: space-around;
+  background: #323232;
+  height: 10%;
+  width: 100%;
 }

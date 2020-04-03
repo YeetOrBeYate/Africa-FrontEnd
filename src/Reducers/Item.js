@@ -32,7 +32,7 @@ export const ItemReducer = (state= initialState, action)=>{
         case 'Itemdelete':
             return {...state, loading:false, items: state.items.filter(item=> item.id !=action.payload)}
         case 'failureItem':
-            return {...state, failure:true}
+            return {...state, loading:false, failure:true}
         case 'ItemFix':
             return {...state, failure:false}
         default:

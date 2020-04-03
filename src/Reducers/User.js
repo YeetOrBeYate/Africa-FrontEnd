@@ -50,7 +50,7 @@ export const UserReducer = (state=initialState, action)=>{
         case 'clearUser':
             return{...state, user:null}
         case 'Userfailure':
-            return {...state, failure:true }
+            return {...state, loading:false, failure:true }
         case 'UserFix':
             return {...state, failure:false}
         default:

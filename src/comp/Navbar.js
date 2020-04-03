@@ -1,17 +1,12 @@
 import React from 'react';
-import Modal from 'react-modal';
+import Loading from 'react-modal';
+import Error from "react-modal";
 import {Switch, Route, Link} from 'react-router-dom';
-// import Login from "./LoginPage";
-// import Register from "./RegisterPage";
-// import Home from "./HomePage";
-// import Dashboard from './DashboardPage';
-// import addItem from "./AddItem";
-// import Test from "./Menutest";
-import Footer from "./Footerbar";
 
 import {useDispatch, useSelector} from "react-redux";
 import {clearMenu} from "../Actions/MenuActions";
-import {clearUser} from "../Actions/UserActions";
+import {clearUser,FixUserFailure} from "../Actions/UserActions";
+import {FixItemFailure} from "../Actions/ItemActions"
 
 import "../CSS/Navbar.css"
 
@@ -25,20 +20,24 @@ const Navbar = ()=>{
     const LoginR = useSelector(state=>state.Login)
 
     const [loading,setLoading] = React.useState(false)
-
+    const [error,setError] = React.useState(false)
+    
     const token = localStorage.getItem('token')
 
-    React.useEffect(()=>{
+    const errorStyles = {
+        content:{
+            top                   : '50%',
+            left                  : '50%',
+            right                 : 'auto',
+            bottom                : 'auto',
+            marginRight           : '-50%',
+            transform             : 'translate(-50%, -50%)',
+            width: '30%',
+            height: '30%',
+            background: '#eef2c3'
+        },
 
-        if(User.loading || LoginR.loading || Item.loading){
-            setLoading(true)
-        }else{
-            setLoading(false)
-        }
-
-
-    },[User.loading, LoginR.loading, Item.loading] )
-
+    }
     const customStyles = {
         content:{
             top                   : '50%',
@@ -60,23 +59,53 @@ const Navbar = ()=>{
 
     }
 
+    React.useEffect(()=>{
+
+        if(User.loading || LoginR.loading || Item.loading){
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
+
+        if(User.failure || Item.failure){
+            setError(true)
+        }
+
+    },[User.loading, LoginR.loading, Item.loading, User.failure, Item.failure] )
+
+
     const signOut = (e)=>{
         localStorage.clear();
         dispatch(clearMenu())
         dispatch(clearUser())
     }
 
+    const closeError = ()=>{
+        setError(false)
+        dispatch(FixUserFailure())
+        dispatch(FixItemFailure())
+    }
+
 
     return(
         <div className = 'test'>
-            <Modal 
+            <Loading 
             // className='loader'
             isOpen={loading}
             onRequestClose={()=>setLoading(false)}
             style={customStyles}
              >
                  <div className= 'loader'></div>
-             </Modal>
+             </Loading>
+             <Error
+             isOpen = {error}
+             onRequestClose = {closeError}
+             style = {errorStyles}
+             >
+                <h2>An error occured</h2>
+                <p>we were unable to make the request, please try again</p>
+             </Error>
+
             <div className="NavFlex">
                 {
                     token? 
