@@ -14,25 +14,23 @@
 }
 
 .Loginpage{
-  border: 1px solid red;
   height: 80%;
   width: 40%;
   margin: 0 auto;
 }
 
 .Registerpage{
-  /* border: 1px solid red; */
   height: 80%;
   width: 40%;
   margin: 0 auto;
 }
 
 .Homepage{
-  /* border: 1px solid red; */
   height: 80%;
   width: 40%;
   margin: 0 auto;
 }
+
 
 .loader{
   border: 16px solid #f3f3f3; /* Light grey */
@@ -62,6 +60,6 @@
   justify-content: space-around;
   color:ivory;
   background: #323232;
-  height: 10%;
+  min-height: 10%;
   width: 100%;
 }

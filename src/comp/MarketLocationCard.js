@@ -16,8 +16,8 @@ const MarketLocationCard = (props)=>{
             bottom                : 'auto',
             marginRight           : '-50%',
             transform             : 'translate(-50%, -50%)',
-            width: '30%',
-            height: '30%',
+            width: '40%',
+            height: '60%',
             background: '#eef2c3'
         }
     }

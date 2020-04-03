@@ -5,7 +5,7 @@ import "../CSS/Navbar.css"
 const Home = ()=>{
     return(
         <div className = "Homepage">
-            Homepage
+            <h1>Homepage</h1>
         </div>
     );
 }
