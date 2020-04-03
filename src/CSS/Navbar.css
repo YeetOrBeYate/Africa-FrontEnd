@@ -15,23 +15,23 @@
 
 .Loginpage{
   border: 1px solid red;
-  height: 60%;
+  height: 80%;
   width: 40%;
-  margin: 5% auto;
+  margin: 0 auto;
 }
 
 .Registerpage{
-  border: 1px solid red;
-  height: 60%;
+  /* border: 1px solid red; */
+  height: 80%;
   width: 40%;
-  margin: 5% auto;
+  margin: 0 auto;
 }
 
 .Homepage{
-  border: 1px solid red;
-  height: 60%;
+  /* border: 1px solid red; */
+  height: 80%;
   width: 40%;
-  margin: 5% auto;
+  margin: 0 auto;
 }
 
 .loader{
@@ -60,6 +60,7 @@
 .footerBar{
   display: flex;
   justify-content: space-around;
+  color:ivory;
   background: #323232;
   height: 10%;
   width: 100%;
