@@ -15,14 +15,16 @@ const MarketUserCard = (props)=>{
 
     return(
         <div className = "userCard">
-            <h1>{props.user.username}'s locations</h1>
-            {props.user.locations.map((location)=>(
-                <MarketLocationCard 
-                name = {location.name}
-                itemCount = {location.itemCount}
-                items = {GetItems(location.id)}
-                />
-                ))}
+            <h1 id = "userName">{props.user.username}'s locations</h1>
+            <div className= "UserMCardRender">
+                {props.user.locations.map((location)=>(
+                    <MarketLocationCard 
+                    name = {location.name}
+                    itemCount = {location.itemCount}
+                    items = {GetItems(location.id)}
+                    />
+                    ))}
+            </div>
         </div>
     )
 }

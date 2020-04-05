@@ -24,7 +24,7 @@ const MarketLocationCard = (props)=>{
 
     return(
         <div className="locationCard">
-            <h3 onClick = {()=>setOpen(true)}>{props.name}({props.itemCount})</h3>
+            <h3 id="marketLocationName" onClick = {()=>setOpen(true)}>{props.name}({props.itemCount})</h3>
             <Modal
                 isOpen = {open}
                 onRequestClose = {()=>setOpen(false)}

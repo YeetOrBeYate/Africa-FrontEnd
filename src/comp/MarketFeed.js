@@ -27,11 +27,13 @@ const MarketFeed = ()=>{
 
     return(
         <div className = "marketFeed">
-            {User.userlist.map((user)=>(
-                <>
-                    <MarketUserCard user={user} items = {Item.items}/>
-                </>
-            ))}
+            <div className = "container">
+                {User.userlist.map((user)=>(
+                    <>
+                        <MarketUserCard user={user} items = {Item.items}/>
+                    </>
+                ))}
+            </div>
         </div>
     )
 }
