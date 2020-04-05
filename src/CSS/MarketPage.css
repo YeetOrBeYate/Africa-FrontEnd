@@ -12,17 +12,18 @@
 
 .container{
     margin: 0 auto;
-    width: 60%;
+    width: 50%;
     height: 100%;
-    /* border:1px solid black; */
+    border:1px solid black;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 50% 50% ;
     justify-items: center;
+
 }
 
 #userName{
-    background: #a42d0d;
+    background: #5b85aa;
     color:ivory;
     margin:0;
     padding:1% 0 ;
@@ -31,25 +32,19 @@
 
 .userCard{
     padding:0;
-    border: 2px solid black;
-    width: 60%;
+    border-bottom: 1px solid #323232;
+    width: 80%;
     height: 70%;
     margin: 2%;
     background:  inherit;
 }
 
 .UserMCardRender{
-    border:1px solid black;
     width:95%;
     height:75%;
     margin: 0 auto;
     background: inherit;
     overflow-y: scroll;
-}
-
-
-.locationCard{
-
 }
 
 #marketLocationName{

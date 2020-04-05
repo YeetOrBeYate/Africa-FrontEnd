@@ -21,6 +21,30 @@ const MarketFeed = ()=>{
 
     },[])
 
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const [postsPerPage, setPostsPerPage] = React.useState(4);
+
+    
+    //get current posts
+    //1 * 4 = 4
+    //2 * 4 = 8
+    const indexOfLastPost = currentPage * postsPerPage;
+    //4-4 = 0
+    //8-4 = 4
+    const indexOfFirstPost = indexOfLastPost-postsPerPage;
+
+    //first we'll slice through (0,4) then (4,8)
+
+    const nextPage = (e)=>{
+        e.preventDefault()
+        setCurrentPage(currentPage=>currentPage+1)
+    }
+
+    const prevPage = (e)=>{
+        e.preventDefault()
+        setCurrentPage(currentPage=>currentPage-1)
+    }
+    
     if(!User.userlist || !Item.items){
         return(<div>loading..</div>)
     }
@@ -28,12 +52,14 @@ const MarketFeed = ()=>{
     return(
         <div className = "marketFeed">
             <div className = "container">
-                {User.userlist.map((user)=>(
+                {User.userlist.slice(indexOfFirstPost,indexOfLastPost).map((user)=>(
                     <>
                         <MarketUserCard user={user} items = {Item.items}/>
                     </>
                 ))}
             </div>
+            <button onClick={(e)=>prevPage(e)}>previous page</button>
+            <button onClick={(e)=>nextPage(e)}>next page</button>
         </div>
     )
 }
