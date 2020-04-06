@@ -13,22 +13,50 @@
 .container{
     margin: 0 auto;
     width: 50%;
-    height: 100%;
-    border:1px solid black;
+    height: 91%;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50% ;
     justify-items: center;
+    /* border: 1px solid black; */
+}
 
+.marketPage{
+    margin: 0 auto;
+    margin-bottom: 1%;
+    height: 6%;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.marketPage button{
+    padding: 1.5%;
+    color:ivory;
+    background: #e47657;
+    border-radius: 5%;
+    border:none;
+}
+
+.pageButton{
+    color: ivory;
+    background: #e47657;
+    border:3px solid #eccd64;
+    border-radius: 10%;
+    padding:1% 1.5%;
+}
+
+.pageButton:hover{
+    cursor: pointer;
 }
 
 #userName{
     background: #5b85aa;
     color:ivory;
     margin:0;
-    padding:1% 0 ;
+    padding:1% 0;
 }
-
 
 .userCard{
     padding:0;

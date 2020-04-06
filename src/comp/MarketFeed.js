@@ -4,6 +4,7 @@ import {LoadUsers} from "../Actions/UserActions"
 import {LoadMarketItems} from "../Actions/ItemActions"
 import {getCats} from "../Actions/CategoryActions";
 import MarketUserCard from './MarketUserCard'
+import PageButton from "./PageButton"
 
 import "../CSS/MarketPage.css"
 
@@ -28,12 +29,13 @@ const MarketFeed = ()=>{
     //get current posts
     //1 * 4 = 4
     //2 * 4 = 8
+    //3 * 4 = 12
     const indexOfLastPost = currentPage * postsPerPage;
     //4-4 = 0
     //8-4 = 4
+    //12-4 = 8
     const indexOfFirstPost = indexOfLastPost-postsPerPage;
-
-    //first we'll slice through (0,4) then (4,8)
+    //first we'll slice through (0,4) then (4,8) then (8,12)
 
     const nextPage = (e)=>{
         e.preventDefault()
@@ -44,7 +46,18 @@ const MarketFeed = ()=>{
         e.preventDefault()
         setCurrentPage(currentPage=>currentPage-1)
     }
-    
+
+    const loadPageButtons = ()=>{
+        let ar = []
+        let list = Number(User.userlist.length).toFixed(2)
+        list = Math.ceil(list/4)
+        while(list !== 0){
+            ar.unshift(list)
+            list -=1
+        }
+        return ar
+    }
+
     if(!User.userlist || !Item.items){
         return(<div>loading..</div>)
     }
@@ -58,8 +71,16 @@ const MarketFeed = ()=>{
                     </>
                 ))}
             </div>
-            <button onClick={(e)=>prevPage(e)}>previous page</button>
-            <button onClick={(e)=>nextPage(e)}>next page</button>
+            <div className = "marketPage">
+                <button onClick={(e)=>prevPage(e)}>previous page</button>
+                {loadPageButtons().map((number)=>(
+                    <PageButton 
+                    number={number} 
+                    changePage={setCurrentPage}>
+                    </PageButton>
+                ))}
+                <button onClick={(e)=>nextPage(e)}>next page</button>
+            </div>
         </div>
     )
 }
