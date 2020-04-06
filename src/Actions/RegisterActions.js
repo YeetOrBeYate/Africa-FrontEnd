@@ -18,6 +18,10 @@ const moved = ()=>{
     return{type:'moved'}
 }
 
+const FailureFix = ()=>{
+    return{type:'fixed'}
+}
+
 export const stopMove = ()=>{
 
     return function(dispatch){
@@ -41,5 +45,12 @@ export const signUp = (person)=>{
             console.log("bad",err)
             dispatch(bad())
         })
+    }
+}
+
+export const fixRegFailure = ()=>{
+    return function(dispatch){
+
+        dispatch(FailureFix())
     }
 }

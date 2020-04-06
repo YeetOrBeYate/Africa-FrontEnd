@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {clearMenu} from "../Actions/MenuActions";
 import {clearUser,FixUserFailure} from "../Actions/UserActions";
 import {FixItemFailure} from "../Actions/ItemActions"
+import {fixRegFailure} from "../Actions/RegisterActions"
 
 import "../CSS/Navbar.css"
 
@@ -18,6 +19,7 @@ const Navbar = ()=>{
     const User = useSelector(state=>state.User)
     const Item = useSelector(state=>state.Item)
     const LoginR = useSelector(state=>state.Login)
+    const Register = useSelector(state=>state.Register)
 
     const [loading,setLoading] = React.useState(false)
     const [error,setError] = React.useState(false)
@@ -59,19 +61,21 @@ const Navbar = ()=>{
 
     }
 
+
     React.useEffect(()=>{
 
-        if(User.loading || LoginR.loading || Item.loading){
+        if(User.loading || LoginR.loading || Item.loading || Register.loading){
+            console.log('loading se to ttru')
             setLoading(true)
         }else{
             setLoading(false)
         }
 
-        if(User.failure || Item.failure){
+        if(User.failure || Item.failure || Register.failure){
             setError(true)
         }
 
-    },[User.loading, LoginR.loading, Item.loading, User.failure, Item.failure] )
+    },[User.loading, LoginR.loading, Item.loading, User.failure, Item.failure, Register.loading] )
 
 
     const signOut = (e)=>{
@@ -84,6 +88,7 @@ const Navbar = ()=>{
         setError(false)
         dispatch(FixUserFailure())
         dispatch(FixItemFailure())
+        dispatch(fixRegFailure())
     }
 
 
@@ -111,9 +116,9 @@ const Navbar = ()=>{
                     token? 
                     <>
                         <Link to="/">Home</Link>
-                        <Link onClick={(e)=>signOut(e)} to='/login'>SignOut</Link>
-                        <Link to='/dashboard'>Dashbaord</Link>
-                        <Link to='/marketfeed'>MarketFeed</Link>
+                        <Link onClick={(e)=>signOut(e)} to='/login'>Sign Out</Link>
+                        <Link to='/dashboard'>Dashboard</Link>
+                        <Link to='/marketfeed'>Market Feed</Link>
                     </>
                     :
                     <>

@@ -70,8 +70,7 @@ export const LoadUser=(id)=>{
 
         .catch(err=>{
             console.log('loaduser', err)
-
-            
+            dispatch(UserFailure())
         })
 
     }

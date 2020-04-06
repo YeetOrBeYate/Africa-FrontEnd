@@ -18,6 +18,8 @@ export const RegisterReducer = (state = initialState, action)=>{
             return {...state, loading:false, failure: true}
         case 'moved':
             return {...state, navForward:false}
+        case 'fixed':
+            return{...state, failure:false}
         default:
             return state
     }

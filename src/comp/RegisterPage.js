@@ -7,7 +7,6 @@ import "../CSS/Navbar.css"
 
 const Register =(props)=>{
 
-    
     const dispatch = useDispatch();
     const state = useSelector(state=>state.Register);
 
@@ -36,9 +35,6 @@ const Register =(props)=>{
 
     }
 
- 
-
-
     return(
         <div className="Registerpage">
             <h1>Register</h1>
@@ -51,12 +47,12 @@ const Register =(props)=>{
                 </div>
                 <button onClick={(e)=>register(e)}>Register</button>
             </form>
-            {
+            {/* {
                 state.loading ? <div>Loading....</div> : <></>
             }
             {
                 state.failure ? <div>Failure:incorrect input</div> : <></>
-            }
+            } */}
         </div>
     );
 }
