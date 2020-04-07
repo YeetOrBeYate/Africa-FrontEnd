@@ -1,12 +1,14 @@
 import React from 'react';
 
+
 import "../CSS/Navbar.css"
 
 const Home = ()=>{
     return(
         <div className = "Homepage">
-            <h1>Homepage</h1>
-            <div>
+            <div className='HomeImage'></div>
+            <h1 id ='HomeTitle'>Manage your assets</h1>
+            <div className="HomeIntro">
                 <section>
                     <p>Sauti Africa gives small business owners, particularly women, the opportunity to improve their businesses by providing a market information platform.More information on what they do can be found <a href='https://sautiafrica.org/' target='_blank'>here</a></p>
                 </section>

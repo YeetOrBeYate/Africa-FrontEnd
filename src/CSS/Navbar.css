@@ -32,12 +32,28 @@ h1{
 
 .Homepage{
   height: 80%;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
+  background: #eef2c3;
+}
 
-  background-image: url(https://images.unsplash.com/photo-1484318571209-661cf29a69c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+.HomeImage{
+  margin:0 auto;
+  height:45%;
+  width:100%;
+  background-image: url(https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2125&q=80);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 50% 45%;
+}
+
+#HomeTitle{
+  margin: 2% 0;
+}
+
+.HomeIntro{
+  padding: 2% 3%;
+  margin-top:3%;
 }
 
 
@@ -68,7 +84,16 @@ h1{
   display: flex;
   justify-content: space-around;
   color:ivory;
+  /* border:1px solid red; */
   background: #323232;
   min-height: 10%;
   width: 100%;
+}
+
+.footerFlex{
+  height: 60px;
+  margin: auto auto;
+  display: flex;
+  justify-content: space-around;
+  width: 25%;
 }
