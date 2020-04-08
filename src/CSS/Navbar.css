@@ -22,7 +22,7 @@ h1, a{
 
 .NavSub{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 40%;
 }
 
@@ -153,6 +153,8 @@ h1, a{
 
 @media screen and (max-width:500px){
 
+  /* *****************Homepage************************ */
+
   #HomeTitle{
     margin:0 0 ;
   }
@@ -172,9 +174,14 @@ h1, a{
     width:70%
   }
 
+  /* *******************Login*********************** */
+
+  .loginForm{
+    width: 80%;
+  }
 }
 
-@media screen and (min-width:700px){
+@media screen and (min-width:550px) and (max-width:801px){
 
   #HomeTitle{
     margin: 4% 0;
@@ -182,6 +189,14 @@ h1, a{
 
   .HomeIntro{
     margin-top: 6%;
+  }
+
+  .footerFlex{
+    width:50%
+  }
+
+  .loginForm{
+    width: 70%;
   }
 
   
