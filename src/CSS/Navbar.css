@@ -1,4 +1,4 @@
-h1{
+h1, a{
   margin:0;
   padding:0;
 }
@@ -149,4 +149,40 @@ h1{
   display: flex;
   justify-content: space-around;
   width: 25%;
+}
+
+@media screen and (max-width:500px){
+
+  #HomeTitle{
+    margin:0 0 ;
+  }
+
+  .HomeIntro{
+    margin-top:1%;
+  }
+  .NavFlex a{
+    padding:0;
+  }
+
+  .footerFlex{
+    width:70%
+  }
+
+  .NavSub{
+    width:70%
+  }
+
+}
+
+@media screen and (min-width:700px){
+
+  #HomeTitle{
+    margin: 4% 0;
+  }
+
+  .HomeIntro{
+    margin-top: 6%;
+  }
+
+  
 }
