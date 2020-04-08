@@ -37,22 +37,16 @@ const Register =(props)=>{
 
     return(
         <div className="Registerpage">
-            <h1>Register</h1>
-            <form>
-                <div>
+            <form className="loginForm">
+                <h1 id = "loginTitle">Register</h1>
+                <div className = "loginItem">
                     <input type='text' placeholder = "username" name='username' onChange={setThePerson}/>
                 </div>
-                <div>
-                    <input type='text' placeholder = "password" name ='password' onChange={setThePerson}/>
+                <div className = "loginItem">
+                    <input type='password' placeholder = "password" name ='password' onChange={setThePerson}/>
                 </div>
-                <button onClick={(e)=>register(e)}>Register</button>
+                <button id = "loginButton" onClick={(e)=>register(e)}>Register</button>
             </form>
-            {/* {
-                state.loading ? <div>Loading....</div> : <></>
-            }
-            {
-                state.failure ? <div>Failure:incorrect input</div> : <></>
-            } */}
         </div>
     );
 }

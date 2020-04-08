@@ -2,6 +2,7 @@ import React from 'react';
 import Loading from 'react-modal';
 import Error from "react-modal";
 import {Switch, Route, Link} from 'react-router-dom';
+import africa from "../pics/africa.png"
 
 import {useDispatch, useSelector} from "react-redux";
 import {clearMenu} from "../Actions/MenuActions";
@@ -115,18 +116,24 @@ const Navbar = ()=>{
                 {
                     token? 
                     <>
-                        <Link to="/">Home</Link>
-                        <Link onClick={(e)=>signOut(e)} to='/login'>Sign Out</Link>
-                        <Link to='/dashboard'>Dashboard</Link>
-                        <Link to='/marketfeed'>Market Feed</Link>
+                        <Link to="/">
+                            <img src={africa} alt="africa"/>
+                        </Link>
+                        <div className="NavSub">
+                            <Link onClick={(e)=>signOut(e)} to='/login'>Sign Out</Link>
+                            <Link to='/dashboard'>Dashboard</Link>
+                            <Link to='/marketfeed'>Market Feed</Link>
+                        </div>
                     </>
                     :
                     <>
-                        <Link to="/">Home</Link>
-                        <Link to="/login">Login!</Link>
-                        <Link to="/register">Register!</Link>
-                        <Link to="/additem">Additem</Link>
-                        <Link to="/test">Testpage</Link>
+                        <Link to="/">
+                            <img src={africa} alt="africa"/>
+                        </Link>
+                        <div className="NavSub">
+                            <Link to="/login">Login</Link>
+                            <Link to="/register">Register</Link>
+                        </div>
                     </>
                 }
             </div>

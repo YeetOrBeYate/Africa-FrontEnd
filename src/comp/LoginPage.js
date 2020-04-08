@@ -44,15 +44,15 @@ const Login = (props)=>{
 
     return(
         <div className="Loginpage">
-            <h1>Login</h1>
-            <form>
-                <div>
+            <form className="loginForm">
+                <h1 id ="loginTitle">Login</h1>
+                <div className="loginItem">
                     <input type="text" onChange={setUsername} placeholder="username"/>
                 </div>
-                <div>
-                    <input type="text" onChange={setPassword} placeholder="password"/>
+                <div className="loginItem">
+                    <input type="password" onChange={setPassword} placeholder="password"/>
                 </div>
-                <button onClick={(e)=>yeet(e,person)}>Login</button>
+                <button id="loginButton" onClick={(e)=>yeet(e,person)}>Login</button>
             </form>
             {
                 state.failure ? <div>Invalid Credentials!</div> : <></>

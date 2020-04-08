@@ -5,6 +5,7 @@ h1{
 
 .NavFlex{
     display: flex;
+    align-items: center;
     justify-content: space-around;
     background: #323232;
     margin:0;
@@ -14,20 +15,72 @@ h1{
 }
   
 .NavFlex a{
-  padding: 2% 0;
+  padding: 1% 0;
   color: ivory;
+  text-decoration: none;
 }
 
-.Loginpage{
-  height: 80%;
+.NavSub{
+  display: flex;
+  justify-content: space-between;
   width: 40%;
+}
+
+
+.Loginpage{
+  /* border:1px solid red; */
+  background-image: url(https://images.unsplash.com/photo-1455920082645-445c9db5db53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+
+  height: 80%;
+  width: 100%;
   margin: 0 auto;
+}
+
+.loginForm{
+  margin: auto;
+  top: 50%;
+  border: 1px solid ivory;
+  background: ivory;
+  height: 65%;
+  width: 30%;
+  border-radius: 10px;
+
+  transform: translateY(30%);
+}
+
+#loginTitle{
+  margin: 8% 0;
+}
+
+.loginItem{
+  margin: 5% 0;
+  padding: 2% 0;
+}
+
+.loginItem input{
+  height: 40px;
+}
+
+#loginButton{
+  background: #5b85aa;
+  color:ivory;
+  border: none;
+  margin: 2% 0;
+  padding: 1% 0;
+  height: 40px;
+  width:244px
 }
 
 .Registerpage{
-  height: 80%;
-  width: 40%;
-  margin: 0 auto;
+    /* border:1px solid red; */
+    background-image: url(https://images.unsplash.com/photo-1547471080-9d097dc0e589?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+
+    background-position: 50% 45%;
+
+    height: 80%;
+    width: 100%;
+    margin: 0 auto;
+
 }
 
 .Homepage{
@@ -91,7 +144,7 @@ h1{
 }
 
 .footerFlex{
-  height: 60px;
+  height: 55px;
   margin: auto auto;
   display: flex;
   justify-content: space-around;
