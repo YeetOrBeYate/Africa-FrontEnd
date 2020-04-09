@@ -72,14 +72,14 @@ const MarketFeed = ()=>{
                 ))}
             </div>
             <div className = "marketPage">
-                <button onClick={(e)=>prevPage(e)}>previous page</button>
+                <button onClick={(e)=>prevPage(e)}>prev</button>
                 {loadPageButtons().map((number)=>(
                     <PageButton 
                     number={number} 
                     changePage={setCurrentPage}>
                     </PageButton>
                 ))}
-                <button onClick={(e)=>nextPage(e)}>next page</button>
+                <button onClick={(e)=>nextPage(e)}>next</button>
             </div>
         </div>
     )
