@@ -163,5 +163,28 @@ animation: fadeIn .5s;
 .menuButton:hover{
 cursor: pointer;
 }
+
+.utilVisible{
+    display: block !important;
+}
+
+
+@media screen and (max-width:500px){
+
+    .DashboardUtils{
+        border:1px solid red;
+        height: 100%;
+        width: 100%;
+        display: none
+    }
+
+ 
+  
+}
+  
+@media screen and (min-width:550px) and (max-width:801px){
+  
+  
+}
   
   

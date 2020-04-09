@@ -24,6 +24,16 @@ const Dashboard =()=>{
         dispatch(LoadItems(state.userid))
     },[])
 
+    const toggleUtils = ()=>{
+        const cards = document.querySelector('.DashboardPage')
+
+        cards.classList.toggle('hide')
+
+        const utils = document.querySelector('.DashboardUtils')
+
+        utils.classList.toggle('utilVisible')
+    }
+
     
 
     if(Category.categories ===null || state.user === null || Item.items === null){
@@ -33,20 +43,23 @@ const Dashboard =()=>{
     }
 
     return(
-        <div className="Dashboard">
-            <DashboardUtils/>
-            <section className="DashboardPage">
-                <h1 className="DashTitle">Welcome:{state.user.username}</h1>
-                    <section className="Dash-item Locations">
-                        {state.user.locations.map((loc,index)=>(
-                            <Locationcard
-                                id = {loc.id}
-                                name = {loc.name}
-                                Count = {loc.itemCount || 0}
-                            />
-                        ))}
-                    </section>   
-            </section>
+        <div className="parent">
+            <h1 className="DashTitle">Welcome:{state.user.username}</h1>
+            <button onClick={()=>toggleUtils()} id ="toggleUtils">Settings</button>
+            <div className="Dashboard">
+                <DashboardUtils/>
+                <section className="DashboardPage">
+                        <section className="Dash-item Locations">
+                            {state.user.locations.map((loc,index)=>(
+                                <Locationcard
+                                    id = {loc.id}
+                                    name = {loc.name}
+                                    Count = {loc.itemCount || 0}
+                                />
+                            ))}
+                        </section>   
+                </section>
+            </div>
         </div>
     );
 }

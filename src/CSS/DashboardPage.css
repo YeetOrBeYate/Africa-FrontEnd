@@ -48,13 +48,20 @@
             transform: scale(1); }
 }
 
+.parent{
+    width: 100%;
+    margin: 0 auto;
+    height: 80%;
+    background: #eef2c3;
+}
 
 .Dashboard{
     width: 100%;
     margin: 0 auto;
     display: flex;
-    height: 80%;
+    height: 85%;
     background: #eef2c3;
+    border:1px solid blue
   }
 
 .DashboardPage{
@@ -65,22 +72,24 @@
 
 .DashTitle{
     margin:0;
-    padding: 1.5% 0;
+    padding-top: 1.5% ;
     position: sticky;
     top:0;
     background:#eef2c3;
 }
 
+#toggleUtils{
+    display: none;
+}
+
 .Dash-item{
+    background: inherit;
     width: 90%;
     margin: 0 auto;
 }
 
 /* //////Location classes and ids///// */
 
-.Locations{
-    background: #eef2c3;
-}
 
 .location{
     text-align: left;
@@ -147,6 +156,31 @@
 .locationVisible{
     display: block;
     margin: 1% auto;
+}
+
+.hide{
+    display: none;
+}
+
+
+@media screen and (max-width:500px){
+
+    .DashboardPage{
+        width: 100%;
+    }
+
+
+    #toggleUtils{
+        display: inline;
+    }
+ 
+  
+}
+  
+@media screen and (min-width:550px) and (max-width:801px){
+  
+
+  
 }
 
 
