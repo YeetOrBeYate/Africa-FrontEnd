@@ -169,21 +169,25 @@ cursor: pointer;
 }
 
 
+
+
 @media screen and (max-width:500px){
 
     .DashboardUtils{
-        border:1px solid red;
         height: 100%;
         width: 100%;
-        display: none
+        display: none;  
     }
 
- 
-  
 }
   
 @media screen and (min-width:550px) and (max-width:801px){
   
+    .DashboardUtils{
+        height: 100%;
+        width: 100%;
+        display: none
+    }
   
 }
   
