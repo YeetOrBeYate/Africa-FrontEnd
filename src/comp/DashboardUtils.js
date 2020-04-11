@@ -90,6 +90,26 @@ const DashboardUtils = ()=>{
             const secondary = document.querySelector('.ProfileSecondary')
             secondary.classList.toggle('visible')
 
+            let others = document.querySelectorAll('.Dashboard-CRUD .visible')
+            
+            others.forEach((form)=>{
+
+                if(form.classList.contains('ProfileSecondary')){
+                    //do nothing
+                }else{
+                    form.classList.toggle('visible')
+                }
+            })
+
+            switch(true){
+                case Menu.itemOpen ===true:
+                    dispatch(closeItems())
+                case Menu.locationOpen ===true:
+                    dispatch(closeLocations())
+            }
+
+
+
         }else{
             dispatch(closeProfile())
             const secondary = document.querySelector('.ProfileSecondary')
