@@ -93,14 +93,12 @@ const DashboardUtils = ()=>{
             let others = document.querySelectorAll('.Dashboard-CRUD .visible')
             
             others.forEach((form)=>{
-
                 if(form.classList.contains('ProfileSecondary')){
                     //do nothing
                 }else{
                     form.classList.toggle('visible')
                 }
             })
-
             switch(true){
                 case Menu.itemOpen ===true:
                     dispatch(closeItems())
@@ -130,6 +128,22 @@ const DashboardUtils = ()=>{
 
             const yeet = document.querySelector(".ItemSecondary")
             yeet.classList.toggle('visible')
+
+            let others = document.querySelectorAll('.Dashboard-CRUD .visible')
+            
+            others.forEach((form)=>{
+                if(form.classList.contains('ItemSecondary')){
+                    //do nothing
+                }else{
+                    form.classList.toggle('visible')
+                }
+            })
+            switch(true){
+                case Menu.profileOpen ===true:
+                    dispatch(closeProfile())
+                case Menu.locationOpen ===true:
+                    dispatch(closeLocations())
+            }
         }else{
             dispatch(closeItems())
             const yeet = document.querySelector(".ItemSecondary")
@@ -154,6 +168,22 @@ const DashboardUtils = ()=>{
 
             const yeet = document.querySelector(".LocationSecondary")
             yeet.classList.toggle('visible')
+
+            let others = document.querySelectorAll('.Dashboard-CRUD .visible')
+            
+            others.forEach((form)=>{
+                if(form.classList.contains('LocationSecondary')){
+                    //do nothing
+                }else{
+                    form.classList.toggle('visible')
+                }
+            })
+            switch(true){
+                case Menu.profileOpen ===true:
+                    dispatch(closeProfile())
+                case Menu.itemOpen ===true:
+                    dispatch(closeItems())
+            }
         }else{
             dispatch(closeLocations())
             const yeet = document.querySelector(".LocationSecondary")
