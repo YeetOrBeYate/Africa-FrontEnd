@@ -15,8 +15,8 @@ const UserEdit = (props)=>{
     })
 
     const changeUser=(e)=>{
-        
-        setUser({...user, [e.target.name]:e.target.value})
+
+        setUser({...user, [e.target.name]:e.target.value, match:true})
     }
 
     const submitUser=(e)=>{

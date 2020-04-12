@@ -20,8 +20,8 @@ const LocationEdit = (props)=>{
         const select = document.querySelector('#LocationSelect').value;
         if(select !=0){
             const newloc = props.locations.find((loc)=>{
-                let select = document.querySelector('#LocationSelect').value
-                return loc.id == select;
+                let select = Number(document.querySelector('#LocationSelect').value)
+                return loc.id === select;
             })
             setLocation({...location, name:newloc.name, id: newloc.id})
         }

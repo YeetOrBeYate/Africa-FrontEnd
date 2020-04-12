@@ -14,11 +14,12 @@ const ItemEdit = (props)=>{
         price:'',
         user_id:props.userid,
         category_id:'',
-        location_id:''
+        location_id:'',
+        numberfail: false
     })
 
     const changeItem = (e)=>{
-        setItem({...item, [e.target.name]: e.target.value})
+        setItem({...item, [e.target.name]: e.target.value, numberfail:false})
     }
 
     const selectItem = (e)=>{
@@ -26,8 +27,10 @@ const ItemEdit = (props)=>{
 
         if(select !=0){
            const newItem = props.items.find((itm)=>{
-               let select = document.querySelector('#ItemSelect').value
-               return itm.id == select;
+               let select = Number(document.querySelector('#ItemSelect').value)
+               console.log('select',select)
+               console.log('itemid', itm.id)
+               return itm.id === select;
            })
            setItem({...item, id:newItem.id, description: newItem.description, name:newItem.name, price:newItem.price, category_id:newItem.category_id, location_id:newItem.location_id})
            document.querySelector('#CategorySelect').value = 0;
@@ -43,17 +46,20 @@ const ItemEdit = (props)=>{
 
     const submitItem = (e)=>{
         e.preventDefault()
-        
-        const newItem ={
-            name:item.name,
-            description: item.description,
-            price: item.price,
-            user_id:item.user_id,
-            category_id:item.category_id,
-            location_id:item.location_id
+
+        if(!Number(item.price)){
+            setItem({...item, price:'', numberfail:true})
+        }else{
+            const newItem ={
+                name:item.name,
+                description: item.description,
+                price: parseFloat(item.price),
+                user_id:item.user_id,
+                category_id:Number(item.category_id),
+                location_id:Number(item.location_id)
+            }  
+            dispatch(EditItems(item.id, newItem))
         }
-        //replace with item action to make the put request
-        dispatch(EditItems(item.id, newItem))
         
     }
 
@@ -93,6 +99,7 @@ const ItemEdit = (props)=>{
                             ))}
                     </select>
                 </div>
+                {item.numberfail? <b>The price contains a non-number character, please retry</b>: <></>}
                 <button onClick={(e)=>submitItem(e)}>Edit Item!</button>
             </form>
         </>
