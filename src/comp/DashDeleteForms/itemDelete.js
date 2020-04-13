@@ -52,7 +52,7 @@ const ItemDelete = ()=>{
 
     return(
         <form className="itemDeleteForm">
-            <div>
+            <div className="formDiv">
                 <select id="DeleteItemSelect" onChange={changeItemDel}>
                     <option value='0'>Pick item</option>
                     {
@@ -62,8 +62,8 @@ const ItemDelete = ()=>{
                     }
                 </select>
             </div>
-            <div>
-                <button onClick={(e)=>deleteItem(e)}>Delete item</button>
+            <div className="formDiv">
+                <button id="formSubmit" onClick={(e)=>deleteItem(e)}>Delete item</button>
             </div>
         </form>
     );

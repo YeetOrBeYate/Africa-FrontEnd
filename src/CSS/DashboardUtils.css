@@ -16,12 +16,11 @@ margin: 2%;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     padding: 3%;
-    
 }
 
 .ItemOption{
     background: #e47657;
-      box-shadow: 0px 9px 11px -10px black inset;
+    box-shadow: 0px 9px 11px -10px black inset;
     padding: 3%;
 }
   
@@ -43,16 +42,22 @@ margin: 2%;
     color:ivory;
 }
 
-.itemDiv{
+.formDiv{
     padding: .5% 0;
 }
 
-.itemDiv textarea{
+.formDiv textarea{
     width: 230px;
     padding: 4px;
     border-radius: 5px;
     border:1px solid #929292
 }
+
+.formDiv select{
+    width:122px;
+    padding:.5%
+}
+
 .userForm{
     display: none;
     padding: 3%;
@@ -60,38 +65,31 @@ margin: 2%;
   
 .itemForm{
 display: none;
-/* box-shadow: 0px -9px 9px -11px black inset; */
 padding: 3%;
 }
 
-
 .locationForm{
 display: none;
-/* box-shadow: 0px -9px 9px -11px black inset; */
 padding: 3%;
 }
 
 .itemPostForm{
 display: none;
-box-shadow: 0px 9px 11px -10px black inset;
 padding: 3%;
 }
   
 .locationPostForm{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
 padding: 3%;
 }
 
 .itemDeleteForm{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
 padding: 3%;
 }
 
 .locationDeleteForm{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
 padding: 3%;
 }
 
@@ -130,31 +128,26 @@ display: none;
 
 .Third{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
 padding: 3%;
 }
 
 .LocationThird{
 display: none;
-box-shadow: 0px 9px 9px -11px black inset;
 padding: 3%;
 }
 
 .EditForm{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
 padding: 3%;
 }
 
 .AddForm{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
 padding: 3%;
 }
 
 .DeleteForm{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
 padding: 3%;
 }
   

@@ -57,7 +57,7 @@ const LocationEdit = (props)=>{
                 <button onClick={(e)=>ToggleLocation(e)}>Open edit form</button>
             </div>
             <form className="locationForm">
-                <div>
+                <div className="formDiv">
                     <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
                 </div>
                 <button id="formSubmit" onClick={(e)=>submitLocation(e)}>Edit Location</button>

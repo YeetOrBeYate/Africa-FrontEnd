@@ -37,7 +37,7 @@ const LocationDelete = ()=>{
 
     return(
         <form className="locationDeleteForm">
-            <div>
+            <div className="formDiv">
                 <select id ='DeleteLocationSelect' onChange={changeLocationDel}>
                     <option value ='0'>Select Location</option>
                     {User.user.locations.map((loc)=>(
@@ -45,8 +45,8 @@ const LocationDelete = ()=>{
                     ))}
                 </select>
             </div>
-            <div>
-                <button onClick={(e)=>deleteLocation(e)}>Delete Location</button>
+            <div className="formDiv">
+                <button id = "formSubmit" onClick={(e)=>deleteLocation(e)}>Delete Location</button>
             </div>
         </form>);
 

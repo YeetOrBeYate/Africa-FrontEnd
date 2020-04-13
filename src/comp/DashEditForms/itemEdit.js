@@ -76,16 +76,16 @@ const ItemEdit = (props)=>{
             <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
             </div>
             <form className="itemForm">
-                <div className='itemDiv'>
+                <div className='formDiv'>
                     <input type="text" name="name" onChange={changeItem} value={item.name} placeholder="name"/>
                 </div>
-                <div className='itemDiv'>
+                <div className='formDiv'>
                     <input type="text" name="price" onChange={changeItem} value={item.price} placeholder="price"/>
                 </div>
-                <div className='itemDiv'>
+                <div className='formDiv'>
                     <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="32"/>
                 </div>
-                <div className='itemDiv'>
+                <div className='formDiv'>
                     <select id ='CategorySelect' name="category_id" onChange={changeItem} value = {item.category_id}>
                         <option value = "0">Select Category</option>
                         {props.categories.map((cat)=>(

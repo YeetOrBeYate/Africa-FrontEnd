@@ -31,10 +31,10 @@ const LocationYeet =()=>{
 
     return(
         <form className="locationPostForm">
-            <div>
-                <input type="text" name="name" onChange={changeLocation} value={locationPost.name} placeholder="PostLName"/>
+            <div className="formDiv">
+                <input type="text" name="name" onChange={changeLocation} value={locationPost.name} placeholder="Location Name"/>
             </div>
-            <button onClick={(e)=>sendLocation(e)}>postItem</button>
+            <button id ="formSubmit" onClick={(e)=>sendLocation(e)}>Add Location</button>
         </form>
     );
 

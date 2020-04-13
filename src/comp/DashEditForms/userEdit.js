@@ -40,13 +40,13 @@ const UserEdit = (props)=>{
 
     return(
         <form className="userForm">
-            <div className="itemDiv">
+            <div className="formDiv">
                 <input type="text" onChange={changeUser} name="username" value={user.username} placeholder="username"/>
             </div>
-            <div className="itemDiv">
+            <div className="formDiv">
                 <input type="text" onChange={changeUser} name="password" value={user.password} placeholder="password"/>
             </div>
-            <div className="itemDiv">
+            <div className="formDiv">
                 <input type="text" onChange={changeUser} name="Repassword" value={user.Repassword} placeholder="re-enter the password"/> 
             </div>
                 {!user.match?  <b>The passwords do not match please re-enter password</b> : <></> }

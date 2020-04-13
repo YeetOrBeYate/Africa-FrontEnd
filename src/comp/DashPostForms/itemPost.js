@@ -47,28 +47,30 @@ const ItemYeet = ()=>{
 
     return(
             <form className="itemPostForm">
-                <div>
-                    <input type="text" name="name" onChange={changePostItem} value={postItem.name} placeholder="Postname"/>
+                <div className="formDiv">
+                    <input type="text" name="name" onChange={changePostItem} value={postItem.name} placeholder="Item Name"/>
                 </div>
-                <div>
-                    <input type='text' name="price" onChange={changePostItem} value={postItem.price} placeholder="Postprice"/>
+                <div className="formDiv">
+                    <input type='text' name="price" onChange={changePostItem} value={postItem.price} placeholder="Item Price"/>
                 </div>
-                <div>
-                    <textarea type="text" name="description" onChange={changePostItem} value={postItem.description} placeholder="Postdescription" cols="31"/>
+                <div className="formDiv">
+                    <textarea type="text" name="description" onChange={changePostItem} value={postItem.description} placeholder="Item Description" cols="31"/>
                 </div>
-                <select onChange={changePostItem} name="category_id">
-                    <option>please pick a category</option>
-                    {Category.categories.map((cat)=>(
-                        <option value={cat.id}>{cat.name}</option>
-                    ))}
-                </select> 
-                <select onChange={changePostItem} name='location_id'>
-                    <option>Pick a location</option>
-                    {User.user.locations.map((loc)=>(
-                        <option value={loc.id}>{loc.name}</option>
+                <div className="formDiv">
+                    <select onChange={changePostItem} name="category_id">
+                        <option>Pick a category</option>
+                        {Category.categories.map((cat)=>(
+                            <option value={cat.id}>{cat.name}</option>
                         ))}
-                </select>
-                <button onClick={(e)=>sendItem(e)}>postItem</button>
+                    </select> 
+                    <select onChange={changePostItem} name='location_id'>
+                        <option>Pick a location</option>
+                        {User.user.locations.map((loc)=>(
+                            <option value={loc.id}>{loc.name}</option>
+                            ))}
+                    </select>
+                </div>
+                <button id="formSubmit" onClick={(e)=>sendItem(e)}>Add Item</button>
             </form>
     );
 }
