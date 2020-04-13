@@ -9,9 +9,9 @@ const ItemEdit = (props)=>{
 
     const [item, setItem] = React.useState({
         id:'',
-        name:'',
+        name:'',//required
         description:'',
-        price:'',
+        price:'',//required
         user_id:props.userid,
         category_id:'',
         location_id:'',
@@ -28,8 +28,6 @@ const ItemEdit = (props)=>{
         if(select !=0){
            const newItem = props.items.find((itm)=>{
                let select = Number(document.querySelector('#ItemSelect').value)
-               console.log('select',select)
-               console.log('itemid', itm.id)
                return itm.id === select;
            })
            setItem({...item, id:newItem.id, description: newItem.description, name:newItem.name, price:newItem.price, category_id:newItem.category_id, location_id:newItem.location_id})
@@ -47,8 +45,12 @@ const ItemEdit = (props)=>{
     const submitItem = (e)=>{
         e.preventDefault()
 
-        if(!Number(item.price)){
-            setItem({...item, price:'', numberfail:true})
+        console.log(
+            'item', item
+        )
+
+        if(!Number(item.price) || !item.name || !item.category_id || !item.location_id){
+            setItem({...item, price:"", location_id:"", category_id:"", numberfail:true})
         }else{
             const newItem ={
                 name:item.name,
@@ -77,29 +79,29 @@ const ItemEdit = (props)=>{
             </div>
             <form className="itemForm">
                 <div className='formDiv'>
-                    <input type="text" name="name" onChange={changeItem} value={item.name} placeholder="name"/>
+                    <input type="text" name="name" onChange={changeItem} value={item.name} required placeholder="name"/>
                 </div>
                 <div className='formDiv'>
-                    <input type="text" name="price" onChange={changeItem} value={item.price} placeholder="price"/>
+                    <input type="text" name="price" onChange={changeItem} value={item.price} required placeholder="price"/>
                 </div>
                 <div className='formDiv'>
                     <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="32"/>
                 </div>
                 <div className='formDiv'>
-                    <select id ='CategorySelect' name="category_id" onChange={changeItem} value = {item.category_id}>
-                        <option value = "0">Select Category</option>
+                    <select id ='CategorySelect' name="category_id" onChange={changeItem} value = {item.category_id} required="required">
+                        <option value="">Category</option>
                         {props.categories.map((cat)=>(
                                 <option value={cat.id}>{cat.name}</option>
                         ))}
                     </select>
-                    <select  name='location_id' onChange={changeItem} value={item.location_id}>
-                        <option>Pick a location</option>
+                    <select  name='location_id' onChange={changeItem} value={item.location_id} required="required">
+                        <option value="">Location</option>
                         {props.locations.map((loc)=>(
                             <option value={loc.id}>{loc.name}</option>
                             ))}
                     </select>
                 </div>
-                {item.numberfail? <b>The price contains a non-number character, please retry</b>: <></>}
+                {item.numberfail? <b>Double-Check the name,price,category and location fields</b>: <></>}
                 <button id="formSubmit" onClick={(e)=>submitItem(e)}>Edit Item</button>
             </form>
         </>
