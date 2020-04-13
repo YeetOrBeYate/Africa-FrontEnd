@@ -29,31 +29,51 @@ margin: 2%;
     background:#9c3a52;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-      box-shadow: 0px 9px 11px -10px black inset;
+    box-shadow: 0px 9px 11px -10px black inset;
     padding: 3%;
 }
 
+#formSubmit{
+    height: 40px;
+    width: 240px;
+    border:1px solid #323232;
+    border-radius: 5px;
+    margin: .5% 0;
+    background: #323232;
+    color:ivory;
+}
+
+.itemDiv{
+    padding: .5% 0;
+}
+
+.itemDiv textarea{
+    width: 230px;
+    padding: 4px;
+    border-radius: 5px;
+    border:1px solid #929292
+}
 .userForm{
     display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
     padding: 3%;
-  }
+}
   
 .itemForm{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
+/* box-shadow: 0px -9px 9px -11px black inset; */
 padding: 3%;
 }
 
+
 .locationForm{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
+/* box-shadow: 0px -9px 9px -11px black inset; */
 padding: 3%;
 }
 
 .itemPostForm{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
+box-shadow: 0px 9px 11px -10px black inset;
 padding: 3%;
 }
   
@@ -116,7 +136,7 @@ padding: 3%;
 
 .LocationThird{
 display: none;
-    box-shadow: 0px 9px 11px -10px black inset;
+box-shadow: 0px 9px 9px -11px black inset;
 padding: 3%;
 }
 

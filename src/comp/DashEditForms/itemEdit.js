@@ -76,16 +76,16 @@ const ItemEdit = (props)=>{
             <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
             </div>
             <form className="itemForm">
-                <div>
+                <div className='itemDiv'>
                     <input type="text" name="name" onChange={changeItem} value={item.name} placeholder="name"/>
                 </div>
-                <div>
+                <div className='itemDiv'>
                     <input type="text" name="price" onChange={changeItem} value={item.price} placeholder="price"/>
                 </div>
-                <div>
-                    <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="31"/>
+                <div className='itemDiv'>
+                    <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="32"/>
                 </div>
-                <div>
+                <div className='itemDiv'>
                     <select id ='CategorySelect' name="category_id" onChange={changeItem} value = {item.category_id}>
                         <option value = "0">Select Category</option>
                         {props.categories.map((cat)=>(
@@ -100,7 +100,7 @@ const ItemEdit = (props)=>{
                     </select>
                 </div>
                 {item.numberfail? <b>The price contains a non-number character, please retry</b>: <></>}
-                <button onClick={(e)=>submitItem(e)}>Edit Item!</button>
+                <button id="formSubmit" onClick={(e)=>submitItem(e)}>Edit Item</button>
             </form>
         </>
     )

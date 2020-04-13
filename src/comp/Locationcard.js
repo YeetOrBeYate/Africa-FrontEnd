@@ -22,23 +22,30 @@ const Locationcard = (props)=>{
 
         let locationCard = document.querySelector(`.location-${Lid}`)
 
-        if(size.length>itemCount){
-             //conduct the addition animation, and change the item count to the new current list size
-            locationCard.style.animation = "addition .75s 1";
-            //this is to clear/reset the animation
-            locationCard.addEventListener('animationend', ()=>{
-                locationCard.style.animation = "none"
-            })
-            setItemCount(size.length)
-        }else if(size.length<itemCount){
-            //conduct the subtract animation, and change the item count to the new current list size
-            locationCard.style.animation = "subtract .75s 1";
-            setItemCount(size.length)
-            //this is to clear/reset the animation
-            locationCard.addEventListener('animationend', ()=>{
-                locationCard.style.animation = "none"
-            })
+        try{
+            if(size.length>itemCount){
+                 //conduct the addition animation, and change the item count to the new current list size
+                locationCard.style.animation = "addition .75s 1";
+                //this is to clear/reset the animation
+                locationCard.addEventListener('animationend', ()=>{
+                    locationCard.style.animation = "none"
+                })
+                setItemCount(size.length)
+            }else if(size.length<itemCount){
+                //conduct the subtract animation, and change the item count to the new current list size
+                locationCard.style.animation = "subtract .75s 1";
+                setItemCount(size.length)
+                //this is to clear/reset the animation
+                locationCard.addEventListener('animationend', ()=>{
+                    locationCard.style.animation = "none"
+                })
+            }
+
+            
+        }catch(err){
+            
         }
+
         return size.length
     }
 

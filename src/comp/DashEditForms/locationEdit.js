@@ -60,7 +60,7 @@ const LocationEdit = (props)=>{
                 <div>
                     <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
                 </div>
-                <button onClick={(e)=>submitLocation(e)}>Tesstbtn</button>
+                <button id="formSubmit" onClick={(e)=>submitLocation(e)}>Edit Location</button>
             </form>
         </>
     )
