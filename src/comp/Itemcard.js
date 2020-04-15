@@ -22,13 +22,14 @@ const ItemCard = (props)=>{
     const selfToggle = (locationId)=>{
         try{
             const classMates = document.querySelectorAll(`.locationItem-${locationId}.locationVisible`)
-            if(classMates.length>0){
+            if( classMates && classMates.length>0){
                 return `${locationId} locationVisible`
             }else{
                 return `${locationId}`
             }
         }
         catch(err){
+            alert("item",err)
         }
     }
 

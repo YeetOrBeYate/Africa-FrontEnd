@@ -39,7 +39,7 @@ export const signIn = (person)=>{
         //removed the userloading action from this location
         return axios.post('https://africa-marketplace.herokuapp.com/auth/login', person)
         .then(res=>{
-            console.log(res.data)
+
             const token = res.data.token;
             let userid = res.data.id;
 

@@ -7,7 +7,8 @@ const LocationEdit = (props)=>{
 
     const [location, setLocation] = React.useState({
         name:'',
-        id:null
+        id:null,
+        lengthFailure:false
     })
 
 
@@ -37,19 +38,22 @@ const LocationEdit = (props)=>{
     const submitLocation = (e)=>{
         e.preventDefault();
 
-        const newLocation ={
-            name: location.name
-        }
+        if(!location.name.length >0){
+            setLocation({...location, lengthFailure:true})
+        }else{
 
-        dispatch(EditUserLocation(location.id, newLocation))
-        
+            const newLocation ={
+                name: location.name
+            }
+            dispatch(EditUserLocation(location.id, newLocation))
+        }
     }
 
     return(
         <>
             <div className ="LocationThird">
                 <select id="LocationSelect" onChange={selectLocation}>
-                    <option value="0">Select Location</option>
+                    <option value="">Select Location</option>
                     {props.locations.map((loc)=>(
                         <option value={loc.id}>{loc.name}</option>
                     ))}
@@ -60,6 +64,7 @@ const LocationEdit = (props)=>{
                 <div className="formDiv">
                     <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
                 </div>
+                {location.lengthFailure? <b>Location name was left blank</b> : <></>}
                 <button id="formSubmit" onClick={(e)=>submitLocation(e)}>Edit Location</button>
             </form>
         </>

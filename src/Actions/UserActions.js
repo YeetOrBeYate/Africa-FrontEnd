@@ -64,7 +64,6 @@ export const LoadUser=(id)=>{
         .then(response=>{
             
             let user = response.data.user
-            console.log("from the load user",user)
             dispatch(UserGood(user))
         })
 

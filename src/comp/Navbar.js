@@ -66,7 +66,7 @@ const Navbar = ()=>{
     React.useEffect(()=>{
 
         if(User.loading || LoginR.loading || Item.loading || Register.loading){
-            console.log('loading se to ttru')
+
             setLoading(true)
         }else{
             setLoading(false)

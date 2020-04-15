@@ -22,7 +22,7 @@ const UserEdit = (props)=>{
     const submitUser=(e)=>{
         e.preventDefault();
 
-        if(user.password === user.Repassword){
+        if(user.password === user.Repassword && user.username.length>0 && user.username.length>0){
             let Theuser = {
                 username:user.username,
                 password:user.password
@@ -41,15 +41,15 @@ const UserEdit = (props)=>{
     return(
         <form className="userForm">
             <div className="formDiv">
-                <input type="text" onChange={changeUser} name="username" value={user.username} placeholder="username"/>
+                <input type="text" onChange={changeUser} name="username" value={user.username} required placeholder="username"/>
             </div>
             <div className="formDiv">
-                <input type="text" onChange={changeUser} name="password" value={user.password} placeholder="password"/>
+                <input type="text" onChange={changeUser} name="password" value={user.password} required placeholder="password"/>
             </div>
             <div className="formDiv">
-                <input type="text" onChange={changeUser} name="Repassword" value={user.Repassword} placeholder="re-enter the password"/> 
+                <input type="text" onChange={changeUser} name="Repassword" value={user.Repassword} required placeholder="re-enter password"/> 
             </div>
-                {!user.match?  <b>The passwords do not match please re-enter password</b> : <></> }
+                {!user.match?  <b>The passwords do not match or name is blank</b> : <></> }
             <button id ="formSubmit" onClick={(e)=>submitUser(e)}>Edit Profile</button>
         </form>
     )

@@ -45,12 +45,8 @@ const ItemEdit = (props)=>{
     const submitItem = (e)=>{
         e.preventDefault()
 
-        console.log(
-            'item', item
-        )
-
         if(!Number(item.price) || !item.name || !item.category_id || !item.location_id){
-            setItem({...item, price:"", location_id:"", category_id:"", numberfail:true})
+            setItem({...item, name:'', price:"", location_id:"", category_id:"", numberfail:true})
         }else{
             const newItem ={
                 name:item.name,
@@ -62,7 +58,6 @@ const ItemEdit = (props)=>{
             }  
             dispatch(EditItems(item.id, newItem))
         }
-        
     }
 
 
@@ -88,13 +83,13 @@ const ItemEdit = (props)=>{
                     <textarea type="text" name="description" onChange={changeItem} value={item.description} placeholder="description" cols="32"/>
                 </div>
                 <div className='formDiv'>
-                    <select id ='CategorySelect' name="category_id" onChange={changeItem} value = {item.category_id} required="required">
+                    <select id ='CategorySelect' name="category_id" onChange={changeItem} value = {item.category_id} required>
                         <option value="">Category</option>
                         {props.categories.map((cat)=>(
                                 <option value={cat.id}>{cat.name}</option>
                         ))}
                     </select>
-                    <select  name='location_id' onChange={changeItem} value={item.location_id} required="required">
+                    <select  name='location_id' onChange={changeItem} value={item.location_id} required>
                         <option value="">Location</option>
                         {props.locations.map((loc)=>(
                             <option value={loc.id}>{loc.name}</option>

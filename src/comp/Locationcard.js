@@ -20,9 +20,10 @@ const Locationcard = (props)=>{
             }
         })
 
-        let locationCard = document.querySelector(`.location-${Lid}`)
-
+        
         try{
+            let locationCard = document.querySelector(`.location-${Lid}`)
+            
             if(size.length>itemCount){
                  //conduct the addition animation, and change the item count to the new current list size
                 locationCard.style.animation = "addition .75s 1";
@@ -43,6 +44,8 @@ const Locationcard = (props)=>{
 
             
         }catch(err){
+
+            alert("location",err)
             
         }
 
