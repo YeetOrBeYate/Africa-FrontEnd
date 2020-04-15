@@ -11,7 +11,8 @@ const LocationYeet =()=>{
     
     const [locationPost, setLocationPost] = React.useState({
         name:'',
-        user_id:User.user.id
+        user_id:User.user.id,
+        locationFailure:false
     })
 
     const changeLocation = (e)=>{
@@ -20,20 +21,25 @@ const LocationYeet =()=>{
 
     const sendLocation = (e)=>{
         e.preventDefault();
-        console.log(locationPost)
 
-        const newLocation = locationPost;
+        if(!locationPost.name){
+            setLocationPost({...locationPost, locationFailure:true})
+        }else{
+            const newLocation = {
+                name :locationPost.name,
+                user_id:locationPost.user_id
+            }
+            dispatch(AddLocation(newLocation))
+        }
 
-        dispatch(AddLocation(newLocation))
-
-        console.log("state with the added lcoation with id", User.user)
     }
 
     return(
         <form className="locationPostForm">
             <div className="formDiv">
-                <input type="text" name="name" onChange={changeLocation} value={locationPost.name} placeholder="Location Name"/>
+                <input type="text" name="name" onChange={changeLocation} value={locationPost.name} required placeholder="Location Name"/>
             </div>
+            {locationPost.locationFailure? <b>Location name was left blank</b>: <></>}
             <button id ="formSubmit" onClick={(e)=>sendLocation(e)}>Add Location</button>
         </form>
     );
