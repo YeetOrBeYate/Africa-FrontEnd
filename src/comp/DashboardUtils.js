@@ -53,28 +53,39 @@ const DashboardUtils = ()=>{
 
     }
 
-    const TogglePostItem = (e)=>{
-        e.preventDefault();
-        const post = document.querySelector('.itemPostForm')
-        post.classList.toggle('visible');
-    }
+    // const TogglePostItem = (e)=>{
+    //     e.preventDefault()
+    //     closeItemFroms(e,".itemPostForm", "item")
+    //     const post = document.querySelector('.itemPostForm')
+    //     post.classList.toggle('visible');
+    // }
 
-    const TogglePostLocation = (e)=>{
-        e.preventDefault();
-        const post = document.querySelector(".locationPostForm")
-        post.classList.toggle('visible');
-    }
+    // const TogglePostLocation = (e)=>{
+    //     e.preventDefault();
+    //     closeItemFroms(e,".locationPostForm", 'location')
+    //     const post = document.querySelector(".locationPostForm")
+    //     post.classList.toggle('visible');
+    // }
 
-    const ToggleDeleteItem=(e)=>{
-        e.preventDefault();
-        const DeleteItem = document.querySelector('.itemDeleteForm');
-        DeleteItem.classList.toggle('visible');
-    }
+    // const ToggleDeleteItem=(e)=>{
+    //     e.preventDefault();
+    //     closeItemFroms(e, ".itemDeleteForm", "item")
+    //     const DeleteItem = document.querySelector('.itemDeleteForm');
+    //     DeleteItem.classList.toggle('visible');
+    // }
 
-    const ToggleDeleteLocation =(e)=>{
-        e.preventDefault();
-        const DeleteLocation = document.querySelector('.locationDeleteForm');
-        DeleteLocation.classList.toggle('visible')
+    // const ToggleDeleteLocation =(e)=>{
+    //     e.preventDefault();
+    //     closeItemFroms(e, '.locationDeleteForm', "location")
+    //     const DeleteLocation = document.querySelector('.locationDeleteForm');
+    //     DeleteLocation.classList.toggle('visible')
+    // }
+
+    const ToggleForm =(e, qs, type)=>{
+        e.preventDefault()
+        closeItemFroms(e, qs, type)
+        const form = document.querySelector(qs)
+        form.classList.toggle('visible')
     }
 
 
@@ -105,8 +116,6 @@ const DashboardUtils = ()=>{
                 case Menu.locationOpen ===true:
                     dispatch(closeLocations())
             }
-
-
 
         }else{
             dispatch(closeProfile())
@@ -201,11 +210,39 @@ const DashboardUtils = ()=>{
     }
 
 
-    const openThird = (e, string)=>{
+    const openThird = (e, string, side)=>{
         e.preventDefault()
+        closeItemFroms(e, string, side)
         const yeet = document.querySelector(string)
         yeet.classList.toggle('visible')
     }
+
+    function closeItemFroms(e, string, side){
+        e.preventDefault()
+        let except = string.slice(1,30)
+
+        if(side === "item"){
+            let forms = document.querySelectorAll(".ItemSecondary .visible")
+            forms.forEach((form)=>{
+                if(form.classList.contains(except)){
+                    console.log('exception', form)
+                }else{
+                    form.classList.toggle('visible')
+                }
+            })
+        }else{
+            let forms = document.querySelectorAll(".LocationSecondary .visible")
+            forms.forEach((form)=>{
+                if(form.classList.contains(except)){
+                    console.log('exception', form)
+                }else{
+                    form.classList.toggle('visible')
+                }
+            })
+        }
+    }
+
+
 
 
     return(
@@ -270,7 +307,7 @@ const DashboardUtils = ()=>{
                     <div className="ItemSecondary">
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img height="50px" width="50px" onClick={(e)=>openThird(e,'.Third')} src={EditPicture} alt="edit items"/>    
+                                <img height="50px" width="50px" onClick={(e)=>openThird(e,'.Third','item')} src={EditPicture} alt="edit items"/>    
                             </div>
                             <div>
                                 <h2>Edit an Item</h2>
@@ -284,7 +321,7 @@ const DashboardUtils = ()=>{
                             />
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img onClick={(e)=>TogglePostItem(e)} src={AddPicture} alt="add item"/>
+                                <img onClick={(e)=>ToggleForm(e,'.itemPostForm', 'item')} src={AddPicture} alt="add item"/>
                             </div>
                             <div>
                                 <h2>Add an Item</h2>
@@ -293,7 +330,7 @@ const DashboardUtils = ()=>{
                         <ItemPost/>
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img onClick={(e)=>ToggleDeleteItem(e)} src={DeletePicture} alt="delete item"/>
+                                <img onClick={(e)=>ToggleForm(e, ".itemDeleteForm", "item")} src={DeletePicture} alt="delete item"/>
                             </div>
                             <div>
                                 <h2>Delete an Item</h2>
@@ -327,7 +364,7 @@ const DashboardUtils = ()=>{
                     <div className="LocationSecondary">
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img height="50px" width="50px" onClick={(e)=>openThird(e,'.LocationThird')} src={EditPicture} alt="edit location"/>
+                                <img height="50px" width="50px" onClick={(e)=>openThird(e,'.LocationThird', 'location')} src={EditPicture} alt="edit location"/>
                             </div>
                             <div>
                                 <h2>Edit a location</h2>
@@ -336,7 +373,7 @@ const DashboardUtils = ()=>{
                         <LocationEdit locations={state.user.locations}/>
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img onClick={(e)=>TogglePostLocation(e)} src={AddPicture} alt="Add location"/>
+                                <img onClick={(e)=>ToggleForm(e,".locationPostForm","location")} src={AddPicture} alt="Add location"/>
                             </div>
                             <div>
                                 <h2>Add a location</h2>
@@ -345,7 +382,7 @@ const DashboardUtils = ()=>{
                         <LocationPost/>
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img onClick={(e)=>ToggleDeleteLocation(e)} src={DeletePicture} alt="Delete location"/>
+                                <img onClick={(e)=>ToggleForm(e, '.locationDeleteForm', "location")} src={DeletePicture} alt="Delete location"/>
                             </div>
                             <div>
                                 <h2>Delete a location</h2>
