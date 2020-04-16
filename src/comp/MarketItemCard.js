@@ -18,7 +18,7 @@ const MarketItemCard = (props)=>{
     }
 
     return(
-        <div>
+        <div className="marketItemCard">
             <h2>{props.name} ({FindCatName(props.category_id)})</h2>
             <h3>{props.description}</h3>
             <h3>{props.price}</h3>
