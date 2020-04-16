@@ -40,7 +40,6 @@ const ItemYeet = ()=>{
                 location_id:Number(postItem.location_id)
             }
 
-            console.log('what ill send', newPost)
             dispatch(AddItem(newPost))
         }
         

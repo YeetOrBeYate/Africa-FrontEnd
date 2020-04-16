@@ -56,8 +56,6 @@ const ItemEdit = (props)=>{
                 category_id:Number(item.category_id),
                 location_id:Number(item.location_id)
             }  
-
-            console.log('what Ill edit', newItem)
             dispatch(EditItems(item.id, newItem))
         }
     }
