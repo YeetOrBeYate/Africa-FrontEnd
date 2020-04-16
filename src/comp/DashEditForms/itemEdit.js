@@ -51,11 +51,13 @@ const ItemEdit = (props)=>{
             const newItem ={
                 name:item.name,
                 description: item.description,
-                price: parseFloat(item.price),
+                price:Number(item.price).toFixed(2),
                 user_id:item.user_id,
                 category_id:Number(item.category_id),
                 location_id:Number(item.location_id)
             }  
+
+            console.log('what Ill edit', newItem)
             dispatch(EditItems(item.id, newItem))
         }
     }

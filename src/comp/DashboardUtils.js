@@ -53,34 +53,6 @@ const DashboardUtils = ()=>{
 
     }
 
-    // const TogglePostItem = (e)=>{
-    //     e.preventDefault()
-    //     closeItemFroms(e,".itemPostForm", "item")
-    //     const post = document.querySelector('.itemPostForm')
-    //     post.classList.toggle('visible');
-    // }
-
-    // const TogglePostLocation = (e)=>{
-    //     e.preventDefault();
-    //     closeItemFroms(e,".locationPostForm", 'location')
-    //     const post = document.querySelector(".locationPostForm")
-    //     post.classList.toggle('visible');
-    // }
-
-    // const ToggleDeleteItem=(e)=>{
-    //     e.preventDefault();
-    //     closeItemFroms(e, ".itemDeleteForm", "item")
-    //     const DeleteItem = document.querySelector('.itemDeleteForm');
-    //     DeleteItem.classList.toggle('visible');
-    // }
-
-    // const ToggleDeleteLocation =(e)=>{
-    //     e.preventDefault();
-    //     closeItemFroms(e, '.locationDeleteForm', "location")
-    //     const DeleteLocation = document.querySelector('.locationDeleteForm');
-    //     DeleteLocation.classList.toggle('visible')
-    // }
-
     const ToggleForm =(e, qs, type)=>{
         e.preventDefault()
         closeItemFroms(e, qs, type)

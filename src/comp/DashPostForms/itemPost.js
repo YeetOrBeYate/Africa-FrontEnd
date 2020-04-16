@@ -34,11 +34,13 @@ const ItemYeet = ()=>{
             const newPost= {
                 name: postItem.name,
                 description: postItem.description,
-                price:Number(postItem.price),
+                price:parseFloat(postItem.price).toFixed(2),
                 user_id:postItem.user_id,
                 category_id:Number(postItem.category_id),
                 location_id:Number(postItem.location_id)
             }
+
+            console.log('what ill send', newPost)
             dispatch(AddItem(newPost))
         }
         
