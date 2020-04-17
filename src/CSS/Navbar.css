@@ -175,14 +175,19 @@ h1, a{
   }
 
   .HomeIntro{
-    margin-top:1%;
+    margin-top:0%;
   }
+
+  .HomeImage{
+    height: 35%;
+  }
+
   .NavFlex a{
     padding:0;
   }
 
   .footerFlex{
-    width:70%
+    width:80%
   }
 
   .NavSub{
@@ -212,7 +217,7 @@ h1, a{
   }
 
   .footerFlex{
-    width:50%
+    width:70%
   }
 
   .loginForm{

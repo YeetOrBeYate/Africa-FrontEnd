@@ -5,7 +5,6 @@ import reduxPic from "../pics/icons8-redux-48.png"
 import cssPic from "../pics/icons8-css3-48.png"
 import nodePic from "../pics/icons8-nodejs-48.png"
 import postPic from "../pics/icons8-postgresql-48.png"
-import flatIcon from "../pics/flaticon.png"
 import icon8 from "../pics/icons8-icons8-48.png"
 
 
