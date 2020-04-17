@@ -9,6 +9,7 @@ import {clearMenu} from "../Actions/MenuActions";
 import {clearUser,FixUserFailure} from "../Actions/UserActions";
 import {FixItemFailure} from "../Actions/ItemActions"
 import {fixRegFailure} from "../Actions/RegisterActions"
+import {FixFailure} from '../Actions/LoginActions'
 
 import "../CSS/Navbar.css"
 
@@ -67,18 +68,27 @@ const Navbar = ()=>{
     React.useEffect(()=>{
 
         if(User.loading || LoginR.loading || Item.loading || Register.loading){
-
             setLoading(true)
         }else{
             setLoading(false)
         }
 
-        if(User.failure || Item.failure || Register.failure){
-            setError(true)
+        if(User.failure || Item.failure){
             setStatus({...status, message:User.message, code:User.code})
+            setError(true)
         }
 
-    },[User.loading, LoginR.loading, Item.loading, User.failure, Item.failure, Register.loading] )
+        if(LoginR.message){
+            setStatus({...status, message:LoginR.message, code:LoginR.code})
+            setError(true)
+        }
+
+        if(Register.message){
+            setStatus({...status, message:Register.message, code:Register.code })
+            setError(true)
+        }
+
+    },[User.loading, LoginR.loading, Item.loading, User.failure, Item.failure, Register.loading, Register.failure, LoginR.failure] )
 
 
     const signOut = (e)=>{
@@ -93,6 +103,8 @@ const Navbar = ()=>{
         dispatch(FixUserFailure())
         dispatch(FixItemFailure())
         dispatch(fixRegFailure())
+        dispatch(FixFailure())
+
     }
 
 

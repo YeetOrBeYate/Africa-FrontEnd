@@ -18,6 +18,10 @@ const moved = ()=>{
     return{type:'moved'}
 }
 
+const duplicate = (message,code)=>{
+    return{type:'duplicate', payload:{message,code}}
+}
+
 const FailureFix = ()=>{
     return{type:'fixed'}
 }
@@ -38,11 +42,17 @@ export const signUp = (person)=>{
 
         return axios.post('https://africa-marketplace.herokuapp.com/auth/register', person)
         .then(res=>{
-            console.log("good",res)
+
             dispatch(good())
         })
         .catch(err=>{
-            console.log("bad",err)
+            if(err.response && err.response.status == "409"){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(duplicate(message,code))
+            }else{
+                dispatch(bad())                
+            }
             dispatch(bad())
         })
     }

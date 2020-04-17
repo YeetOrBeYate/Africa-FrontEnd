@@ -1,6 +1,7 @@
 import {AxiosWithAuth} from "../comp/AddItem";
 import React from 'react';
 import ItemDelete from "../comp/DashDeleteForms/itemDelete";
+import {invalidToken} from "./utilities";
 
 const Loading = ()=>{
     return {type:'Itemloading'}
@@ -44,13 +45,18 @@ export const LoadItems =(userId)=>{
 
         .then(res=>{
             let items = res.data.item
-            
             dispatch(setItems(items))
 
         })
         .catch(err=>{
-
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
                 dispatch(failureItem())
+            }else{
+                dispatch(failureItem())
+            }
         })
     }
 }
@@ -67,8 +73,14 @@ export const EditItems = (id, item)=>{
             dispatch(editItem(id,item))
         })
         .catch(err=>{
-            console.log(err)
-            dispatch(failureItem())
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(failureItem())
+            }else{                
+                dispatch(failureItem())
+            }
         })
     }
 }
@@ -81,8 +93,6 @@ export const AddItem = (item)=>{
         
         return AxiosWithAuth().post(`/item`, item)
         .then(res=>{
-            
-
             let itemId = res.data.id
 
             item = {...item, id:itemId}
@@ -90,8 +100,14 @@ export const AddItem = (item)=>{
             dispatch(addItem(item))
         })
         .catch(err=>{
-            console.log(err)
-            dispatch(failureItem())
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(failureItem())
+            }else{                
+                dispatch(failureItem())
+            }
         })
     }
 }
@@ -108,8 +124,14 @@ export const DeleteItem = (id)=>{
             dispatch(deleteItem(id))
         })
         .catch(err=>{
-            console.log(err)
-            dispatch(failureItem())
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(failureItem())
+            }else{                
+                dispatch(failureItem())
+            }
         })
     }
 }
@@ -128,7 +150,14 @@ export const LoadMarketItems = ()=>{
         })
 
         .catch(err=>{
-            console.log('marketitems error', err)
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(failureItem())
+            }else{
+                dispatch(failureItem())
+            }
         })
     }
 }

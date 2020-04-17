@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {invalidToken} from "./utilities";
 
 import {AxiosWithAuth} from "../comp/AddItem";
 
@@ -29,8 +30,14 @@ export const getCats = ()=>{
             dispatch(good(cats))
         })
         .catch(err=>{
-            console.log(err)
-            dispatch(bad())
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(bad())
+            }else{
+                dispatch(bad())
+            }
         })
     } 
 }

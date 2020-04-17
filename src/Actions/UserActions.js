@@ -1,5 +1,6 @@
 
 import {AxiosWithAuth} from "../comp/AddItem";
+import {invalidToken} from "./utilities";
 
 const UserGood = (data, token)=>{
     return {type:'userGood', payload: data}
@@ -60,9 +61,6 @@ export const LoadUser=(id)=>{
     return function(dispatch){
 
         dispatch(UserLoading())
-
-
-
         return AxiosWithAuth().get(`/users/${id}`)
 
         .then(response=>{
@@ -77,6 +75,11 @@ export const LoadUser=(id)=>{
                 let message = err.response.data.message
                 let code = err.response.status
                 dispatch(WrongUser(message,code))
+            }else if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(UserFailure())
             }else{
                 dispatch(UserFailure())
             }
@@ -93,19 +96,18 @@ export const EditUser=(id,user)=>{
         return AxiosWithAuth().put(`/users/${id}`,user)
 
         .then(res=>{
-            console.log("editUser",res)
             dispatch(Useredit(user.username))
-
-            
         })
-
         .catch(err=>{
-            console.log("editUser",err)
-            dispatch(UserFailure())
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(UserFailure())
+            }else{                
+                dispatch(UserFailure())
+            }
         })
-
-        
-
     }
 }
 
@@ -118,13 +120,18 @@ export const EditUserLocation = (id,location)=>{
 
         AxiosWithAuth().put(`/location/${id}`, location)
         .then(res=>{
-            console.log(res)
             dispatch(UserEditLocation(id,location))
         })
 
         .catch(err=>{
-            console.log("EditUserLocation",err)
-            dispatch(UserFailure())
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(UserFailure())
+            }else{
+                dispatch(UserFailure())
+            }
         })
     }
 }
@@ -138,21 +145,21 @@ export const AddLocation = (location)=>{
 
         AxiosWithAuth().post(`/location`,location)
         .then(res=>{
-            console.log("adding location", res)
-        
             location = {...location, id:res.data.id}
             dispatch(UserAddLocation(location))
-
         })
 
         .catch(err=>{
-            console.log("Addlocation", err)
-
-            dispatch(UserFailure())
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(UserFailure())
+            }else{
+                dispatch(UserFailure())
+            }
         })
     }
-
-
 }
 
 export const RemoveLocation = (locationid)=>{
@@ -164,13 +171,18 @@ export const RemoveLocation = (locationid)=>{
         return AxiosWithAuth().delete(`/location/${locationid}`)
         
         .then(res=>{
-            console.log('deleting location', res)
             dispatch(UserDeleteLocation(locationid))
         })
 
         .catch(err=>{
-            console.log("delete location", err)
-            dispatch(UserFailure())
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(UserFailure())
+            }else{
+                dispatch(UserFailure())
+            }
         })
     }
 }
@@ -184,13 +196,19 @@ export const LoadUsers = ()=>{
         return AxiosWithAuth().get(`https://africa-marketplace.herokuapp.com/users`)
         .then(res=>{
             let users = res.data.users
-            console.log('GET ALL USERS', users)
+
             dispatch(UserListGood(users))
         })
         
         .catch(err=>{
-            console.log('GET ALL USERS ERR',err)
-            dispatch(UserFailure())
+            if(err.response && err.response.status == '401'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(invalidToken(message,code))
+                dispatch(UserFailure())
+            }else{                
+                dispatch(UserFailure())
+            }
         })
     }
 }

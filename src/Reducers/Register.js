@@ -3,9 +3,11 @@ import React from 'react';
 
 const initialState = {
     navForward:false,
-    success: false,
+    success:false,
     failure:false,
-    loading: false
+    loading:false,
+    message:null,
+    code:null
 }
 
 export const RegisterReducer = (state = initialState, action)=>{
@@ -16,10 +18,12 @@ export const RegisterReducer = (state = initialState, action)=>{
             return {...state, loading:false, success: true, navForward:true}
         case 'bad':
             return {...state, loading:false, failure: true}
+        case 'duplicate':
+            return {...state, loading:false, failure: true, message:action.payload.message, code:action.payload.code}
         case 'moved':
             return {...state, navForward:false}
         case 'fixed':
-            return{...state, failure:false}
+            return{...state, failure:false, navForward:false, success:false,loading:false, message:null, code:null}
         default:
             return state
     }

@@ -17,6 +17,10 @@ const forward = ()=>{
     return {type:'moved'}
 }
 
+const fixFailure = ()=>{
+    return {type:'resetLogin'}
+}
+
 //this fucntion sets the user id in the user reducer, dont remove the case for the user reducer that corrisponds
 const UserId = (data)=>{
     return {type:'userId', payload:data}
@@ -57,5 +61,12 @@ export const signIn = (person)=>{
             dispatch(bad())
         })
 
+    }
+}
+
+export const FixFailure = ()=>{
+    return function(dispatch){
+
+        dispatch(fixFailure())
     }
 }
