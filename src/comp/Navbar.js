@@ -121,7 +121,7 @@ const Navbar = ()=>{
              <Error
              isOpen = {error}
              onRequestClose = {closeError}
-             style = {errorStyles}
+             className = 'errorModal'
              >
                 <h2>An error occured</h2>
 
@@ -129,7 +129,7 @@ const Navbar = ()=>{
                 status.code?
                     <>
                         <p>code: {status.code}</p>
-                        <p>{status.message}. Please signt out and sign back in to see your content</p>
+                        <p>{status.message}. Please sign out and sign back in to see your content</p>
                     </>
                     :
                     <>

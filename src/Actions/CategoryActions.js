@@ -1,7 +1,6 @@
 import axios from 'axios';
-import {invalidToken} from "./utilities";
+import {invalidToken, AxiosWithAuth} from "./utilities";
 
-import {AxiosWithAuth} from "../comp/AddItem";
 
 
 const loading = ()=>{

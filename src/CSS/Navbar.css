@@ -150,6 +150,22 @@ h1, a{
   width: 25%;
 }
 
+.errorModal{
+  position: absolute;
+  padding: 2%;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  top:50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+  background-color: #eef2c3;
+}
+
 @media screen and (max-width:500px){
 
   /* *****************Homepage************************ */
@@ -171,6 +187,11 @@ h1, a{
 
   .NavSub{
     width:70%
+  }
+
+  .errorModal{
+    width: 80%;
+    height: 60%;
   }
 
   /* *******************Login*********************** */
@@ -196,6 +217,11 @@ h1, a{
 
   .loginForm{
     width: 70%;
+  }
+
+  .errorModal{
+    width: 80%;
+    height: 60%;
   }
 
   

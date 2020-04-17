@@ -9,7 +9,6 @@ import Register from "./comp/RegisterPage";
 import Home from "./comp/HomePage";
 import Dashboard from './comp/DashboardPage';
 import Footer from "./comp/Footerbar"
-import Test from "./comp/Menutest";
 import MarketFeed from "./comp/MarketFeed"
 import Navbar from "./comp/Navbar";
 import PrivateRoute from "./comp/PrivateRoutes/PrivateRoute"
@@ -24,7 +23,6 @@ function App() {
         <PrivateReg path="/register" component={Register} render={(props)=> <Register {...props}/>}/>
         <PrivateRoute path='/dashboard' component={Dashboard}/>
         <PrivateRoute path ='/marketfeed' component={MarketFeed}/>
-        <Route path="/test" component={Test}/>
         <Route path = "/" component ={Home}/>
       </Switch>
       <Footer/>

@@ -14,6 +14,7 @@ const Home = ()=>{
                 </section>
                 <section>
                     <p>This app acts as a simulation for what Sauto Africa has implemented. A user can see other shop owners locations and item prices, and add an item or location listing to their profile.</p>
+                    <p>Africa icon made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
                 </section>
             </div>
         </div>

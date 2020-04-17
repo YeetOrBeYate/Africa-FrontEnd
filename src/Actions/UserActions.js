@@ -1,6 +1,5 @@
 
-import {AxiosWithAuth} from "../comp/AddItem";
-import {invalidToken} from "./utilities";
+import {invalidToken, AxiosWithAuth} from "./utilities";
 
 const UserGood = (data, token)=>{
     return {type:'userGood', payload: data}
