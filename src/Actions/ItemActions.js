@@ -49,7 +49,8 @@ export const LoadItems =(userId)=>{
 
         })
         .catch(err=>{
-            console.log(err)
+
+                dispatch(failureItem())
         })
     }
 }

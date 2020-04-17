@@ -13,7 +13,9 @@ const initialState = {
     userid:checkUser(),
     user:null,
     userlist:null,
-    failure:false
+    failure:false,
+    message:null,
+    code:null
 }
 
 // user{
@@ -51,8 +53,10 @@ export const UserReducer = (state=initialState, action)=>{
             return{...state, user:null}
         case 'Userfailure':
             return {...state, loading:false, failure:true }
+        case 'WrongUser':
+            return{...state, loading:false, failure:true, message:action.payload.message, code:action.payload.code }
         case 'UserFix':
-            return {...state, failure:false}
+            return {...state, failure:false, message:null, code:null}
         default:
             return state
     }

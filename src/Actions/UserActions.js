@@ -35,6 +35,10 @@ const UserFailure = ()=>{
     return {type:'Userfailure'}
 }
 
+const WrongUser = (message,code)=>{
+    return {type:'WrongUser', payload:{message, code}}
+}
+
 const UserFix = ()=>{
     return {type:'UserFix'}
 }
@@ -68,10 +72,15 @@ export const LoadUser=(id)=>{
         })
 
         .catch(err=>{
-            console.log('loaduser', err)
-            dispatch(UserFailure())
+            // console.log('loaduser failure', err)
+            if(err.response && err.response.status == '403'){
+                let message = err.response.data.message
+                let code = err.response.status
+                dispatch(WrongUser(message,code))
+            }else{
+                dispatch(UserFailure())
+            }
         })
-
     }
 }
 

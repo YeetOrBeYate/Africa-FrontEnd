@@ -24,6 +24,7 @@ const Navbar = ()=>{
 
     const [loading,setLoading] = React.useState(false)
     const [error,setError] = React.useState(false)
+    const [status, setStatus] = React.useState({message:null, code:null})
     
     const token = localStorage.getItem('token')
 
@@ -74,6 +75,7 @@ const Navbar = ()=>{
 
         if(User.failure || Item.failure || Register.failure){
             setError(true)
+            setStatus({...status, message:User.message, code:User.code})
         }
 
     },[User.loading, LoginR.loading, Item.loading, User.failure, Item.failure, Register.loading] )
@@ -87,6 +89,7 @@ const Navbar = ()=>{
 
     const closeError = ()=>{
         setError(false)
+        setStatus({...status, message:null, code:null})
         dispatch(FixUserFailure())
         dispatch(FixItemFailure())
         dispatch(fixRegFailure())
@@ -109,7 +112,18 @@ const Navbar = ()=>{
              style = {errorStyles}
              >
                 <h2>An error occured</h2>
-                <p>we were unable to make the request, please try again</p>
+
+                {
+                status.code?
+                    <>
+                        <p>code: {status.code}</p>
+                        <p>{status.message}. Please signt out and sign back in to see your content</p>
+                    </>
+                    :
+                    <>
+                        <p>we were unable to make the request, please try again</p>
+                    </>
+                }
              </Error>
 
             <div className="NavFlex">
