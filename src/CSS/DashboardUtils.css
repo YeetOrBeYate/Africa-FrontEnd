@@ -4,11 +4,12 @@
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    border:1px solid red
     /* background: #eef2c3; */
 }
 
 .MenuWrap{
-margin: 2%;
+    margin: 2%;
 }
 
 .UserOption{

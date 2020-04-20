@@ -52,29 +52,70 @@
 .parent{
     width: 100%;
     margin: 0 auto;
-    height: 80%;
+    min-height: 79.9%;
     background: #eef2c3;
+    border-bottom: .1px solid #323232;
+}
+
+.DashboardModals{
+    max-width: 80%;
+    margin: 0 auto;
+    /* border:1px solid blue; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ModalOption{
+    width: 30%;
+    margin: 3%;
+    padding:3%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ModalOption:hover{
+    box-shadow: 0px 0px 5px 1px black;
+    cursor: pointer;
+}
+
+#Profile{
+    background: #eccd64;
+}
+
+#Item{
+    background: #e47657;
+}
+
+#Location{
+    background:#9c3a52;
+}
+
+.ModalOption img{
+    width:50px;
+    height: 50px;
 }
 
 .Dashboard{
     width: 100%;
     margin: 0 auto;
-    display: flex;
+    /* display: flex; */
     height: 85%;
     background: #eef2c3;
     /* border:1px solid blue */
   }
 
 .DashboardPage{
-    margin: 0;
-    width: 75%;
-    overflow-y: scroll;
+    margin: 0 auto;
+    max-width: 80%;
+    /* border:1px solid black; */
+    /* overflow-y: scroll; */
 }
 
 .DashTitle{
     margin:0;
     padding-top: 1.5% ;
-    position: sticky;
+    /* position: sticky; */
     top:0;
     background:#eef2c3;
 }
@@ -85,7 +126,7 @@
 
 .Dash-item{
     background: inherit;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
