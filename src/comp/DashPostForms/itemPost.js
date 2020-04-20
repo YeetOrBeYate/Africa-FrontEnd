@@ -58,20 +58,22 @@ const ItemYeet = ()=>{
                 </div>
                 <div className="formDiv">
                     <select onChange={changePostItem} required name="category_id">
-                        <option>Pick a category</option>
+                        <option>Category</option>
                         {Category.categories.map((cat)=>(
                             <option value={cat.id}>{cat.name}</option>
                         ))}
                     </select> 
                     <select onChange={changePostItem} required name='location_id'>
-                        <option value=''>Pick a location</option>
+                        <option value=''>Location</option>
                         {User.user.locations.map((loc)=>(
                             <option value={loc.id}>{loc.name}</option>
                             ))}
                     </select>
                 </div>
                 {postItem.postFail? <b>Check form</b>: <></>}
-                <button id="formSubmit" onClick={(e)=>sendItem(e)}>Add Item</button>
+                <div className="formDiv">
+                    <button id="formSubmit" onClick={(e)=>sendItem(e)}>Add Item</button>
+                </div>
             </form>
     );
 }

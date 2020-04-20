@@ -50,7 +50,9 @@ const UserEdit = (props)=>{
                 <input type="text" onChange={changeUser} name="Repassword" value={user.Repassword} required placeholder="re-enter password"/> 
             </div>
                 {!user.match?  <b>The passwords do not match or name is blank</b> : <></> }
-            <button id ="formSubmit" onClick={(e)=>submitUser(e)}>Edit Profile</button>
+            <div className="formDiv">
+                <button id ="formSubmit" onClick={(e)=>submitUser(e)}>Edit Profile</button>
+            </div>
         </form>
     )
 

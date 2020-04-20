@@ -60,7 +60,6 @@
 .DashboardModals{
     max-width: 80%;
     margin: 0 auto;
-    /* border:1px solid blue; */
     display: flex;
     justify-content: space-evenly;
 }
@@ -91,9 +90,31 @@
     background:#9c3a52;
 }
 
-.ModalOption img{
+img{
     width:50px;
     height: 50px;
+}
+
+.modalHold{
+    border:1px solid red;
+    margin: 0 auto;
+    width:50%
+}
+
+.DashboardModal{
+    position: absolute;
+    padding: 2%;
+    border-radius: 5px;
+    border:1px solid #cccccc;
+    top: 50%;
+    left:50%;
+    right:auto;
+    bottom:auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 300px;
+    background: #eef2c3;
 }
 
 .Dashboard{
@@ -145,6 +166,17 @@
 .location-labels{
     display: flex;
     justify-content: space-between;
+}
+
+.locationCrud{
+    display:flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width:40%
+}
+
+.locationCrud img{
+    padding:2% 2%;
 }
 
 .location-button{

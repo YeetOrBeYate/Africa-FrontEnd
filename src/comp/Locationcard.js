@@ -1,8 +1,16 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ItemCard from './Itemcard';
+import LocationModal from 'react-modal'
+import EditPicture from "../pics/icons8-edit-48.png";
+import DeletePicture from "../pics/icons8-delete-bin-50.png";
+
+import LocationEdit from './DashEditForms/locationEdit'
+import LocationDelete from './DashDeleteForms/locationDelete';
 
 const Locationcard = (props)=>{
+
+    console.log('LOCATION PROPS', props)
 
     const state = useSelector(state=>state.User);
     const Category = useSelector(state=>state.Category);
@@ -11,6 +19,8 @@ const Locationcard = (props)=>{
 
     const [itemCount, setItemCount] = React.useState(props.Count)
     const [open, setOpen] = React.useState(false)
+    const [locationEdit, setLocationEdit] = React.useState(false)
+    const [locationDelete,setLocationDelete] = React.useState(false)
 
 
     const Gimme = (Lid)=>{
@@ -19,8 +29,6 @@ const Locationcard = (props)=>{
                 return item
             }
         })
-
-        
         try{
             let locationCard = document.querySelector(`.location-${Lid}`)
             
@@ -79,13 +87,35 @@ const Locationcard = (props)=>{
 
 
     return(
-    <div className={`location location-${props.id}`} >
+    <div className={`location location-${props.id}`}>
+        <LocationModal
+            id = "Location"
+            isOpen = {locationEdit}
+            className = "DashboardModal"
+            onRequestClose={()=>setLocationEdit(false)}
+        >
+            <LocationEdit name={props.name} id= {props.id}/>
+
+        </LocationModal>
+        <LocationModal
+            id = "Location"
+            isOpen = {locationDelete}
+            className = "DashboardModal"
+            onRequestClose={()=>setLocationDelete(false)}
+        >
+            <LocationDelete name={props.name} id= {props.id}/>
+
+        </LocationModal>
         <section className='location-labels'>
             <h3 id='locationName'>{props.name}</h3>
-            <div className="location-button" onClick={(e)=>toggleItems(e,props.id)}>
-                <p>View items</p>
-                <p>({Gimme(props.id)})</p>
-                <div className="down"></div>
+            <div className = "locationCrud">
+                <img onClick={()=>setLocationEdit(true)} src={EditPicture} alt="edit Location"/>
+                <img onClick={()=>setLocationDelete(true)} src={DeletePicture} alt="delete Location"/>
+                <div className="location-button" onClick={(e)=>toggleItems(e,props.id)}>
+                    <p>View items</p>
+                    <p>({Gimme(props.id)})</p>
+                    <div className="down"></div>
+                </div>
             </div>
         </section>
         {Item.items.map((item,index)=>{

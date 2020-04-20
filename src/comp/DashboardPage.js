@@ -2,10 +2,14 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import DashboardUtils from "./DashboardUtils";
 import ItemCard from './Itemcard';
+import DashModal from "react-modal";
 import Locationcard from './Locationcard'
 import {getCats} from "../Actions/CategoryActions";
 import {LoadUser} from "../Actions/UserActions";
 import {LoadItems} from "../Actions/ItemActions";
+import UserEdit from "./DashEditForms/userEdit"
+import ItemPost from './DashPostForms/itemPost';
+import LocationPost from "./DashPostForms/locationPost";
 
 import picture from "../pics/icons8-user-50.png";
 import ShopPicture from "../pics/icons8-shop-50.png";
@@ -21,21 +25,15 @@ const Dashboard =()=>{
     const Item = useSelector(state=>state.Item);
     const dispatch = useDispatch();
 
+    const [userModalOpen, setUserModelOpen] = React.useState(false)
+    const [itemModalOpen, setItemModalOpen] = React.useState(false)
+    const [locationModalOpen, setLocationModalOpen] = React.useState(false)
+
     React.useEffect(()=>{
         dispatch(getCats())
         dispatch(LoadUser(state.userid))
         dispatch(LoadItems(state.userid))
     },[])
-
-    const toggleUtils = ()=>{
-        const cards = document.querySelector('.DashboardPage')
-
-        cards.classList.toggle('hide')
-
-        const utils = document.querySelector('.DashboardUtils')
-
-        utils.classList.toggle('utilVisible')
-    }
 
     
 
@@ -49,19 +47,46 @@ const Dashboard =()=>{
         <div className="parent">
             <h1 className="DashTitle">Welcome:{state.user.username}</h1>
             <div className="DashboardModals">
-                <div id="Profile" className="ModalOption">
+                <div onClick={()=>setUserModelOpen(true)} id="Profile" className="ModalOption">
                     <img src={picture} alt="profile icon"/>
-                    <h4>Edit your profile here</h4>
+                    <h4>Edit your profile</h4>
                 </div>
-                <div id="Item" className="ModalOption">
+                <div onClick={()=>setItemModalOpen(true)} id="Item" className="ModalOption">
                     <img  src={ShopPicture} alt="profile icon"/>
-                    <h4>Add and item here</h4>
+                    <h4>Add and item</h4>
                 </div>
-                <div id="Location" className="ModalOption">
+                <div onClick={()=>setLocationModalOpen(true)} id="Location" className="ModalOption">
                     <img src={LocationPicture} alt="profile icon"/>
-                    <h4>Add a location here</h4>
+                    <h4>Add a location</h4>
                 </div>
             </div>
+            <DashModal
+                id = 'Profile'
+                isOpen ={userModalOpen}
+                onRequestClose={()=>setUserModelOpen(false)}
+                className = "DashboardModal"
+            >
+                    <UserEdit id = {state.user.id}/>
+
+            </DashModal>
+            <DashModal
+                id = "Item"
+                isOpen= {itemModalOpen}
+                onRequestClose={()=>setItemModalOpen(false)}
+                className="DashboardModal"
+            >
+                <ItemPost/>
+
+            </DashModal>
+            <DashModal
+                id = "Location"
+                isOpen={locationModalOpen}
+                onRequestClose={()=>setLocationModalOpen(false)}
+                className="DashboardModal"
+            >
+                <LocationPost/>
+
+            </DashModal>
             <div className="Dashboard">
                 {/* <DashboardUtils/> */}
                 <section className="DashboardPage">
