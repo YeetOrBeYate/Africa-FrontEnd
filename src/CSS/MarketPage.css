@@ -52,25 +52,27 @@
     color:ivory;
     margin:0;
     padding:1% 0;
+    height: 20%;
 }
 
 .userCard{
     padding:0;
-    /* border-bottom: 1px solid #323232; */
     width: 80%;
     height: 79%;
     margin: 2%;
     background:  inherit;
-    box-shadow: 0px 0px 5px 1px #323232 ;
+    box-shadow: 0px 0px 5px 1px #323232;
+    overflow-y: hidden;
 }
 
+
 .UserMCardRender{
+    border: .5px solid red;
     width:95%;
-    height:80%;
+    height:75%;
     margin: 0 auto;
     background: inherit;
     overflow-y: hidden;
-    /* border:1px solid red; */
 }
 
 .UserMCardRender:hover{
