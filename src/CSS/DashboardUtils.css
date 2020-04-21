@@ -1,37 +1,4 @@
-.DashboardUtils{
-    margin:0;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    border:1px solid red
-    /* background: #eef2c3; */
-}
 
-.MenuWrap{
-    margin: 2%;
-}
-
-.UserOption{
-    background: #eccd64;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    padding: 3%;
-}
-
-.ItemOption{
-    background: #e47657;
-    box-shadow: 0px 9px 11px -10px black inset;
-    padding: 3%;
-}
-  
-.LocationOption{
-    background:#9c3a52;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    box-shadow: 0px 9px 11px -10px black inset;
-    padding: 3%;
-}
 
 #formSubmit{
     height: 40px;
@@ -52,7 +19,6 @@
     width: 230px;
     padding: 4px;
     border-radius: 5px;
-    border:1px solid #929292;
     border:none;
 }
 
@@ -103,115 +69,6 @@
     padding: 5%;
 }
 
-.Primary{
-display: flex;
-justify-content: space-around;
-align-items: center;
-}
 
-.Primary:hover{
-cursor: pointer;
-}
-  
-.Secondary{
-display: none;
-}
-
-.SecondaryFlex{
-display: flex;
-padding: 0 3%;
-justify-content: space-between;
-align-items: center;
-}
-
-.ProfileSecondary{
-display: none;
-}
-
-.ItemSecondary{
-display: none;
-}
-
-.LocationSecondary{
-display: none;
-}
-
-.Third{
-display: none;
-padding: 3%;
-}
-
-.LocationThird{
-display: none;
-padding: 3%;
-}
-
-.EditForm{
-display: none;
-padding: 3%;
-}
-
-.AddForm{
-display: none;
-padding: 3%;
-}
-
-.DeleteForm{
-display: none;
-padding: 3%;
-}
-  
-  
-.formVisible{
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
-@-webkit-keyframes fadeIn {
-from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes fadeIn {
-from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.visible{
-display: block;
--webkit-animation: fadeIn .5s;
-animation: fadeIn .5s;
-}
-
-.menuButton:hover{
-cursor: pointer;
-}
-
-.utilVisible{
-    display: block !important;
-}
-
-
-
-
-@media screen and (max-width:500px){
-
-    .DashboardUtils{
-        height: 100%;
-        width: 100%;
-        display: none;  
-    }
-
-}
-  
-@media screen and (min-width:550px) and (max-width:801px){
-  
-    .DashboardUtils{
-        height: 100%;
-        width: 100%;
-        display: none
-    }
-  
-}
   
   

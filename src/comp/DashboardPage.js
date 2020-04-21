@@ -86,7 +86,6 @@ const Dashboard =()=>{
 
             </DashModal>
             <div className="Dashboard">
-                {/* <DashboardUtils/> */}
                 <section className="DashboardPage">
                         <section className="Dash-item Locations">
                             {state.user.locations.map((loc,index)=>(
