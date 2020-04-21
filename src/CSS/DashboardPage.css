@@ -120,7 +120,6 @@ img{
 .Dashboard{
     width: 100%;
     margin: 0 auto;
-    /* display: flex; */
     height: 85%;
     background: #eef2c3;
     /* border:1px solid blue */
@@ -136,7 +135,6 @@ img{
 .DashTitle{
     margin:0;
     padding-top: 1.5% ;
-    /* position: sticky; */
     top:0;
     background:#eef2c3;
 }
@@ -171,7 +169,7 @@ img{
 .locationCrud{
     display:flex;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center;
     width:40%
 }
 
@@ -194,9 +192,9 @@ img{
     background-color: #5b85aa;
     text-align: center;
     color:ivory;
-    padding: 0 2%;
+    padding: 2% 2%;
     display: flex;
-    align-items:center ;
+    align-items:center;
     border-radius: 10px;
 }
 
@@ -227,7 +225,9 @@ img{
 
 #locationName{
     padding-bottom: .5%;
-    border-bottom: 3px solid #8cb369 ;
+    width:250px;
+    word-wrap: break-word;
+    text-decoration: solid underline #8cb369 3px;
 }
 
 .locationItem {
@@ -252,22 +252,37 @@ img{
 
 @media screen and (max-width:500px){
 
+
+    #locationName{
+
+    width: 90px;
+    word-wrap: break-word;
+    }
+
     .DashboardPage{
-        width: 100%;
+        max-width:95%
     }
 
-
-    #toggleUtils{
-        display: inline;
+    .locationCrud{
+        border: .5px solid red;
+        align-items: center;
+        width:70%
     }
- 
-  
+    
+    .locationCrud img{
+        width: 35px;
+        height: 35px;
+    }
+
+    .location-button{
+        padding: 2% 2%;
+    }
 }
   
 @media screen and (min-width:550px) and (max-width:801px){
   
     .DashboardPage{
-        width: 100%;
+        max-width: 90%;
     }
 
 

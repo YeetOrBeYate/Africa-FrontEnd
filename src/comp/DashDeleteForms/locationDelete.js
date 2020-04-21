@@ -29,9 +29,7 @@ const LocationDelete = (props)=>{
 
     const deleteLocation =(e)=>{
         e.preventDefault()
-
         console.log("what I'll be sending",locationDel)
-
         dispatch(RemoveLocation(locationDel.id))
     }
 
