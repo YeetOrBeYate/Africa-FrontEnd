@@ -59,14 +59,14 @@ const ItemYeet = ()=>{
                 <div className="formDiv">
                     <select onChange={changePostItem} required name="category_id">
                         <option>Category</option>
-                        {Category.categories.map((cat)=>(
-                            <option value={cat.id}>{cat.name}</option>
+                        {Category.categories.map((cat, index)=>(
+                            <option key={index} value={cat.id}>{cat.name}</option>
                         ))}
                     </select> 
                     <select onChange={changePostItem} required name='location_id'>
                         <option value=''>Location</option>
-                        {User.user.locations.map((loc)=>(
-                            <option value={loc.id}>{loc.name}</option>
+                        {User.user.locations.map((loc,index)=>(
+                            <option key={index} value={loc.id}>{loc.name}</option>
                             ))}
                     </select>
                 </div>

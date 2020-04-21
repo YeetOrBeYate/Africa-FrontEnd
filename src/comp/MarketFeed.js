@@ -14,6 +14,7 @@ const MarketFeed = ()=>{
     const Item = useSelector(state=>state.Item)
     const dispatch = useDispatch()
 
+
     React.useEffect(()=>{
 
         dispatch(LoadUsers())
@@ -65,19 +66,22 @@ const MarketFeed = ()=>{
     return(
         <div className = "marketFeed">
             <div className = "container">
-                {User.userlist.slice(indexOfFirstPost,indexOfLastPost).map((user)=>(
-                    <>
-                        <MarketUserCard user={user} items = {Item.items}/>
-                    </>
+                {User.userlist.slice(indexOfFirstPost,indexOfLastPost).map((user, index)=>(
+                        <MarketUserCard 
+                            key={index} 
+                            user={user} 
+                            items = {Item.items}
+                        />
                 ))}
             </div>
             <div className = "marketPage">
                 <button onClick={(e)=>prevPage(e)}>prev</button>
-                {loadPageButtons().map((number)=>(
+                {loadPageButtons().map((number, index)=>(
                     <PageButton 
-                    number={number} 
-                    changePage={setCurrentPage}>
-                    </PageButton>
+                        key={index}
+                        number={number} 
+                        changePage={setCurrentPage}
+                    />
                 ))}
                 <button onClick={(e)=>nextPage(e)}>next</button>
             </div>

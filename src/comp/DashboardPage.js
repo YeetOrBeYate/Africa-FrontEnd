@@ -1,7 +1,5 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import DashboardUtils from "./DashboardUtils";
-import ItemCard from './Itemcard';
 import DashModal from "react-modal";
 import Locationcard from './Locationcard'
 import {getCats} from "../Actions/CategoryActions";
@@ -93,6 +91,7 @@ const Dashboard =()=>{
                         <section className="Dash-item Locations">
                             {state.user.locations.map((loc,index)=>(
                                 <Locationcard
+                                    key={index}
                                     id = {loc.id}
                                     name = {loc.name}
                                     Count = {loc.itemCount || 0}

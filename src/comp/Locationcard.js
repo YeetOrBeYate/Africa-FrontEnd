@@ -1,5 +1,5 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import ItemCard from './Itemcard';
 import LocationModal from 'react-modal'
 import EditPicture from "../pics/icons8-edit-48.png";
@@ -11,7 +11,6 @@ import LocationDelete from './DashDeleteForms/locationDelete';
 const Locationcard = (props)=>{
 
     const state = useSelector(state=>state.User);
-    const Category = useSelector(state=>state.Category);
     const Item = useSelector(state=>state.Item);
 
 
@@ -120,6 +119,7 @@ const Locationcard = (props)=>{
             if(item.location_id == props.id){
             return(
             <ItemCard
+                key = {index}
                 userid={state.userid}
                 itemId = {item.id}
                 id = {item.location_id} 

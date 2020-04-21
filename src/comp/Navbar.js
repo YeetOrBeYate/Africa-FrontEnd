@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from 'react-modal';
-import Error from "react-modal";
-import {Switch, Route, Link} from 'react-router-dom';
+import ErrorM from "react-modal";
+import {Link} from 'react-router-dom';
 import africa from "../pics/africa.png"
 
 import {useDispatch, useSelector} from "react-redux";
@@ -13,11 +13,11 @@ import {FixFailure} from '../Actions/LoginActions'
 
 import "../CSS/Navbar.css"
 
-
+Loading.setAppElement('#root')
+// ErrorM.setAppElement('#root')
 const Navbar = ()=>{
 
     const dispatch = useDispatch();
-    const Menu = useSelector(state=>state.Menu)
     const User = useSelector(state=>state.User)
     const Item = useSelector(state=>state.Item)
     const LoginR = useSelector(state=>state.Login)
@@ -29,20 +29,6 @@ const Navbar = ()=>{
     
     const token = localStorage.getItem('token')
 
-    const errorStyles = {
-        content:{
-            top                   : '50%',
-            left                  : '50%',
-            right                 : 'auto',
-            bottom                : 'auto',
-            marginRight           : '-50%',
-            transform             : 'translate(-50%, -50%)',
-            width: '30%',
-            height: '30%',
-            background: '#eef2c3'
-        },
-
-    }
     const customStyles = {
         content:{
             top                   : '50%',
@@ -118,7 +104,7 @@ const Navbar = ()=>{
              >
                  <div className= 'loader'></div>
              </Loading>
-             <Error
+             <ErrorM
              isOpen = {error}
              onRequestClose = {closeError}
              className = 'errorModal'
@@ -136,7 +122,7 @@ const Navbar = ()=>{
                         <p>we were unable to make the request, please try again</p>
                     </>
                 }
-             </Error>
+             </ErrorM>
 
             <div className="NavFlex">
                 {

@@ -17,8 +17,9 @@ const MarketLocationCard = (props)=>{
                 onRequestClose = {()=>setOpen(false)}
                 className = "itemModal"
             >
-                {props.items.map((item)=>(
+                {props.items.map((item, index)=>(
                     <MarketItemCard
+                        key={index}
                         name = {item.name}
                         description = {item.description}
                         price = {item.price}

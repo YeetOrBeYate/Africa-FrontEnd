@@ -18,7 +18,7 @@ const Footer = ()=>{
                 <img src = {cssPic} alt="CSS symbol"/>
                 <img src = {nodePic} alt="Node symbol"/>
                 <img src = {postPic} alt="PostGresQL symbol"/>
-                <a href = "https://icons8.com/" target="_blank">
+                <a href = "https://icons8.com/" target="_blank" rel="noopener noreferrer">
                     <img src={icon8} alt="icon8"/>
                 </a>
             </div>

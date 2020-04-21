@@ -1,5 +1,5 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {EditItems} from "../../Actions/ItemActions";
 
 
@@ -24,26 +24,6 @@ const ItemEdit = (props)=>{
         setItem({...item, [e.target.name]: e.target.value, numberfail:false})
     }
 
-    // const selectItem = (e)=>{
-    //     const select = document.querySelector('#ItemSelect').value
-
-    //     if(select !=0){
-    //        const newItem = props.items.find((itm)=>{
-    //            let select = Number(document.querySelector('#ItemSelect').value)
-    //            return itm.id === select;
-    //        })
-    //        setItem({...item, id:newItem.id, description: newItem.description, name:newItem.name, price:newItem.price, category_id:newItem.category_id, location_id:newItem.location_id})
-    //        document.querySelector('#CategorySelect').value = 0;
-    //     }
-    // }
-
-    // const ToggleItem = (e)=>{
-    //     e.preventDefault();
-    //     const userForm = document.querySelector('.itemForm')
-    //     userForm.classList.toggle('visible');
-
-    // }
-
     const submitItem = (e)=>{
         e.preventDefault()
 
@@ -65,15 +45,6 @@ const ItemEdit = (props)=>{
 
     return(
         <>
-            {/* <div className ="Third">
-            <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
-                <option value="0">Select Item</option>
-                {props.items.map((item,index)=>(
-                    <option value={item.id}>{item.name}</option>
-                ))}
-            </select>
-            <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
-            </div> */}
             <form className="itemForm">
                 <div className='formDiv'>
                     <input type="text" name="name" onChange={changeItem} value={item.name} required placeholder="name"/>

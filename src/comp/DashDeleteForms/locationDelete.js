@@ -1,31 +1,16 @@
 import React from 'react'
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {RemoveLocation} from "../../Actions/UserActions";
 
 const LocationDelete = (props)=>{
 
-    const User = useSelector(state=>state.User);
+
     const dispatch = useDispatch();
 
     const [locationDel,setLocationDel] = React.useState({
         id:props.id,
         name:props.name
     })
-
-    // const changeLocationDel = ()=>{
-    //     const select = document.querySelector('#DeleteLocationSelect').value;
-
-    //     if(select!=0){
-    //         const newLoc = User.user.locations.find((loc)=>{
-
-    //             const select = document.querySelector('#DeleteLocationSelect').value;
-    //             return loc.id == select
-
-    //         })
-
-    //         setLocationDel({...locationDel, id:newLoc.id, name:newLoc.name})
-    //     }
-    // }
 
     const deleteLocation =(e)=>{
         e.preventDefault()
@@ -35,14 +20,6 @@ const LocationDelete = (props)=>{
 
     return(
         <form className="locationDeleteForm">
-            {/* <div className="formDiv">
-                <select id ='DeleteLocationSelect' onChange={changeLocationDel}>
-                    <option value ='0'>Select Location</option>
-                    {User.user.locations.map((loc)=>(
-                        <option value={loc.id}>{loc.name}</option>
-                    ))}
-                </select>
-            </div> */}
             <div className="formDiv">
                 <button id = "formSubmit" onClick={(e)=>deleteLocation(e)}>Yes, delete {locationDel.name}</button>
                 <button id = "formSubmit">No, keep {locationDel.name}</button>

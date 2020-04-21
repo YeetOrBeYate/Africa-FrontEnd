@@ -1,6 +1,6 @@
 import React from 'react';
 import {EditUser} from "../../Actions/UserActions"
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 const UserEdit = (props)=>{
 

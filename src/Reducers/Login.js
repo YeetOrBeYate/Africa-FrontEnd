@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 
 const initialState = {
@@ -17,7 +17,7 @@ export const LoginReducer = (state=initialState, action)=>{
         case 'good':
             return{...state, failure:false, attemped:true, loading:false, navForward:true}
         case 'bad':
-            return{...state, failure:true, loading:false, failure:true}
+            return{...state, failure:true, loading:false}
         case 'moved':
             return{...state, navForward:false}
         case 'invalidToken':

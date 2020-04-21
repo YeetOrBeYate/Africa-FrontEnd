@@ -6,7 +6,6 @@ const PrivateReg = ({component: Component, ...rest}) =>{
         <Route 
             {...rest}
             render={props => {
-                console.log('PRIVATEREG',props)
                 return (localStorage.getItem('token')) 
                 ?  <Redirect to='/dashboard' />
                 : <Component {...props} />

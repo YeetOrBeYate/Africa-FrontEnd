@@ -17,8 +17,9 @@ const MarketUserCard = (props)=>{
         <div className = "userCard">
             <h1 id = "userName">{props.user.username}'s locations</h1>
             <div className= "UserMCardRender">
-                {props.user.locations.map((location)=>(
+                {props.user.locations.map((location,index)=>(
                     <MarketLocationCard 
+                    key={index}
                     name = {location.name}
                     itemCount = {location.itemCount}
                     items = {GetItems(location.id)}

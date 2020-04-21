@@ -1,6 +1,5 @@
 
-import React from 'react';
-import ItemDelete from "../comp/DashDeleteForms/itemDelete";
+
 import {invalidToken, AxiosWithAuth} from "./utilities";
 
 const Loading = ()=>{
