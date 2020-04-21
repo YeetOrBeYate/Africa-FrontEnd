@@ -69,8 +69,12 @@
     height:80%;
     margin: 0 auto;
     background: inherit;
-    overflow-y: scroll;
+    overflow-y: hidden;
     /* border:1px solid red; */
+}
+
+.UserMCardRender:hover{
+    overflow-y: auto;
 }
 
 .locationCard:hover{
