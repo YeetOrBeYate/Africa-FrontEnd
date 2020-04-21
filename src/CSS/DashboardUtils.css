@@ -68,8 +68,9 @@
 }
   
 .itemForm{
-display: none;
-padding: 3%;
+    margin: 0 auto;
+    height:90%;
+    padding: 5%;
 }
 
 .locationForm{
@@ -91,8 +92,9 @@ padding: 3%;
 }
 
 .itemDeleteForm{
-display: none;
-padding: 3%;
+    margin: 0 auto;
+    height:90%;
+    padding: 5%;
 }
 
 .locationDeleteForm{

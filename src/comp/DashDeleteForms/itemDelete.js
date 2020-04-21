@@ -5,7 +5,7 @@ import {DeleteItem} from "../../Actions/ItemActions";
 
 
 
-const ItemDelete = ()=>{
+const ItemDelete = (props)=>{
 
     const User = useSelector(state=>state.User);
     const Item = useSelector(state=>state.Item);
@@ -13,34 +13,33 @@ const ItemDelete = ()=>{
 
 
     const [itemDel, setItemDel] = React.useState({
-        id: null,
-        name:''
-        
+        id: props.itemId,
+        name:props.name
     })
 
     // This function was hard to look at once I came back a month or two later
-    const changeItemDel = (e)=>{
-        const select = document.querySelector('#DeleteItemSelect').value;
+    // const changeItemDel = (e)=>{
+    //     const select = document.querySelector('#DeleteItemSelect').value;
  
 
-        if(select !=0){
+    //     if(select !=0){
 
-            console.log('ITEMS TO CHOOSE FROM', Item.items)
-                //loops through my items array, each object will be refered to as item(param)
-            const newItem = Item.items.find((item)=>{
+    //         console.log('ITEMS TO CHOOSE FROM', Item.items)
+    //             //loops through my items array, each object will be refered to as item(param)
+    //         const newItem = Item.items.find((item)=>{
 
-                //Grabbing the id of the item in my drop down list
-                const newid = document.querySelector('#DeleteItemSelect').value
-                //telling the array.find method to return the item thats id==the id I picked from the drop down list
-                return item.id == newid
+    //             //Grabbing the id of the item in my drop down list
+    //             const newid = document.querySelector('#DeleteItemSelect').value
+    //             //telling the array.find method to return the item thats id==the id I picked from the drop down list
+    //             return item.id == newid
                 
-            })
-            console.log('NEW ITEM', newItem)
-            //setting the id and name of the item I'm about to delete
-            setItemDel({...itemDel, id:newItem.id, name:newItem.name})
+    //         })
+    //         console.log('NEW ITEM', newItem)
+    //         //setting the id and name of the item I'm about to delete
+    //         setItemDel({...itemDel, id:newItem.id, name:newItem.name})
             
-        }
-    }
+    //     }
+    // }
 
     const deleteItem = (e)=>{
         e.preventDefault()
@@ -52,7 +51,7 @@ const ItemDelete = ()=>{
 
     return(
         <form className="itemDeleteForm">
-            <div className="formDiv">
+            {/* <div className="formDiv">
                 <select id="DeleteItemSelect" onChange={changeItemDel}>
                     <option value='0'>Pick item</option>
                     {
@@ -61,9 +60,10 @@ const ItemDelete = ()=>{
                         ))
                     }
                 </select>
-            </div>
+            </div> */}
             <div className="formDiv">
-                <button id="formSubmit" onClick={(e)=>deleteItem(e)}>Delete item</button>
+                <button id="formSubmit" onClick={(e)=>deleteItem(e)}>Yes, delete {itemDel.name}</button>
+                <button id="formSubmit"> No, keep {itemDel.name}</button>
             </div>
         </form>
     );

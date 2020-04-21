@@ -10,8 +10,6 @@ import LocationDelete from './DashDeleteForms/locationDelete';
 
 const Locationcard = (props)=>{
 
-    console.log('LOCATION PROPS', props)
-
     const state = useSelector(state=>state.User);
     const Category = useSelector(state=>state.Category);
     const Item = useSelector(state=>state.Item);
@@ -121,12 +119,15 @@ const Locationcard = (props)=>{
         {Item.items.map((item,index)=>{
             if(item.location_id == props.id){
             return(
-            <ItemCard 
+            <ItemCard
+                userid={state.userid}
+                itemId = {item.id}
                 id = {item.location_id} 
                 name = {item.name} 
                 description = {item.description} 
                 price = {item.price} 
                 category_id = {item.category_id}
+                locations = {state.user.locations}
             />)
             }
         })}

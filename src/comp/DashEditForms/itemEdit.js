@@ -5,16 +5,18 @@ import {EditItems} from "../../Actions/ItemActions";
 
 const ItemEdit = (props)=>{
 
+    console.log('did load')
+
     const dispatch = useDispatch()
 
     const [item, setItem] = React.useState({
-        id:'',
-        name:'',//required
-        description:'',
-        price:'',//required
+        id:props.itemId,
+        name:props.name,
+        description:props.description,
+        price:props.price,//required
         user_id:props.userid,
-        category_id:'',
-        location_id:'',
+        category_id:props.category_id,
+        location_id:props.id,
         numberfail: false
     })
 
@@ -22,25 +24,25 @@ const ItemEdit = (props)=>{
         setItem({...item, [e.target.name]: e.target.value, numberfail:false})
     }
 
-    const selectItem = (e)=>{
-        const select = document.querySelector('#ItemSelect').value
+    // const selectItem = (e)=>{
+    //     const select = document.querySelector('#ItemSelect').value
 
-        if(select !=0){
-           const newItem = props.items.find((itm)=>{
-               let select = Number(document.querySelector('#ItemSelect').value)
-               return itm.id === select;
-           })
-           setItem({...item, id:newItem.id, description: newItem.description, name:newItem.name, price:newItem.price, category_id:newItem.category_id, location_id:newItem.location_id})
-           document.querySelector('#CategorySelect').value = 0;
-        }
-    }
+    //     if(select !=0){
+    //        const newItem = props.items.find((itm)=>{
+    //            let select = Number(document.querySelector('#ItemSelect').value)
+    //            return itm.id === select;
+    //        })
+    //        setItem({...item, id:newItem.id, description: newItem.description, name:newItem.name, price:newItem.price, category_id:newItem.category_id, location_id:newItem.location_id})
+    //        document.querySelector('#CategorySelect').value = 0;
+    //     }
+    // }
 
-    const ToggleItem = (e)=>{
-        e.preventDefault();
-        const userForm = document.querySelector('.itemForm')
-        userForm.classList.toggle('visible');
+    // const ToggleItem = (e)=>{
+    //     e.preventDefault();
+    //     const userForm = document.querySelector('.itemForm')
+    //     userForm.classList.toggle('visible');
 
-    }
+    // }
 
     const submitItem = (e)=>{
         e.preventDefault()
@@ -63,7 +65,7 @@ const ItemEdit = (props)=>{
 
     return(
         <>
-            <div className ="Third">
+            {/* <div className ="Third">
             <select id="ItemSelect" onChange={(e)=>selectItem(e)}>
                 <option value="0">Select Item</option>
                 {props.items.map((item,index)=>(
@@ -71,7 +73,7 @@ const ItemEdit = (props)=>{
                 ))}
             </select>
             <button onClick={(e)=>ToggleItem(e)}>Open edit form</button>
-            </div>
+            </div> */}
             <form className="itemForm">
                 <div className='formDiv'>
                     <input type="text" name="name" onChange={changeItem} value={item.name} required placeholder="name"/>
@@ -97,11 +99,12 @@ const ItemEdit = (props)=>{
                     </select>
                 </div>
                 {item.numberfail? <b>Double-Check the name,price,category and location fields</b>: <></>}
-                <button id="formSubmit" onClick={(e)=>submitItem(e)}>Edit Item</button>
+                <div className="formDiv">
+                    <button id="formSubmit" onClick={(e)=>submitItem(e)}>Edit Item</button>
+                </div>
             </form>
         </>
     )
-
 }
 
 export default ItemEdit
