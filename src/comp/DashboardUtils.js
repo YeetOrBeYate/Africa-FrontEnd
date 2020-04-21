@@ -16,7 +16,7 @@ import picture from "../pics/icons8-user-50.png";
 import ShopPicture from "../pics/icons8-shop-50.png";
 import LocationPicture from "../pics/icons8-location-50.png";
 import EditPicture from "../pics/icons8-edit-48.png";
-import AddPicture from "../pics/icons8-add-50.png";
+
 import DeletePicture from "../pics/icons8-delete-bin-50.png";
 
 import "../CSS/DashboardUtils.css"
@@ -293,7 +293,7 @@ const DashboardUtils = ()=>{
                             />
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img onClick={(e)=>ToggleForm(e,'.itemPostForm', 'item')} src={AddPicture} alt="add item"/>
+                                <img onClick={(e)=>ToggleForm(e,'.itemPostForm', 'item')} src="l" alt="add item"/>
                             </div>
                             <div>
                                 <h2>Add an Item</h2>
@@ -345,7 +345,7 @@ const DashboardUtils = ()=>{
                         <LocationEdit locations={state.user.locations}/>
                         <div className="SecondaryFlex">
                             <div className="menuButton">
-                                <img onClick={(e)=>ToggleForm(e,".locationPostForm","location")} src={AddPicture} alt="Add location"/>
+                                <img onClick={(e)=>ToggleForm(e,".locationPostForm","location")} src="d" alt="Add location"/>
                             </div>
                             <div>
                                 <h2>Add a location</h2>
