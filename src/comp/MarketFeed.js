@@ -73,6 +73,9 @@ const MarketFeed = ()=>{
                             items = {Item.items}
                         />
                 ))}
+                <div className="fix">
+
+                </div>
             </div>
             <div className = "marketPage">
                 <button onClick={(e)=>prevPage(e)}>prev</button>
