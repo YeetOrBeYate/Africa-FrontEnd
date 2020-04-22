@@ -14,6 +14,7 @@ import ShopPicture from "../pics/icons8-shop-50.png";
 import LocationPicture from "../pics/icons8-location-50.png";
 
 import "../CSS/DashboardPage.css";
+import "../CSS/DashboardUtils.css"
 
 
 const Dashboard =()=>{

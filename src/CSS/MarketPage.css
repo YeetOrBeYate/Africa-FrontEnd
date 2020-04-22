@@ -117,13 +117,10 @@
 
 
     .container{
-        margin: 0 auto;
         width: 98%;
         height: 91%;
-        display: grid;
         grid-template-columns: 100%;
         grid-template-rows: 75% 75% 75% 75% ;
-        justify-items: center;
         align-items: center;
         overflow-y: auto;
     }
@@ -160,6 +157,12 @@
         width: 80%;
         height: 60%;
     }
+
+    /* .marketPage{
+        box-shadow: 0px 6px 4px -5px inset #323232;
+        width: 98%;
+        margin:0 auto;
+    } */
 
 
 }

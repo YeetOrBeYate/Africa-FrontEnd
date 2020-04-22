@@ -41,6 +41,12 @@ const ItemCard = (props)=>{
         }
     }
 
+    const closeDeleteModal = (e)=>{
+        e.preventDefault()
+
+        setItemDeleteOpen(false)
+    }
+
     if(!Category.categories){
         return(<div>
             getting some additional information
@@ -74,6 +80,7 @@ const ItemCard = (props)=>{
                 className = "DashboardModal"
             >
                 <ItemDelete
+                    closeModal = {closeDeleteModal}
                     itemId = {props.itemId}
                     name = {props.name}
                 />

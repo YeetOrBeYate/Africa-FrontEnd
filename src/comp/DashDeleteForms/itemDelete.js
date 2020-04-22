@@ -8,6 +8,7 @@ const ItemDelete = (props)=>{
 
 
     const dispatch = useDispatch();
+    const closeModal = props.closeModal
 
 
     const [itemDel, setItemDel] = React.useState({
@@ -28,7 +29,7 @@ const ItemDelete = (props)=>{
         <form className="itemDeleteForm">
             <div className="formDiv">
                 <button id="formSubmit" onClick={(e)=>deleteItem(e)}>Yes, delete {itemDel.name}</button>
-                <button id="formSubmit"> No, keep {itemDel.name}</button>
+                <button id="formSubmit" onClick={(e)=>closeModal(e)}> No, keep {itemDel.name}</button>
             </div>
         </form>
     );

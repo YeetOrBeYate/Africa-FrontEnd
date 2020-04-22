@@ -4,6 +4,8 @@ import {RemoveLocation} from "../../Actions/UserActions";
 
 const LocationDelete = (props)=>{
 
+    let closeModal = props.closeModal
+
 
     const dispatch = useDispatch();
 
@@ -22,7 +24,7 @@ const LocationDelete = (props)=>{
         <form className="locationDeleteForm">
             <div className="formDiv">
                 <button id = "formSubmit" onClick={(e)=>deleteLocation(e)}>Yes, delete {locationDel.name}</button>
-                <button id = "formSubmit">No, keep {locationDel.name}</button>
+                <button id = "formSubmit" onClick={(e)=>closeModal(e)}>No, keep {locationDel.name}</button>
             </div>
         </form>);
 

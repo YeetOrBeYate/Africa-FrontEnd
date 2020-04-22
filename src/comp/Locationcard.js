@@ -82,6 +82,12 @@ const Locationcard = (props)=>{
 
     }
 
+    const closeModalButton = (e)=>{
+        e.preventDefault()
+
+        setLocationDelete(false)
+    }
+
 
     return(
     <div className={`location location-${props.id}`}>
@@ -100,7 +106,7 @@ const Locationcard = (props)=>{
             className = "DashboardModal"
             onRequestClose={()=>setLocationDelete(false)}
         >
-            <LocationDelete name={props.name} id= {props.id}/>
+            <LocationDelete closeModal = {closeModalButton} name={props.name} id= {props.id}/>
 
         </LocationModal>
         <section className='location-labels'>
