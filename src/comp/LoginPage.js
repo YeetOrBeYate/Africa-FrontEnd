@@ -42,6 +42,10 @@ const Login = (props)=>{
         
     }
 
+    if(state.failure){
+        console.log('FAILED')
+    }
+
     return(
         <div className="Loginpage">
             <form className="loginForm">
@@ -53,10 +57,10 @@ const Login = (props)=>{
                     <input type="password" onChange={setPassword} placeholder="password"/>
                 </div>
                 <button id="loginButton" onClick={(e)=>yeet(e,person)}>Login</button>
-            </form>
             {
-                state.failure ? <div>Invalid Credentials!</div> : <></>
+                state.failure ? <b>Invalid Credentials!</b> : <></>
             }
+            </form>
         </div>
     );
 }

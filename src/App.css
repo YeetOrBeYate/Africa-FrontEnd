@@ -25,7 +25,8 @@ input{
 }
 
 b{
-  display: block
+  display: block;
+  color:black;
 }
 
 
