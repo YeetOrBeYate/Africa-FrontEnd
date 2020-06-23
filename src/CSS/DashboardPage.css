@@ -73,6 +73,10 @@
     justify-content: space-around;
 }
 
+.modalDisable{
+    opacity: .5;
+}
+
 .ModalOption:hover{
     box-shadow: 0px 0px 5px 1px black;
     cursor: pointer;
@@ -80,14 +84,20 @@
 
 #Profile{
     background: #eccd64;
+    border:none;
+    color:black;
 }
 
 #Item{
     background: #e47657;
+    border:none;
+    color:black;
 }
 
 #Location{
     background:#9c3a52;
+    border:none;
+    color:black;
 }
 
 img{

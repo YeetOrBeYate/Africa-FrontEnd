@@ -42,22 +42,32 @@ const Dashboard =()=>{
         </div>);
     }
 
+    const determineDisable = ()=>{
+        if(!state.user.locations.length===0){
+            return `ModalOption modalDisable`
+        }else{
+            return `ModalOption`
+        }
+    }
+
     return(
         <div className="parent">
+        {console.log(state.user)}
+        {console.log(Boolean(state.user.locations.length===0))}
             <h1 className="DashTitle">Welcome:{state.user.username}</h1>
             <div className="DashboardModals">
-                <div onClick={()=>setUserModelOpen(true)} id="Profile" className="ModalOption">
+                <button onClick={()=>setUserModelOpen(true)} id="Profile" className="ModalOption">
                     <img src={picture} alt="profile icon"/>
                     <h4>Edit your profile</h4>
-                </div>
-                <div onClick={()=>setItemModalOpen(true)} id="Item" className="ModalOption">
+                </button>
+                <button disabled={true} onClick={()=>setItemModalOpen(true)} id="Item" className={determineDisable()}>
                     <img  src={ShopPicture} alt="profile icon"/>
                     <h4>Add and item</h4>
-                </div>
-                <div onClick={()=>setLocationModalOpen(true)} id="Location" className="ModalOption">
+                </button>
+                <button onClick={()=>setLocationModalOpen(true)} id="Location" className="ModalOption">
                     <img src={LocationPicture} alt="profile icon"/>
                     <h4>Add a location</h4>
-                </div>
+                </button>
             </div>
             <DashModal
                 id = 'Profile'
