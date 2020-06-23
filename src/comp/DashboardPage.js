@@ -43,7 +43,7 @@ const Dashboard =()=>{
     }
 
     const determineDisable = ()=>{
-        if(!state.user.locations.length===0){
+        if(state.user.locations.length===0){
             return `ModalOption modalDisable`
         }else{
             return `ModalOption`
@@ -60,7 +60,11 @@ const Dashboard =()=>{
                     <img src={picture} alt="profile icon"/>
                     <h4>Edit your profile</h4>
                 </button>
-                <button disabled={true} onClick={()=>setItemModalOpen(true)} id="Item" className={determineDisable()}>
+                <button 
+                disabled={Boolean(state.user.locations.length===0)} 
+                onClick={()=>setItemModalOpen(true)} 
+                id="Item" 
+                className={determineDisable()}>
                     <img  src={ShopPicture} alt="profile icon"/>
                     <h4>Add and item</h4>
                 </button>
