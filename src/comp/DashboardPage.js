@@ -52,8 +52,6 @@ const Dashboard =()=>{
 
     return(
         <div className="parent">
-        {console.log(state.user)}
-        {console.log(Boolean(state.user.locations.length===0))}
             <h1 className="DashTitle">Welcome:{state.user.username}</h1>
             <div className="DashboardModals">
                 <button onClick={()=>setUserModelOpen(true)} id="Profile" className="ModalOption">

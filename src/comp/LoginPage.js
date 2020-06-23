@@ -42,10 +42,6 @@ const Login = (props)=>{
         
     }
 
-    if(state.failure){
-        console.log('FAILED')
-    }
-
     return(
         <div className="Loginpage">
             <form className="loginForm">
