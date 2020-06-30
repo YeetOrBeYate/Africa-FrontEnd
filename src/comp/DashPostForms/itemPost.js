@@ -79,7 +79,7 @@ const ItemYeet = ()=>{
                     <button id="formSubmit" onClick={(e)=>sendItem(e)}>Add Item</button>
                 </div>
                 {
-                    !Item.loading?
+                    Item.loading?
 
                     <div class="spinner-square">
                         <div class="square-1 square"></div>

@@ -1,9 +1,13 @@
 import React from 'react'
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {EditUserLocation} from "../../Actions/UserActions"
+
+import "../../CSS/innerModal.css"
+
 const LocationEdit = (props)=>{
 
     const dispatch = useDispatch()
+    const User = useSelector(state=>state.User);
 
     const [location, setLocation] = React.useState({
         name:props.name,
@@ -40,6 +44,18 @@ const LocationEdit = (props)=>{
                 <div className="formDiv">
                     <button id="formSubmit" onClick={(e)=>submitLocation(e)}>Edit Location</button>
                 </div>
+                {
+                    User.loading?
+
+                    <div class="spinner-square">
+                        <div class="square-1 square"></div>
+                        <div class="square-2 square"></div>
+                        <div class="square-3 square"></div>
+                    </div>
+
+                    :
+                    <></>
+                }
             </form>
         </>
     )
