@@ -1,5 +1,5 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {EditItems} from "../../Actions/ItemActions";
 
 
@@ -8,6 +8,7 @@ const ItemEdit = (props)=>{
     console.log('did load')
 
     const dispatch = useDispatch()
+    const Item = useSelector(state=>state.Item)
 
     const [item, setItem] = React.useState({
         id:props.itemId,
@@ -73,6 +74,18 @@ const ItemEdit = (props)=>{
                 <div className="formDiv">
                     <button id="formSubmit" onClick={(e)=>submitItem(e)}>Edit Item</button>
                 </div>
+                {
+                    !Item.loading?
+
+                    <div class="spinner-square">
+                        <div class="square-1 square"></div>
+                        <div class="square-2 square"></div>
+                        <div class="square-3 square"></div>
+                    </div>
+
+                    :
+                    <></>
+                }
             </form>
         </>
     )

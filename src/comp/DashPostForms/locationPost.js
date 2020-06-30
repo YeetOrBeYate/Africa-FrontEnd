@@ -2,6 +2,9 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {AddLocation} from "../../Actions/UserActions";
 
+import "../../CSS/innerModal.css"
+
+
 
 const LocationYeet =()=>{
 
