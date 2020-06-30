@@ -43,6 +43,18 @@ const LocationYeet =()=>{
             <div className="formDiv">
                 <button id ="formSubmit" onClick={(e)=>sendLocation(e)}>Add Location</button>
             </div>
+            {
+                User.loading?
+
+                <div class="spinner-square">
+                    <div class="square-1 square"></div>
+                    <div class="square-2 square"></div>
+                    <div class="square-3 square"></div>
+                </div>
+
+                :
+                <></>
+            }
         </form>
     );
 

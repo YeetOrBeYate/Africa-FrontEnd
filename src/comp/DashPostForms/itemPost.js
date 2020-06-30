@@ -7,6 +7,7 @@ import {AddItem} from "../../Actions/ItemActions";
 const ItemYeet = ()=>{
 
     const User = useSelector(state=>state.User);
+    const Item = useSelector(state=>state.Item);
     const Category = useSelector(state=>state.Category);
     const dispatch = useDispatch();
 
@@ -74,6 +75,18 @@ const ItemYeet = ()=>{
                 <div className="formDiv">
                     <button id="formSubmit" onClick={(e)=>sendItem(e)}>Add Item</button>
                 </div>
+                {
+                    Item.loading?
+
+                    <div class="spinner-square">
+                        <div class="square-1 square"></div>
+                        <div class="square-2 square"></div>
+                        <div class="square-3 square"></div>
+                    </div>
+
+                    :
+                    <></>
+                }
             </form>
     );
 }
