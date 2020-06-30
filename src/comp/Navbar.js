@@ -53,6 +53,7 @@ const Navbar = ()=>{
 
     React.useEffect(()=>{
 
+
         if(User.loading || LoginR.loading || Item.loading || Register.loading){
             setLoading(true)
         }else{

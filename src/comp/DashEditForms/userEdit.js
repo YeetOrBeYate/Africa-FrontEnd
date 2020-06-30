@@ -1,11 +1,13 @@
 import React from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import {EditUser} from "../../Actions/UserActions"
-import {useDispatch} from 'react-redux';
+
+import "../../CSS/innerModal.css"
 
 const UserEdit = (props)=>{
 
     const dispatch = useDispatch()
-
+    const User = useSelector(state=>state.User)
 
     const [user, setUser] = React.useState({
         username:'',
@@ -44,15 +46,27 @@ const UserEdit = (props)=>{
                 <input type="text" onChange={changeUser} name="username" value={user.username} required placeholder="username"/>
             </div>
             <div className="formDiv">
-                <input type="text" onChange={changeUser} name="password" value={user.password} required placeholder="password"/>
+                <input type="password" onChange={changeUser} name="password" value={user.password} required placeholder="password"/>
             </div>
             <div className="formDiv">
-                <input type="text" onChange={changeUser} name="Repassword" value={user.Repassword} required placeholder="re-enter password"/> 
+                <input type="password" onChange={changeUser} name="Repassword" value={user.Repassword} required placeholder="re-enter password"/> 
             </div>
                 {!user.match?  <b>The passwords do not match or name is blank</b> : <></> }
             <div className="formDiv">
                 <button id ="formSubmit" onClick={(e)=>submitUser(e)}>Edit Profile</button>
             </div>
+            {
+                User.loading?
+
+                <div class="spinner-square">
+                    <div class="square-1 square"></div>
+                    <div class="square-2 square"></div>
+                    <div class="square-3 square"></div>
+                </div>
+
+                :
+                <></>
+            }
         </form>
     )
 
