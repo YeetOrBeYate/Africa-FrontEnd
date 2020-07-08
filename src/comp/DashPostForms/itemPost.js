@@ -74,7 +74,7 @@ const ItemYeet = ()=>{
                             ))}
                     </select>
                 </div>
-                {postItem.postFail? <b>Check form</b>: <></>}
+                {postItem.postFail? <b className="errorMessage">Check form</b>: <></>}
                 <div className="formDiv">
                     <button id="formSubmit" onClick={(e)=>sendItem(e)}>Add Item</button>
                 </div>

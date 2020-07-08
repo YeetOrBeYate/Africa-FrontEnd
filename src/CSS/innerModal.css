@@ -45,3 +45,7 @@
         background-color: rgb(111, 163, 240);
     }
 }
+
+.errorMessage{
+    text-align: center;
+}

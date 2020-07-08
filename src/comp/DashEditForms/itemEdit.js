@@ -70,7 +70,7 @@ const ItemEdit = (props)=>{
                             ))}
                     </select>
                 </div>
-                {item.numberfail? <b>Double-Check the name,price,category and location fields</b>: <></>}
+                {item.numberfail? <b className="errorMessage">Double-Check the name,price,category and location fields</b>: <></>}
                 <div className="formDiv">
                     <button id="formSubmit" onClick={(e)=>submitItem(e)}>Edit Item</button>
                 </div>

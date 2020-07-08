@@ -42,7 +42,7 @@ const LocationYeet =()=>{
             <div className="formDiv">
                 <input type="text" name="name" onChange={changeLocation} value={locationPost.name} required placeholder="Location Name"/>
             </div>
-            {locationPost.locationFailure? <b>Location name was left blank</b>: <></>}
+            {locationPost.locationFailure? <b className="errorMessage">Location name was left blank</b>: <></>}
             <div className="formDiv">
                 <button id ="formSubmit" onClick={(e)=>sendLocation(e)}>Add Location</button>
             </div>

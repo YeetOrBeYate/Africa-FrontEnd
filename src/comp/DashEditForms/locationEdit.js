@@ -40,7 +40,7 @@ const LocationEdit = (props)=>{
                 <div className="formDiv">
                     <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
                 </div>
-                {location.lengthFailure? <b>Location name was left blank</b> : <></>}
+                {location.lengthFailure? <b className="errorMessage">Location name was left blank</b> : <></>}
                 <div className="formDiv">
                     <button id="formSubmit" onClick={(e)=>submitLocation(e)}>Edit Location</button>
                 </div>
