@@ -38,7 +38,7 @@ const LocationYeet =()=>{
     }
 
     return(
-        <form className="locationPostForm">
+        <form onSubmit={sendLocation} className="locationPostForm">
             <div className="formDiv">
                 <input type="text" name="name" onChange={changeLocation} value={locationPost.name} required placeholder="Location Name"/>
             </div>

@@ -25,7 +25,7 @@ const Login = (props)=>{
         password: ''
     })
 
-    const yeet =  (e,person)=>{
+    const submit =  (e,person)=>{
         e.preventDefault();
 
          dispatch(signIn(person))
@@ -44,7 +44,7 @@ const Login = (props)=>{
 
     return(
         <div className="Loginpage">
-            <form className="loginForm">
+            <form onSubmit={(e)=>submit(e,person)} className="loginForm">
                 <h1 id ="loginTitle">Login</h1>
                 <div className="loginItem">
                     <input type="text" onChange={setUsername} placeholder="username"/>
@@ -52,7 +52,7 @@ const Login = (props)=>{
                 <div className="loginItem">
                     <input type="password" onChange={setPassword} placeholder="password"/>
                 </div>
-                <button id="loginButton" onClick={(e)=>yeet(e,person)}>Login</button>
+                <button id="loginButton" onClick={(e)=>submit(e,person)}>Login</button>
             {
                 state.failure ? <b>Invalid Credentials!</b> : <></>
             }

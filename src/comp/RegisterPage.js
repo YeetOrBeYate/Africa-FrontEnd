@@ -37,7 +37,7 @@ const Register =(props)=>{
 
     return(
         <div className="Registerpage">
-            <form className="loginForm">
+            <form onSubmit={(e)=>register(e)} className="loginForm">
                 <h1 id = "loginTitle">Register</h1>
                 <div className = "loginItem">
                     <input type='text' placeholder = "username" name='username' onChange={setThePerson}/>

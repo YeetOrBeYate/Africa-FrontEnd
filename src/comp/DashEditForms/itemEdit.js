@@ -46,7 +46,7 @@ const ItemEdit = (props)=>{
 
     return(
         <>
-            <form className="itemForm">
+            <form onSubmit={submitItem} className="itemForm">
                 <div className='formDiv'>
                     <input type="text" name="name" onChange={changeItem} value={item.name} required placeholder="name"/>
                 </div>

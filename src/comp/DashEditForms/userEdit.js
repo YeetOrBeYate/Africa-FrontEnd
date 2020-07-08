@@ -41,7 +41,7 @@ const UserEdit = (props)=>{
 
 
     return(
-        <form className="userForm">
+        <form onSubmit={submitUser} className="userForm">
             <div className="formDiv">
                 <input type="text" onChange={changeUser} name="username" value={user.username} required placeholder="username"/>
             </div>

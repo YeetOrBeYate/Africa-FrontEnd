@@ -36,7 +36,7 @@ const LocationEdit = (props)=>{
 
     return(
         <>
-            <form className="locationForm">
+            <form onSubmit={submitLocation} className="locationForm">
                 <div className="formDiv">
                     <input type="text" name="name" value={location.name} onChange={changeLocation} placeholder="name"/>
                 </div>

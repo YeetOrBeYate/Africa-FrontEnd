@@ -50,7 +50,7 @@ const ItemYeet = ()=>{
     }
 
     return(
-            <form className="itemPostForm">
+            <form onSubmit={sendItem} className="itemPostForm">
                 <div className="formDiv">
                     <input type="text" name="name" onChange={changePostItem} value={postItem.name} required placeholder="Item Name"/>
                 </div>
