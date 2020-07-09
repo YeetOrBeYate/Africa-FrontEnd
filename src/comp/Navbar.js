@@ -13,7 +13,7 @@ import {FixFailure} from '../Actions/LoginActions'
 
 import "../CSS/Navbar.css"
 
-Loading.setAppElement('#root')
+Loading.setAppElement(document.getElementById('root'))
 // ErrorM.setAppElement('#root')
 const Navbar = ()=>{
 
@@ -129,7 +129,7 @@ const Navbar = ()=>{
                 {
                     token? 
                     <>
-                        <Link to="/">
+                        <Link data-testid="home" to="/">
                             <img src={africa} alt="africa"/>
                         </Link>
                         <div className="NavSub">
@@ -140,7 +140,7 @@ const Navbar = ()=>{
                     </>
                     :
                     <>
-                        <Link to="/">
+                        <Link data-testid="home" to="/">
                             <img src={africa} alt="africa"/>
                         </Link>
                         <div className="NavSub">
