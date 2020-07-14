@@ -44,15 +44,15 @@ const Login = (props)=>{
 
     return(
         <div className="Loginpage">
-            <form onSubmit={(e)=>submit(e,person)} className="loginForm">
-                <h1 id ="loginTitle">Login</h1>
+            <form onSubmit={(e)=>submit(e,person)} data-testid="loginForm" className="loginForm">
+                <h1 data-testid="loginTitle" id ="loginTitle">Login</h1>
                 <div className="loginItem">
-                    <input type="text" onChange={setUsername} placeholder="username"/>
+                    <input data-testid="username" type="text" onChange={setUsername} placeholder="username"/>
                 </div>
                 <div className="loginItem">
-                    <input type="password" onChange={setPassword} placeholder="password"/>
+                    <input data-testid="password" type="password" onChange={setPassword} placeholder="password"/>
                 </div>
-                <button id="loginButton" onClick={(e)=>submit(e,person)}>Login</button>
+                <button data-testid="loginButton" id="loginButton" onClick={(e)=>submit(e,person)}>Login</button>
             {
                 state.failure ? <b>Invalid Credentials!</b> : <></>
             }

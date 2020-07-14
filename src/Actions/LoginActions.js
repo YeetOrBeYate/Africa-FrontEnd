@@ -1,27 +1,27 @@
 import axios from 'axios';
 
-const loading = ()=>{
+export const loading = ()=>{
     return {type: 'Loginloading'}
 }
 
-const good = ()=>{
+export const good = ()=>{
     return {type: 'good' }
 }
 
-const bad = ()=>{
+export const bad = ()=>{
     return { type: 'bad'}
 }
 
-const forward = ()=>{
+export const forward = ()=>{
     return {type:'moved'}
 }
 
-const fixFailure = ()=>{
+export const fixFailure = ()=>{
     return {type:'resetLogin'}
 }
 
 //this fucntion sets the user id in the user reducer, dont remove the case for the user reducer that corrisponds
-const UserId = (data)=>{
+export const UserId = (data)=>{
     return {type:'userId', payload:data}
 }
 
@@ -42,6 +42,9 @@ export const signIn = (person)=>{
         //removed the userloading action from this location
         return axios.post('https://africa-marketplace.herokuapp.com/auth/login', person)
         .then(res=>{
+
+            // console.log(res)
+            // console.log(person)
 
             const token = res.data.token;
             let userid = res.data.id;
